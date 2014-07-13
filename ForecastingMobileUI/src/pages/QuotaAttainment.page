@@ -1,0 +1,82 @@
+<apex:page controller="QuotaAttainmentController">
+    <style>
+    html, body, p { 
+        font-family: "ProximaNovaSoft-Regular", Calibri, 
+            "Gill Sans", "Gill Sans MT", Candara, Segoe, 
+            "Segoe UI", Arial, sans-serif; 
+        font-size: 110%;
+    }
+    input { font-size: 95%; }
+    #g1,#g2 {
+        width:400px; height:320px;
+        display: inline-block;
+        margin: 1em;
+    }
+ 
+	</style>
+        <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'icons.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.OneStarter,'styles.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.OneStarter,'OneStarter.css')}"/>
+
+	<!-- JavaScript files -->
+	<apex:includeScript value="{!$Resource.jquery}"/>
+	<apex:includeScript value="{!URLFOR($Resource.TouchSwipe,'jquery.touchSwipe.min.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.OneStarter,'jquery.onestarter.js')}"/>
+	<apex:includeScript value="/canvas/sdk/js/publisher.js"/>    
+	<!-- Needed for the gauage chart -->
+    <apex:includeScript value="{!$Resource.raphael}"/>
+    <apex:includeScript value="{!$Resource.justgage}"/>
+    
+    <div id="one-app">
+	    <div id="one-carousel">
+        
+    		<div>        
+                <p>
+                    Closed:&nbsp;
+                    <apex:outputText value="{!closedString}"/>        
+                </p>
+                <p>
+                    Quota  (this period):&nbsp;
+                    <apex:outputText value="{!quotaString}"/><br/>        
+                </p>
+                <p>
+                    Attainment:&nbsp;
+                    <apex:outputText value="{!attainmentString}"/><br/>           
+                </p>
+            </div>
+        	<div id="g1" class="200x160px"></div>
+        	<div id="g2" class="200x160px"></div>
+        </div>
+    </div>
+
+    <script>
+
+        $(document).ready(function() {
+            var g1 = new JustGage({
+                id: "g1", 
+                value: {!closedValue},
+                min: 0,
+                max: {!quotaValue},
+                label: "USD",
+                formatNumber: true,
+                levelColors: [ "#ff0000", "#f9c802", "#a9d70b" ],
+                title: "Attainment"
+                });
+
+            var g2 = new JustGage({
+                id: "g2", 
+                value: 40000,
+                min: 0,
+                max: {!quotaValue},
+                label: "USD",
+                formatNumber: true,
+                levelColors: [ "#ff0000", "#f9c802", "#a9d70b" ],
+                title: "Attainment"
+                });
+
+            var s1 = $('div#one-app').oneStarter('app');
+            s1.carousel($('div#one-carousel'));
+        });
+    
+    </script>
+</apex:page>
