@@ -3,12 +3,12 @@
     html, body, p { 
         font-family: "ProximaNovaSoft-Regular", Calibri, 
             "Gill Sans", "Gill Sans MT", Candara, Segoe, 
-            "Segoe UI", Arial, sans-serif; 
+            "Segoe UI", Arial, sans-serif, "Arial Unicode MS"; 
         font-size: 110%;
     }
     input { font-size: 95%; }
     #g1,#g2 {
-        width:400px; height:320px;
+        width:240px; height:200px;
         display: inline-block;
         margin: 1em;
     }
@@ -29,9 +29,9 @@
     
     <div id="one-app">
 	    <div id="one-carousel">
-        
+<!--        
     		<div>        
-                <p>
+                <p> Hello
                     Closed:&nbsp;
                     <apex:outputText value="{!closedString}"/>        
                 </p>
@@ -44,8 +44,29 @@
                     <apex:outputText value="{!attainmentString}"/><br/>           
                 </p>
             </div>
-        	<div id="g1" class="200x160px"></div>
-        	<div id="g2" class="200x160px"></div>
+-->
+            <div>
+                <div id="g1"></div>
+  				<article>
+  				<header><h1>Opportunities in Best Case</h1>
+  						<a href="javascript:void(0)" title="More" class="link-right">
+					      <span class="link-label">More</span>
+					      <span class="link-icon-right icon-utility-right"></span>
+					    </a>
+  				</header>
+	  				<section class="padded">
+	  				<div class="icon icon-right icon-float-right icon--opportunity"></div>
+					        <h1 class="simple-bold">
+					            United Partners, Inc.
+					        </h1>
+					  <ul class="list-plain">
+					    <li >$40,000</li>
+					    <li >Enterprise Customer</li>
+					  </ul>
+					</section>
+                </article>
+            </div>
+        	<div id="g2"></div>
         </div>
     </div>
 
@@ -54,13 +75,13 @@
         $(document).ready(function() {
             var g1 = new JustGage({
                 id: "g1", 
-                value: {!closedValue},
+                value: 40000, //{!closedValue},
                 min: 0,
                 max: {!quotaValue},
                 label: "USD",
                 formatNumber: true,
                 levelColors: [ "#ff0000", "#f9c802", "#a9d70b" ],
-                title: "Attainment"
+                title: "Revenue\nBest Case ➤ Close"
                 });
 
             var g2 = new JustGage({

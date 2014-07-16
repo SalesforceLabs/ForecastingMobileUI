@@ -1,7 +1,8 @@
 public class QuotaAttainmentController {
+    private List<String> forecastCategoryList = initForecastCategories();
     private List<ForecastingItem> forecastingItems = getForecastingItems();
     private List<ForecastingQuota> forecastingQuotas = getForecastingQuotas();
-    
+
     private Double closedValue = getClosedValue();
     private Double quotaValue = getQuotaValue();
 
@@ -57,9 +58,27 @@ public class QuotaAttainmentController {
         //       e.g. Closed2 may be the label, and it corresponds to Closed status category.
         Id periodId = getCurrentPeriod(true);
         Id userId = Id.valueOf(UserInfo.getUserId());
-        List<ForecastingItem> ret = [SELECT ForecastCategoryName, IsAmount, IsQuantity, ForecastAmount, ForecastQuantity, HasAdjustment
-                                       FROM ForecastingItem where OwnerId=:userId AND PeriodId=:periodId AND ForecastCategoryName='Closed2'];
-        return ret;
+
+        List<ForecastingItem> items = [SELECT ForecastCategoryName, IsAmount, IsQuantity, ForecastAmount, ForecastQuantity, HasAdjustment
+                                       FROM ForecastingItem where OwnerId=:userId AND PeriodId=:periodId];
+
+        Map<String,ForecastingItem> itemsByCategory = initItemsByCategory(items);
+        items.clear();
+
+        // Put the items in the same order as the forecast categories. 
+        for (String category : forecastCategoryList) {
+            if (itemsByCategory.containsKey(category))
+                items.add(itemsByCategory.get(category));
+        }
+        return items;
+    }
+ 
+    private Map<String,ForecastingItem> initItemsByCategory(List<ForecastingItem> items) {
+   		Map<String,ForecastingItem> ret = new Map<String,ForecastingItem>();
+        for (ForecastingItem item : items) {
+            ret.put(item.ForecastCategoryName, item);
+        }
+		return ret;
     }
     
     private Id getCurrentPeriod(Boolean isQuarterly) {
@@ -70,6 +89,20 @@ public class QuotaAttainmentController {
         if (periods == null || periods.size() == 0)
            return null;
         return periods.get(0).Id;
+    }
+    
+    private List<String> initForecastCategories() {
+        
+    	List<String> ret = new List<String>();
+        
+    	Schema.DescribeFieldResult f = Schema.sObjectType.ForecastingItem.fields.ForecastCategoryName;
+    	List<Schema.PicklistEntry> picklist = f.getPicklistValues();
+        for (Schema.PicklistEntry p : picklist) {
+            if (p.isActive())
+                ret.add(p.getLabel());
+        }
+        
+        return ret;
     }
     
 }
