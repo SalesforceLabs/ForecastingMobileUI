@@ -14,6 +14,26 @@ public class QuotaAttainmentController {
         return quotaValue.format();
     }
     
+    public List<CumulativeAmount> getAttainments() {
+        List<CumulativeAmount> ret = new List<CumulativeAmount>();
+        for(Integer i = 0; i < forecastingItems.size(); i++) {
+            CumulativeAmount c = new CumulativeAmount();
+            c.category = forecastingItems.get(i).ForecastCategoryName;
+            c.amount = forecastingItems.get(i).ForecastAmount;
+            if (c.amount == null)
+                c.amount = 0;
+      
+            if (i > 0) {
+                c.category += ' + ' + ret.get(i-1).category;
+                c.amount += ret.get(i-1).amount;
+            }
+            System.debug(loggingLevel.INFO, 'Save:' + c.category + ', ' + c.amount);
+            ret.add(c);
+            System.debug(loggingLevel.INFO, 'Size=' + ret.size());
+        }
+        return ret;
+    }
+    
     public Double getClosedValue() {
         Double ret = null;
         for (ForecastingItem item : forecastingItems) {
