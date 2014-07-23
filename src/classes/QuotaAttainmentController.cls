@@ -1,25 +1,43 @@
 public class QuotaAttainmentController {
     private List<String> forecastCategoryList = initForecastCategories();
+    Id forecastingTypeId = ForecastingTypeUtil.types.get(0).Id;
+    ForecastingType selectedType = ForecastingTypeUtil.types.get(0);
+    Id periodId = getCurrentPeriod(true);
+
     private List<ForecastingItem> forecastingItems = getForecastingItems();
     private List<ForecastingQuota> forecastingQuotas = getForecastingQuotas();
 
-    private Double closedValue = getClosedValue();
     private Double quotaValue = getQuotaValue();
 
-    public String getClosedString() {
-        return closedValue.format();        
-    }
-    
     public String getQuotaString() {
         return quotaValue.format();
     }
     
+    public String getSelectedForecastingType() {
+        return forecastingTypeId;
+    }
+    
+    public void setSelectedForecastingType(Id selectedId) {
+        forecastingTypeId = selectedId;
+        selectedType = ForecastingTypeUtil.getForecastingTypeById(selectedId);
+    }
+    
+    public void onChangeForecastType() {
+        selectedType = ForecastingTypeUtil.getForecastingTypeById(forecastingTypeId);        
+    }
+    
+    public static List<SelectOption> getActiveForecastingTypes() {
+        return ForecastingTypeUtil.getActiveForecastingTypesAsOptions();
+    }
+       
+    
     public List<CumulativeAmount> getAttainments() {
         List<CumulativeAmount> ret = new List<CumulativeAmount>();
         for(Integer i = 0; i < forecastingItems.size(); i++) {
+            ForecastingItem item = forecastingItems.get(i);
             CumulativeAmount c = new CumulativeAmount();
-            c.category = forecastingItems.get(i).ForecastCategoryName;
-            c.amount = forecastingItems.get(i).ForecastAmount;
+            c.category = item.ForecastCategoryName;
+            c.amount = selectedType.IsAmount ? item.ForecastAmount : item.ForecastQuantity;
             if (c.amount == null)
                 c.amount = 0;
       
@@ -57,33 +75,31 @@ public class QuotaAttainmentController {
     }
     
     private List<ForecastingQuota> getForecastingQuotas() {
-        Id periodId = getCurrentPeriod(true);
         Id userId = Id.valueOf(UserInfo.getUserId());
         List<ForecastingQuota> ret = [SELECT QuotaAmount, QuotaQuantity, IsAmount, IsQuantity FROM ForecastingQuota
-                                         WHERE QuotaOwnerId=:userId AND PeriodId=:periodId];
+                                         WHERE QuotaOwnerId=:userId AND PeriodId=:periodId AND ForecastingTypeId=:forecastingTypeId];
         return ret;
     }
-    
-    public String getAttainmentString() {
-        Double attain = 0;
-        if (quotaValue > 0 && closedValue > 0)
-            attain = closedValue / quotaValue * 100;
-        return attain.format() + '%';
-    }
-    
+        
     private List<ForecastingItem> getForecastingItems() {
         // TODO: Handle different categories, forecasting types, unadjusted value, owner-only, product family, monthly/quarterly
         // TODO: Handle different levels: closed, closed+commit, closed+commit+best case, etc. Need to map
         //       forecasting status category to the category's label, which is the one that is recorded in ForecastingItem
         //       e.g. Closed2 may be the label, and it corresponds to Closed status category.
-        Id periodId = getCurrentPeriod(true);
         Id userId = Id.valueOf(UserInfo.getUserId());
+        System.debug(loggingLevel.INFO, 'forecastingTypeId: ' + forecastingTypeId);
+	    System.debug(loggingLevel.INFO, 'userId: ' + userId);
+	    System.debug(loggingLevel.INFO, 'periodId: ' + periodId);
 
+        
         List<ForecastingItem> items = [SELECT ForecastCategoryName, IsAmount, IsQuantity, ForecastAmount, ForecastQuantity, HasAdjustment
-                                       FROM ForecastingItem where OwnerId=:userId AND PeriodId=:periodId];
+                                       FROM ForecastingItem where OwnerId=:userId AND PeriodId=:periodId AND ForecastingTypeId=:forecastingTypeId];
 
+        // Make a hashmap to the forecasting items, with the key being the category.
         Map<String,ForecastingItem> itemsByCategory = initItemsByCategory(items);
         items.clear();
+
+        System.debug(loggingLevel.INFO, 'Items hashmap: ' + itemsByCategory);
 
         // Put the items in the same order as the forecast categories. 
         for (String category : forecastCategoryList) {
@@ -93,6 +109,7 @@ public class QuotaAttainmentController {
         return items;
     }
  
+    // Make a hashmap to the forecasting items, with the key being the category.
     private Map<String,ForecastingItem> initItemsByCategory(List<ForecastingItem> items) {
    		Map<String,ForecastingItem> ret = new Map<String,ForecastingItem>();
         for (ForecastingItem item : items) {
@@ -117,9 +134,11 @@ public class QuotaAttainmentController {
         
     	Schema.DescribeFieldResult f = Schema.sObjectType.ForecastingItem.fields.ForecastCategoryName;
     	List<Schema.PicklistEntry> picklist = f.getPicklistValues();
-        for (Schema.PicklistEntry p : picklist) {
+		// Sort in reverse order
+        for (Integer i = picklist.size() - 1; i>=0; i--) {
+            Schema.PicklistEntry p = picklist.get(i);
             if (p.isActive())
-                ret.add(p.getLabel());
+                ret.add(p.getLabel());            
         }
         
         return ret;

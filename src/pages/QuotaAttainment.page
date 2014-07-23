@@ -7,7 +7,7 @@
         font-size: 110%;
     }
     input { font-size: 95%; }
-    #g1,#g2 {
+    .graph {
         width:240px; height:200px;
         display: inline-block;
         margin: 1em;
@@ -27,30 +27,52 @@
     <apex:includeScript value="{!$Resource.raphael}"/>
     <apex:includeScript value="{!$Resource.justgage}"/>
     
+    <!--
+			<apex:outputText value="Forecasting Type:"/>&nbsp;
+			<apex:selectList value="{!selectedForecastingType}" multiSelect="false" size="1">
+	     		<apex:actionSupport event="onchange" reRender="quotaTable,productFamilyOutputPanel" status="updatingStatus"/>
+				<apex:selectOptions value="{!activeForecastingTypes}"/>
+			</apex:selectList>&nbsp;
+	-->
+    
     <div id="one-app">
+		<apex:form >
+        <div id="forecastTypeSelector">
+            <apex:selectList value="{!selectedForecastingType}" multiSelect="false" size="1">
+                <apex:actionSupport event="onchange" reRender="one-carousel" status="updatingStatus"/>
+                <apex:selectOptions value="{!activeForecastingTypes}"/>
+            </apex:selectList>&nbsp;
+            
+        </div>
+        </apex:form>
+        
 	    <div id="one-carousel">
-            <div>
-                <div id="g1"></div>
-  				<article>
-  				<header><h1>Opportunities in Best Case</h1>
-  						<a href="javascript:void(0)" title="More" class="link-right">
-					      <span class="link-label">More</span>
-					      <span class="link-icon-right icon-utility-right"></span>
-					    </a>
-  				</header>
-	  				<section class="padded">
-	  				<div class="icon icon-right icon-float-right icon--opportunity"></div>
-					        <h1 class="simple-bold">
-					            United Partners, Inc.
-					        </h1>
-					  <ul class="list-plain">
-					    <li >$40,000</li>
-					    <li >Enterprise Customer</li>
-					  </ul>
-					</section>
-                </article>
-            </div>
-        	<div id="g2"></div>
+            <apex:repeat value="{!attainments}" var="c" id="theRepeat">
+                <div>
+                    <div class="graph" id="{!c.category}">    
+                    </div>
+                    <article>
+                        <header><h1>Opportunities in Best Case</h1>
+                            <a href="javascript:void(0)" title="More" class="link-right">
+                              <span class="link-label">More</span>
+                              <span class="link-icon-right icon-utility-right"></span>
+                            </a>
+                        </header>
+                        <section class="padded">
+                        <div class="icon icon-right icon-float-right icon--opportunity"></div>
+                                <h1 class="simple-bold">
+                                    United Partners, Inc.
+                                </h1>
+                          <ul class="list-plain">
+                            <li >$40,000</li>
+                            <li >Enterprise Customer</li>
+                          </ul>
+                        </section>
+                	</article>
+
+                </div>
+            </apex:repeat>
+            
         </div>
     </div>
 
@@ -58,11 +80,18 @@
 
         $(document).ready(function() {
             var graphs = [
-    			<apex:repeat value="{!attainments}" var="c" id="theRepeat">
-                
+    			<apex:repeat value="{!attainments}" var="c" id="theRepeat2">
+                new JustGage({
+                    id: "{!c.category}", 
+                    value: {!c.amount}, //{!closedValue},
+                    min: 0,
+                    max: {!quotaValue},
+                    label: "USD",
+                    formatNumber: true,
+                    levelColors: [ "#ff0000", "#f9c802", "#a9d70b" ],
+                    title: "{!c.category}"
+                }),
                 </apex:repeat>
-                
-                
             ];
             
             
