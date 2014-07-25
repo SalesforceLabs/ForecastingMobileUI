@@ -26,30 +26,24 @@
 	<!-- Needed for the gauage chart -->
     <apex:includeScript value="{!$Resource.raphael}"/>
     <apex:includeScript value="{!$Resource.justgage}"/>
-    
-    <!--
-			<apex:outputText value="Forecasting Type:"/>&nbsp;
-			<apex:selectList value="{!selectedForecastingType}" multiSelect="false" size="1">
-	     		<apex:actionSupport event="onchange" reRender="quotaTable,productFamilyOutputPanel" status="updatingStatus"/>
-				<apex:selectOptions value="{!activeForecastingTypes}"/>
-			</apex:selectList>&nbsp;
-	-->
-    
+        
     <div id="one-app">
-		<apex:form >
+<!--		<apex:form >
         <div id="forecastTypeSelector">
             <apex:selectList value="{!selectedForecastingType}" multiSelect="false" size="1">
-                <apex:actionSupport event="onchange" reRender="one-carousel" status="updatingStatus"/>
+                <apex:actionSupport event="onchange" reRender="details-form" onsubmit="refreshCarousel(this)"/>
                 <apex:selectOptions value="{!activeForecastingTypes}"/>
             </apex:selectList>&nbsp;
             
         </div>
         </apex:form>
+-->        
+        <apex:form id="details-form">
         
 	    <div id="one-carousel">
             <apex:repeat value="{!attainments}" var="c" id="theRepeat">
                 <div>
-                    <div class="graph" id="{!c.category}">    
+                    <div class="graph" id="{!c.forecastTypeStr}-{!c.category}">    
                     </div>
                     <article>
                         <header><h1>Opportunities in Best Case</h1>
@@ -59,6 +53,7 @@
                             </a>
                         </header>
                         <section class="padded">
+                            <a href="javascript:sforce.one.navigateToSObject('006D000000CzPK6')">
                         <div class="icon icon-right icon-float-right icon--opportunity"></div>
                                 <h1 class="simple-bold">
                                     United Partners, Inc.
@@ -67,6 +62,7 @@
                             <li >$40,000</li>
                             <li >Enterprise Customer</li>
                           </ul>
+                                </a>
                         </section>
                 	</article>
 
@@ -74,19 +70,21 @@
             </apex:repeat>
             
         </div>
+            
+        </apex:form>
     </div>
 
     <script>
-
-        $(document).ready(function() {
+    
+    	var startfunction = function() {
             var graphs = [
     			<apex:repeat value="{!attainments}" var="c" id="theRepeat2">
                 new JustGage({
-                    id: "{!c.category}", 
-                    value: {!c.amount}, //{!closedValue},
+                    id: "{!c.forecastTypeStr}-{!c.category}", 
+                    value: {!c.amount},
                     min: 0,
-                    max: {!quotaValue},
-                    label: "USD",
+                    max: {!c.quota},
+                    label: "{!c.forecastTypeStr}",
                     formatNumber: true,
                     levelColors: [ "#ff0000", "#f9c802", "#a9d70b" ],
                     title: "{!c.category}"
@@ -94,34 +92,17 @@
                 </apex:repeat>
             ];
             
-            
-            
-            
-            var g1 = new JustGage({
-                id: "g1", 
-                value: 40000, //{!closedValue},
-                min: 0,
-                max: {!quotaValue},
-                label: "USD",
-                formatNumber: true,
-                levelColors: [ "#ff0000", "#f9c802", "#a9d70b" ],
-                title: "Revenue\nBest Case ➤ Close"
-                });
-
-            var g2 = new JustGage({
-                id: "g2", 
-                value: 40000,
-                min: 0,
-                max: {!quotaValue},
-                label: "USD",
-                formatNumber: true,
-                levelColors: [ "#ff0000", "#f9c802", "#a9d70b" ],
-                title: "Attainment"
-                });
-
             var s1 = $('div#one-app').oneStarter('app');
             s1.carousel($('div#one-carousel'));
-        });
+        }
+
+        $(document).ready(startfunction);
+    
+    	function refreshCarousel() {
+            startfunction();
+        }
+    
+    	
     
     </script>
 </apex:page>
