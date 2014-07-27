@@ -52,20 +52,29 @@ public class QuotaAttainmentController {
                 CumulativeAmount c = ret.get(i);
                 if (forecastTypeString(item).equals(c.forecastTypeStr) &&
                     item.ForecastCategoryName.equals(c.category)) {
-	
+					
+                    c.forecastingItemId = item.Id;
+                    c.relatedOpptys = getOppsInForecastingItem(item.Id);
                     c.amount = isAmount(item) ? item.ForecastAmount : item.ForecastQuantity;
             		if (c.amount == null)
                 		c.amount = 0;
                         
                     if (i > 0) {
                 		if (c.forecastTypeStr.equals(ret.get(i-1).forecastTypeStr))
-                			c.category += ' ➤ ' + ret.get(0).category;
+                			c.category += ' + ' + ret.get(i-1).category;
                 			c.amount += ret.get(i-1).amount;
             		}    
                 }
             }
         }
         
+        return ret;
+    }
+    
+    private List<Opportunity> getOppsInForecastingItem(Id forecastingItemId) {
+        List<Opportunity> ret = [SELECT Id, Name, Amount, Account.Name FROM Opportunity WHERE Id IN 
+                                 (select OpportunityId from ForecastingFact WHERE ForecastingItemId=:forecastingItemId)];
+		System.debug(loggingLevel.INFO, 'Opps for forecastingItemId=' + forecastingItemId + ':\n' + ret);
         return ret;
     }
     

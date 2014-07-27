@@ -6,5 +6,8 @@ public class CumulativeAmount{
     public Double amount {get; set;}
     public Double quota {get; set;}
     public String forecastTypeStr { get; set; }
+    
+    public Id forecastingItemId { get; set; }
+    public List<Opportunity> relatedOpptys {get; set; }
    
 }

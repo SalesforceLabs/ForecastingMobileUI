@@ -1,6 +1,6 @@
 <apex:page controller="QuotaAttainmentController">
     <style>
-    html, body, p { 
+    html, body, p, .achieved { 
         font-family: "ProximaNovaSoft-Regular", Calibri, 
             "Gill Sans", "Gill Sans MT", Candara, Segoe, 
             "Segoe UI", Arial, sans-serif, "Arial Unicode MS"; 
@@ -27,43 +27,32 @@
     <apex:includeScript value="{!$Resource.raphael}"/>
     <apex:includeScript value="{!$Resource.justgage}"/>
         
-    <div id="one-app">
-<!--		<apex:form >
-        <div id="forecastTypeSelector">
-            <apex:selectList value="{!selectedForecastingType}" multiSelect="false" size="1">
-                <apex:actionSupport event="onchange" reRender="details-form" onsubmit="refreshCarousel(this)"/>
-                <apex:selectOptions value="{!activeForecastingTypes}"/>
-            </apex:selectList>&nbsp;
-            
-        </div>
-        </apex:form>
--->        
-        <apex:form id="details-form">
-        
+    <div id="one-app">        
 	    <div id="one-carousel">
             <apex:repeat value="{!attainments}" var="c" id="theRepeat">
                 <div>
                     <div class="graph" id="{!c.forecastTypeStr}-{!c.category}">    
                     </div>
                     <article>
-                        <header><h1>Opportunities in Best Case</h1>
-                            <a href="javascript:void(0)" title="More" class="link-right">
+                        <header><h1>Opportunities in {!c.category}</h1>
+<!--                            <a href="javascript:void(0)" title="More" class="link-right">
                               <span class="link-label">More</span>
                               <span class="link-icon-right icon-utility-right"></span>
                             </a>
+-->
                         </header>
-                        <section class="padded">
-                            <a href="javascript:sforce.one.navigateToSObject('006D000000CzPK6')">
-                        <div class="icon icon-right icon-float-right icon--opportunity"></div>
-                                <h1 class="simple-bold">
-                                    United Partners, Inc.
-                                </h1>
-                          <ul class="list-plain">
-                            <li >$40,000</li>
-                            <li >Enterprise Customer</li>
-                          </ul>
+                        	<apex:repeat value="{!c.relatedOpptys}" var="opp">
+                            <section class="padded">
+                                <a href="javascript:sforce.one.navigateToSObject('{!opp.Id}')">
+                                    <div class="icon icon-right icon-float-right icon--opportunity"></div>
+                                    <h1 class="simple-bold">{!opp.Account.Name}</h1>
+                                    <ul class="list-plain">
+                                        <li ><apex:outputField value="{!opp.amount}"/></li>
+                                        <li >{!opp.Name}</li>
+                                    </ul>
                                 </a>
-                        </section>
+                            </section>
+                        	</apex:repeat>    
                 	</article>
 
                 </div>
@@ -71,26 +60,37 @@
             
         </div>
             
-        </apex:form>
     </div>
 
     <script>
     
     	var startfunction = function() {
-            var graphs = [
-    			<apex:repeat value="{!attainments}" var="c" id="theRepeat2">
+            var graphs = [];
+            var amount;
+            var quota;
+            <apex:repeat value="{!attainments}" var="c" id="theRepeat2">
+            amount = {!c.amount};
+          	quota = {!c.quota};
+            if (amount >= quota) {
+                var theDiv = document.getElementById("{!c.forecastTypeStr}-{!c.category}");
+                theDiv.innerHTML = "<p>{!c.category}&nbsp<br/>{!c.forecastTypeStr}<br/>" + 
+                    			   "<div><em>Congratulations! Quota met!</em>" + 
+                    			   "+$" + (amount-quota) + "</div></p>";
+            }
+            else {
+                graphs.push(
                 new JustGage({
                     id: "{!c.forecastTypeStr}-{!c.category}", 
-                    value: {!c.amount},
+                    value: amount,
                     min: 0,
-                    max: {!c.quota},
+                    max: quota,
                     label: "{!c.forecastTypeStr}",
                     formatNumber: true,
                     levelColors: [ "#ff0000", "#f9c802", "#a9d70b" ],
                     title: "{!c.category}"
-                }),
-                </apex:repeat>
-            ];
+                }));
+            }
+            </apex:repeat>
             
             var s1 = $('div#one-app').oneStarter('app');
             s1.carousel($('div#one-carousel'));
