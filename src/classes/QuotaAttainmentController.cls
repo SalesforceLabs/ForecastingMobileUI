@@ -1,4 +1,4 @@
-public class QuotaAttainmentController {
+public with sharing class QuotaAttainmentController {
     Id periodId = getCurrentPeriod(true);
     Id userId = Id.valueOf(UserInfo.getUserId());
 
@@ -20,7 +20,7 @@ public class QuotaAttainmentController {
         return t.MasterLabel;
     }
     
-    public List<CumulativeAmount> getAttainments() {
+    public List<ForecastCategoryAttainment> getAttainments() {
         // Fetch the list of Forecast categories, starting with the end
     	List<String> forecastCategoryList = initForecastCategories();
         // Now fetch the ForecastingTypes
@@ -30,26 +30,41 @@ public class QuotaAttainmentController {
 
         // Make an ordered set of Attainment records with this information. 
         // If there's no associated quota, skip it.
-        List<CumulativeAmount> ret = new List<CumulativeAmount>();
-        for (ForecastingType t : forecastingTypes) {
-            ForecastingQuota q = forecastingQuotas.get(t.Id);
-            if (q == null)
-                continue;
-            for (String categoryName : forecastCategoryList) {
-                CumulativeAmount c = new CumulativeAmount();
-                c.category = categoryName;
-                c.forecastTypeStr = t.MasterLabel;
-                c.quota = t.IsAmount ? q.QuotaAmount : q.QuotaQuantity;
-                c.amount = 0;
-                ret.add(c);
-            }
-        }
+        List<ForecastCategoryAttainment> ret = new List<ForecastCategoryAttainment>();
+         
+   
+   		Integer i = 1;
+//        for (ForecastingType t : forecastingTypes) {
+//            ForecastingQuota q = forecastingQuotas.get(t.Id);
+//            if (q == null)
+//                continue;                
+                
+            ForecastCategoryAttainment a = new ForecastCategoryAttainment();
+            a.forecastTypeStr = 'Opportunity Quantity';
+//            a.quota = t.IsAmount ? q.QuotaAmount : q.QuotaQuantity;
+            a.closedAmount = 5000;
+            a.commitAmount = 2000.25;
+            a.bestcaseAmount = 8000;
+            a.quota = 7000;
+            ret.add(a);
+        
+        	a = new ForecastCategoryAttainment();
+            a.forecastTypeStr = 'Opportunity Revenue';
+//            a.quota = t.IsAmount ? q.QuotaAmount : q.QuotaQuantity;
+            a.closedAmount = 10000;
+            a.commitAmount = 4000.50;
+            a.bestcaseAmount = 8000;
+            a.quota = 7000;
+            a.unitsPrefix = '$';
+            ret.add(a);
+        
+        /*
         
         // Now fetch all the ForecastingItems. The ones that match by 
         // forecasting type and category will show up in the attainment.
         for (ForecastingItem item : getForecastingItems()) {
             for (Integer i = 0; i < ret.size(); i++) {
-                CumulativeAmount c = ret.get(i);
+                ForecastCategoryAttainment a = ret.get(i);
                 if (forecastTypeString(item).equals(c.forecastTypeStr) &&
                     item.ForecastCategoryName.equals(c.category)) {
 					
@@ -67,6 +82,7 @@ public class QuotaAttainmentController {
                 }
             }
         }
+        */
         
         return ret;
     }
