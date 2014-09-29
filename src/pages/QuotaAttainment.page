@@ -1,147 +1,167 @@
 <apex:page controller="QuotaAttainmentController">
     <style>
-    html, body, p, .achieved { 
-        font-family: "ProximaNovaSoft-Regular", Calibri, 
-            "Gill Sans", "Gill Sans MT", Candara, Segoe, 
-            "Segoe UI", Arial, sans-serif, "Arial Unicode MS"; 
-        font-size: 110%;
-    }
-    input { font-size: 95%; }
-    .bar-chart-container {
-        width:240px; height:200px;
-        display: inline-block;
-        margin: 1em;
-    }
+        html, body, p { 
+            font-family: "ProximaNovaSoft-Regular", Calibri, 
+                "Gill Sans", "Gill Sans MT", Candara, Segoe, 
+                "Segoe UI", Arial, sans-serif, "Arial Unicode MS"; 
+            font-size: 110%;
+        }
+        .bar-chart-container {
+            max-width:290px; height:200px;
+            display: block;
+            margin: 0 auto 50px;
+        }
+            
+        .center {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .bar-chart-bar {
+            background-color: #D5D5D5; 
+            display: block;  
+            width: 240px;
+            max-width:290px;
+            height: 18px;
+            margin: 0 auto 10px; 
+        }
+        .bar {float: left; height: 100%; }
+        .barClosed {background-color: #257FCC;}
+        .barCommit {background-color: #55595D;}
+        .barBestcase {background-color: #898E91;}
+        .barKey {
+            border-radius:3px 3px 3px 3px; 
+            margin-top:4px; 
+            width: 12px; 
+            height:12px;
+        }
     
-    .bar-chart-top {display: block; position:relative; width: 296px; height: 20px; }
-    .bar-chart-bar {
-    	background-color: #a2a2a2; 
-    	display: block; 
-    	position:relative; 
-    	width: 296px; 
-    	height: 18px; 
-    }
-    .bar-chart-bottom {display: block; position:relative; width: 296px; height: 20px; }
-    .bar {float: left; height: 100%; }
-    .barClosed {background-color: green;}
-    .barCommit {background-color: orange;}
+        .verticalLine {
+            width: 3px;
+            background-color: black;
+            height: 100%;
+            position: relative;
+        }
+    
+        .categoryLabels {
+            position:absolute; 
+            height: 18px; 
+            width: 50px;  
+            font-size:70%; 
+            font-weight:bold;
+        	text-transform: uppercase;
+        }
+        
+        .categoryClosed {
+            left:50px;
+        }
+        .categoryQuota {
+            right:50px;
+        }
+    
+        .quotaNumber {
+            font-size: 85%
+            position:relative;
+            left: 25%;
+        }
+    
+    </style>
+    <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'icons.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'styles.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'OneStarter.css')}"/>
 
-	.verticalLine {
-		width: 2px;
-    	background-color: black;
-    	height: 100%;
-    	position: relative;
-	}
-
-	.categoryLabels {
-		text-align: center;
-		position: absolute;
-	}
-
-	.quotaNumber {
-		font-size: 85%
-		position:relative;
-    	left: 25%;
-	}
-    
-    
-    
-    
- 
-	</style>
-        <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'icons.css')}"/>
-	<apex:stylesheet value="{!URLFOR($Resource.OneStarter,'styles.css')}"/>
-	<apex:stylesheet value="{!URLFOR($Resource.OneStarter,'OneStarter.css')}"/>
-
-	<!-- JavaScript files -->
-	<apex:includeScript value="{!$Resource.jquery}"/>
-	<apex:includeScript value="{!URLFOR($Resource.TouchSwipe,'jquery.touchSwipe.min.js')}"/>
-	<apex:includeScript value="{!URLFOR($Resource.OneStarter,'jquery.onestarter.js')}"/>
-	<apex:includeScript value="/canvas/sdk/js/publisher.js"/>    
+    <!-- JavaScript files -->
+    <apex:includeScript value="{!$Resource.jquery}"/>
+    <apex:includeScript value="{!URLFOR($Resource.TouchSwipe,'jquery.touchSwipe.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.OneStarter,'jquery.onestarter.js')}"/>
         
     <div id="one-app">        
-	    <div id="one-carousel">
-	    	<apex:variable var="cnt" value="{!0}" /> 
+        <div id="one-carousel">
+            <apex:variable var="cnt" value="{!0}" /> 
             <apex:repeat value="{!attainments}" var="c" id="theRepeat">
-            	<div>
-					<div class="bar-chart-container-{!cnt}">
-						<h3>{!c.forecastTypeStr}</h3>
-						<div style="display: {!IF(c.quotaAttainmentPercent>100,'block','none')}">&#9733;&nbsp;Quota achieved!</div>
-                        <div style="display: {!IF(c.quotaAttainmentPercent>100,'none','block')}">&#9680;&nbsp;{!c.quotaRemainingStr} to go</div>
-						<div class="bar-chart-top">
-							<div class="verticalLine" style="left: {!c.quotaPercent}%">
-								<div class="quotaNumber" style="font-size:85%">{!c.quotaAmountStr}&nbsp;({!c.quotaAttainmentPercent}%)</div>
-							</div>
-						</div>
-						<div class="bar-chart-bar">
-					    	<div class="bar barClosed" style="width: {!c.closedPercent}%"></div>
-					    	<div class="bar barCommit" style="width: {!c.commitPercent}%"></div>
-							<div class="verticalLine" style="left: {!c.quotaPercent}%"></div>
-						</div>
-						<div class="bar-chart-bottom">
-							<div class="verticalLine" style="left: {!c.quotaPercent}%"></div>
-							<div class="categoryLabels" style="left:0%">Closed<br/>{!c.closedAmountStr}</div>
-							<div class="categoryLabels" style="left:31.25%">Commit<br/>{!c.commitAmountStr}</div>
-							<div class="categoryLabels" style="left:60%">Best Case<br/>{!c.bestcaseAmountStr}</div>
-						</div>
-					</div>
-            	</div>
-<!--             
-            
-                <div>
-                    <apex:image id="theImage" value="{!$Resource.trophy}" width="50" height="50" style="foreground-color: #FBB439"/>
-                    <div class="bar-chart-container" id="{!c.forecastTypeStr}">    
-                    </div>
-                    <article>
-                         <header><h1>Opportunities in {!c.category}</h1>
-                           <a href="javascript:void(0)" title="More" class="link-right">
-                              <span class="link-label">More</span>
-                              <span class="link-icon-right icon-utility-right"></span>
-                            </a>
-
-                        </header>
-
-                        	<apex:repeat value="{!c.relatedOpptys}" var="opp">
-                            <section class="padded">
-                                <a href="javascript:sforce.one.navigateToSObject('{!opp.Id}')">
-                                    <div class="icon icon-right icon-float-right icon--opportunity"></div>
-                                    <h1 class="simple-bold">{!opp.Account.Name}</h1>
-                                    <ul class="list-plain">
-                                        <li ><apex:outputField value="{!opp.amount}"/></li>
-                                        <li >{!opp.Name}</li>
-                                    </ul>
+                <div id="carousel-{!cnt}">
+                    <article class="padded">
+                        <div class="bar-chart-container" id="bar-chart-container-{!cnt}">
+                            <div class="center">
+                                <h1>{!c.forecastTypeStr}</h1><br/>
+                                <div style="font-size:80%; margin:10px; max-width:300px; height:20px; background-color:#F7F7F7;">
+                                    {!c.timeRemainingInPeriod}
+                                </div>
+                                <br/><br/>
+                                <div style="font-weight:bold; display: {!IF(c.quotaAttainmentPercent>100,'block','none')}">
+                                    &#9733;&nbsp;Quota achieved!
+                                </div>
+                                <div style="font-weight:bold; display: {!IF(c.quotaAttainmentPercent>100,'none','block')}">
+                                    {!c.quotaAttainmentPercent}% of quota achieved
+                                    <br></br>
+                                    &#9680;&nbsp;{!c.quotaRemainingStr} to go
+                                </div>
+                            
+                                <div class="bar-chart-bar">
+                                    <div class="bar barClosed" style="width: {!c.closedPercent}%"></div>
+                                    <div class="bar barCommit" style="width: {!c.commitPercent}%"></div>
+                                    <div class="verticalLine" style="left: {!c.quotaPercent}%"></div>
+                            
+                                    <span class="categoryLabels categoryClosed">
+                                        {!c.closedCategoryStr} 
+                                        <span style="color:#257FCC;">{!c.closedAmountStr}</span>
+                                    </span>
+                                    <span class="categoryLabels categoryQuota">
+                                        QUOTA {!c.quotaAmountStr} 
+                                    </span>
+                                </div>
+                            </div>
+    
+                        </div>
+                            <ul class="list-simple">
+                                <a href="javascript:sforce.one.navigateToURL('/apex/OppsInForecastCategory?forecastCategory={!c.closedCategoryStr}&itemId={!c.closedForecastingItemId}');">
+                                <li class="list-simple">
+                                    <span class="bar barClosed barKey"></span>
+                                    <span style="margin-left:5px">{!c.closedCategoryStr}</span>
+                                    <span style="position:absolute; right:50px">{!c.closedAmountStr}</span>
+                                </li>
+                                </a>                                
+                                <a href="javascript:sforce.one.navigateToURL('/apex/OppsInForecastCategory?forecastCategory={!c.commitCategoryStr}&itemId={!c.commitForecastingItemId}');">
+                                <li class="list-simple">
+                                    <span class="bar barCommit barKey"></span>
+                                    <span style="margin-left:5px">{!c.commitCategoryStr}</span>
+                                    <span style="position:absolute; right:50px">{!c.commitAmountStr}</span>
+                                </li>
                                 </a>
-                            </section>
-                        	</apex:repeat>    
-                	</article>
-
+                                <a href="javascript:sforce.one.navigateToURL('/apex/OppsInForecastCategory?forecastCategory={!c.bestcaseCategoryStr}&itemId={!c.bestcaseForecastingItemId}');">
+                                <li class="list-simple">
+                                    <span class="bar barBestcase barKey"></span>
+                                    <span style="margin-left:5px">{!c.bestcaseCategoryStr}</span>
+                                    <span style="position:absolute; right:50px">{!c.bestcaseAmountStr}</span>
+                                </li>
+                                </a>
+                            </ul>
+                   </article> 
                 </div>
--->
-			<apex:variable var="cnt" value="{!cnt+1}"/>
+
+            <apex:variable var="cnt" value="{!cnt+1}"/>
             </apex:repeat>
-            
         </div>
-            
+        <div class="center" style="font-weight:bold; display: {!IF(cnt==0,'block','none')}">
+            No forecasting data for this period
+        </div>
     </div>
 
     <script>
     
-    	var startfunction = function() {
-            var graphs = [];
-            var amount;
-            var quota;
-            
+        var startfunction = function() {
             var s1 = $('div#one-app').oneStarter('app');
             s1.carousel($('div#one-carousel'));
         }
 
         $(document).ready(startfunction);
     
-    	function refreshCarousel() {
+        function refreshCarousel() {
             startfunction();
         }
     
-    	
+        
     
     </script>
 </apex:page>

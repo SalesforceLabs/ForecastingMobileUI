@@ -1,0 +1,47 @@
+<apex:page controller="OppsInForecastCategoryController">
+    <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'icons.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'styles.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'OneStarter.css')}"/>
+    
+    <!-- JavaScript files -->
+    <apex:includeScript value="{!$Resource.jquery}"/>
+    <apex:includeScript value="{!URLFOR($Resource.TouchSwipe,'jquery.touchSwipe.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.OneStarter,'jquery.onestarter.js')}"/>
+   
+    <div id="one-app">        
+    <article>
+        <header><h1>Opportunities in {!$CurrentPage.parameters.forecastCategory}</h1>
+        </header>
+        <apex:repeat value="{!oppsInForecastingItem}" var="opp" id="theRepeat">
+            <a href="javascript:sforce.one.navigateToSObject('{!opp.Id}')">
+            <section class="padded">
+                <div class="icon icon-right icon-float-right icon--opportunity"></div>
+                <h1 class="simple-bold">
+                    {!opp.Name}
+                </h1>
+                <ul class="list-plain">
+                    <li >${!opp.Amount}</li>
+                    <li >{!opp.Account.Name}</li>
+                </ul>
+            </section>
+            </a>    
+        </apex:repeat>
+        </article>
+        
+    
+    
+    
+    
+    </div>
+    
+    <script>
+    
+        var startfunction = function() {
+            var s1 = $('div#one-app').oneStarter('app');
+        }
+
+        $(document).ready(startfunction);
+    
+    </script>
+
+</apex:page>
