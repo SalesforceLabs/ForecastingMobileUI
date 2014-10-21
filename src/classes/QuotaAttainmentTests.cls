@@ -3,6 +3,7 @@ public class QuotaAttainmentTests{
     static testMethod void testBasic() {
         QuotaAttainmentController qc = new QuotaAttainmentController();
         qc.getAttainments();
+        
     }
     
     static testMethod void testModel() {
@@ -20,5 +21,11 @@ public class QuotaAttainmentTests{
         a.getQuotaAttainmentPercent();
         a.getQuotaRemainingStr();
         a.getQuotaPercent();
+    }
+    
+    static testMethod void testOppsInForecastCategory() {
+        OppsInForecastCategoryController c = new OppsInForecastCategoryController();
+        c.getNumOppsString();
+        c.getOppsInForecastingItem();
     }
 }

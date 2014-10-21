@@ -1,37 +1,121 @@
+<!--
+Copyright (c) 2014, salesforce.com, Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
 <apex:page controller="OppsInForecastCategoryController">
+    <style>
+        * {
+        color: #3C3D3E;
+        }
+        
+        h1 {
+        font-size: 20px;	
+        }
+        
+        .label {
+        font-size: 14px;
+        color: #686C70;
+        }
+        
+        .header {
+            background-color:#F7F7F7; 
+        }
+        
+        html, body, p { 
+        font-family: "ProximaNovaSoft-Regular", Calibri, 
+        "Gill Sans", "Gill Sans MT", Candara, Segoe, 
+        "Segoe UI", Arial, sans-serif, "Arial Unicode MS"; 
+        font-size: 110%;
+        }
+        
+        .icon--opportunity {
+		  	background-color: #fcb95b;
+  			background-image: url({!$Resource.opportunity_svg}); 
+        }
+
+    </style>
+
     <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'icons.css')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'styles.css')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.OneStarter,'OneStarter.css')}"/>
+    <apex:stylesheet value="{!$Resource.s1styles}"/>
+
     
     <!-- JavaScript files -->
     <apex:includeScript value="{!$Resource.jquery}"/>
     <apex:includeScript value="{!URLFOR($Resource.TouchSwipe,'jquery.touchSwipe.min.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.OneStarter,'jquery.onestarter.js')}"/>
    
-    <div id="one-app">        
-    <article>
-        <header><h1>Opportunities in {!$CurrentPage.parameters.forecastCategory}</h1>
+    <div id="one-app"> 
+        <section class="sg-phone--content clear ng-scope">
+            <header class="bg-2 ng-isolate-scope" title="Opportunities" icon="opportunity" on-new="newHandler(event)">
+                <div class="icon icon--opportunity brs bgs-100 a-mid mhm sq-30"></div>
+                <h1 class="dib thin a-mid">
+                    <span class="db f3 text-color-1 ng-binding" style="margin-bottom:4px;">
+                        Opportunities
+                    </span>
+                    <span class="db f6 ng-binding">
+                        {!numOppsString} 
+                    </span>
+                </h1>
+            </header>
+            <apex:repeat value="{!oppsInForecastingItem}" var="opp" id="theRepeat">
+                <a href="javascript:sforce.one.navigateToSObject('{!opp.Id}')">
+                    <article class="mtn mam bg-1 border border--3 pam brm ng-isolate-scope" 
+                             on-select="selectHandler(event)" style="margin-top:14px;">
+                        <ul class="clear list-plain man pan">
+                            <li class="f3 text-color-1 fw-semibold ng-binding" style="margin-left: 21px;">{!opp.Name}</li>
+                            <li class="mbs f5 text-color-2 ng-binding">{!opp.StageName} • {!opp.Account.Name}</li>
+                            <li class="fl f3 text-color-1 ng-binding"><apex:outputField value="{!opp.amount}"/></li>
+                        </ul>
+                    </article>
+                </a>
+            </apex:repeat>
+        </section>
+
+<!--                <article>
+<header>        
+            <div class="icon icon-left icon-float-left icon--opportunity">
+	            <div style="font-size:16px; padding-left:50px">Opportunities</div>
+            </div>
+            <div style="font-size:14px; padding-left:50px; color: #686C70;">
+                {!numOpps} opportunities in {!$CurrentPage.parameters.forecastCategory}         
+            </div>
         </header>
+-->
+<!--
+ 		<ul class="list-simple" style="margin-top:28px">
         <apex:repeat value="{!oppsInForecastingItem}" var="opp" id="theRepeat">
             <a href="javascript:sforce.one.navigateToSObject('{!opp.Id}')">
-            <section class="padded">
-                <div class="icon icon-right icon-float-right icon--opportunity"></div>
-                <h1 class="simple-bold">
-                    {!opp.Name}
-                </h1>
-                <ul class="list-plain">
-                    <li >${!opp.Amount}</li>
-                    <li >{!opp.Account.Name}</li>
-                </ul>
-            </section>
+            <li class="list-simple" style="">
+                <div style="font-weight:bold">
+                    {!opp.Name}                    
+                </div>
+                <div class="label">
+                    {!opp.StageName}&nbsp;•&nbsp;{!opp.Account.Name}
+                </div>
+                <div style="position:relative; float:left;">
+                    ${!opp.Amount}
+                </div>
+            </li>
             </a>    
         </apex:repeat>
-        </article>
-        
-    
-    
-    
-    
+        </ul>
+
+	</article>
+-->        
     </div>
     
     <script>

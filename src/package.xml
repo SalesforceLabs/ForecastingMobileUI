@@ -5,11 +5,13 @@
     <types>
         <members>ForecastCategoryAttainment</members>
         <members>ForecastingTypeUtil</members>
+        <members>OppsInForecastCategoryController</members>
         <members>QuotaAttainmentController</members>
         <members>QuotaAttainmentTests</members>
         <name>ApexClass</name>
     </types>
     <types>
+        <members>OppsInForecastCategory</members>
         <members>QuotaAttainment</members>
         <name>ApexPage</name>
     </types>
@@ -20,7 +22,10 @@
     <types>
         <members>OneStarter</members>
         <members>TouchSwipe</members>
+        <members>Trophy</members>
         <members>jquery</members>
+        <members>opportunity_svg</members>
+        <members>s1styles</members>
         <name>StaticResource</name>
     </types>
     <version>29.0</version>
