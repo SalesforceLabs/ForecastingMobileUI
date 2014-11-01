@@ -17,7 +17,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 This class represents the forecast components
 of a specific forecast period and forecast type.
 */
-public class ForecastCategoryAttainment {
+public class ForecastAttainmentModel {
     public Decimal closedAmount {get; set;}
     public Decimal commitAmount {get; set;}
     public Decimal bestcaseAmount {get; set;}
@@ -37,7 +37,7 @@ public class ForecastCategoryAttainment {
     public String forecastTypeStr { get; set; }
     public Id forecastingItemId { get; set; }
     
-    public ForecastCategoryAttainment() {
+    public ForecastAttainmentModel() {
         closedAmount = 0;
         commitAmount = 0;
         bestcaseAmount = 0;
@@ -59,6 +59,10 @@ public class ForecastCategoryAttainment {
       return sumPipeline() == 0 ? 0 : commitAmount.divide(Math.max(sumPipeline(),quota)/100,2);
     }
     
+    public Decimal getBestcasePercent() {
+      return sumPipeline() == 0 ? 0 : bestcaseAmount.divide(Math.max(sumPipeline(),quota)/100,2);
+    }
+
     public Decimal getQuotaPercent() {
       return sumPipeline() == 0 ? 0 : quota.divide(Math.max(sumPipeline(),quota)/100,2);
     }

@@ -31,7 +31,4 @@ public with sharing class OppsInForecastCategoryController {
     public String getNumOppsString() {
         return ret.size() + (ret.size()>=50 ? '+' : '') + (ret.size() == 1 ? ' Opportunity ' : ' Opportunities ') + ' in ' + category;
     }
-    
-    
-
 }

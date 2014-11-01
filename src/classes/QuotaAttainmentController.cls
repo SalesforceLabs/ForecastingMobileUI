@@ -27,13 +27,13 @@ public with sharing class QuotaAttainmentController {
         ForecastingTypeUtil.initTypesMap();
     }
     
-    public List<ForecastCategoryAttainment> getAttainments() {
+    public List<ForecastAttainmentModel> getAttainments() {
         // Fetch the list of Forecast categories, starting with the end
         Map<String,Integer> forecastCategoryList = initForecastCategories();
         System.debug(forecastCategoryList);
 
-        List<ForecastCategoryAttainment> attainments = new List<ForecastCategoryAttainment>();
-        Map<PeriodFtypeKey, ForecastCategoryAttainment> attainsmentsByKey = new Map<PeriodFtypeKey, ForecastCategoryAttainment>();
+        List<ForecastAttainmentModel> attainments = new List<ForecastAttainmentModel>();
+        Map<PeriodFtypeKey, ForecastAttainmentModel> attainsmentsByKey = new Map<PeriodFtypeKey, ForecastAttainmentModel>();
 
         System.debug(periods);
         System.debug(forecastingTypes);
@@ -44,7 +44,7 @@ public with sharing class QuotaAttainmentController {
             for (ForecastingType t : forecastingTypes) {
                 PeriodFtypeKey key = new PeriodFtypeKey(period.Id, t.Id);
                 
-                ForecastCategoryAttainment a = new ForecastCategoryAttainment();
+                ForecastAttainmentModel a = new ForecastAttainmentModel();
                 a.forecastTypeStr = t.MasterLabel;
                 a.timeRemainingInPeriod = timeBetweenTwoDates(today, period.EndDate);
                 a.unitsPrefix = t.IsAmount ? '$' : '';
@@ -52,7 +52,7 @@ public with sharing class QuotaAttainmentController {
                 for (String catName : forecastCategoryList.keySet()) {
                     Integer catNumber = forecastCategoryList.get(catName);
                     if (catNumber == 0) {
-		                a.closedCategoryStr = catName;                
+                    a.closedCategoryStr = catName;                
                     } else if (catNumber == 1) {
                         a.commitCategoryStr = catName;
                     } else if (catNumber == 2) {
@@ -74,13 +74,13 @@ public with sharing class QuotaAttainmentController {
         // Go through all the Forecasting Items. Match them to the right attainment
         for (ForecastingItem item : forecastingItems) {
             PeriodFtypeKey key = new PeriodFtypeKey(item.PeriodId, item.ForecastingTypeId);
-            ForecastCategoryAttainment a = attainsmentsByKey.get(key);
+            ForecastAttainmentModel a = attainsmentsByKey.get(key);
             if (a == null)
                 continue;
             
             Integer categoryPosition = forecastCategoryList.get(item.ForecastCategoryName);
             if (categoryPosition == null)
-        		continue;
+            continue;
             
             Decimal amount = item.IsAmount ? item.ForecastAmount : item.ForecastQuantity;
             System.debug('Item=' + item + '\nCorresponding attainment=' + a);
@@ -100,8 +100,8 @@ public with sharing class QuotaAttainmentController {
         }
                 
         // Remove any blank attainments
-        List<ForecastCategoryAttainment> ret = new List<ForecastCategoryAttainment>();
-        for (ForecastCategoryAttainment a : attainments) {
+        List<ForecastAttainmentModel> ret = new List<ForecastAttainmentModel>();
+        for (ForecastAttainmentModel a : attainments) {
             if (a.sumPipeline() > 0 || a.quota > 0)
                 ret.add(a);
         } 

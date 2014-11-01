@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Quota Attainment Salesforce1</fullName>
-    <description>A Salesforce1 mobile app, intended for sales reps to check their quota attainment for the current period.</description>
     <types>
-        <members>ForecastCategoryAttainment</members>
-        <members>ForecastingTypeUtil</members>
-        <members>OppsInForecastCategoryController</members>
-        <members>QuotaAttainmentController</members>
-        <members>QuotaAttainmentTests</members>
+        <members>*</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>OppsInForecastCategory</members>
-        <members>QuotaAttainment</members>
+        <members>*</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>ApexPage</name>
     </types>
     <types>
-        <members>Forecasting_Quota_Check</members>
-        <name>CustomTab</name>
+        <members>*</members>
+        <name>ApexTrigger</name>
     </types>
     <types>
-        <members>OneStarter</members>
-        <members>TouchSwipe</members>
-        <members>Trophy</members>
-        <members>jquery</members>
-        <members>opportunity_svg</members>
-        <members>s1styles</members>
+        <members>*</members>
         <name>StaticResource</name>
     </types>
     <version>29.0</version>
