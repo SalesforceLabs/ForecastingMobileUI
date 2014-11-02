@@ -22,15 +22,14 @@ public with sharing class QuotaAttainmentController {
     private List<ForecastingType> forecastingTypes = ForecastingTypeUtil.getActiveForecastingTypes();
     private List<ForecastingItem> forecastingItems = getForecastingItems();
     Map<PeriodFtypeKey,ForecastingQuota> forecastingQuotas = getForecastingQuotas();
+    // Fetch the list of Forecast categories, starting with the end
+    Map<String,Integer> forecastCategoryList = initForecastCategories();
 
     public QuotaAttainmentController() {
         ForecastingTypeUtil.initTypesMap();
     }
     
     public List<ForecastAttainmentModel> getAttainments() {
-        // Fetch the list of Forecast categories, starting with the end
-        Map<String,Integer> forecastCategoryList = initForecastCategories();
-        System.debug(forecastCategoryList);
 
         List<ForecastAttainmentModel> attainments = new List<ForecastAttainmentModel>();
         Map<PeriodFtypeKey, ForecastAttainmentModel> attainsmentsByKey = new Map<PeriodFtypeKey, ForecastAttainmentModel>();
@@ -42,38 +41,34 @@ public with sharing class QuotaAttainmentController {
         // Make an ordered set of Attainment records: by period, then by forecasting type 
         for (Period period : periods) {
             for (ForecastingType t : forecastingTypes) {
-                PeriodFtypeKey key = new PeriodFtypeKey(period.Id, t.Id);
-                
-                ForecastAttainmentModel a = new ForecastAttainmentModel();
-                a.forecastTypeStr = t.MasterLabel;
-                a.timeRemainingInPeriod = timeBetweenTwoDates(today, period.EndDate);
-                a.unitsPrefix = t.IsAmount ? '$' : '';
-                
-                for (String catName : forecastCategoryList.keySet()) {
-                    Integer catNumber = forecastCategoryList.get(catName);
-                    if (catNumber == 0) {
-                    a.closedCategoryStr = catName;                
-                    } else if (catNumber == 1) {
-                        a.commitCategoryStr = catName;
-                    } else if (catNumber == 2) {
-                        a.bestcaseCategoryStr = catName;
-                    }
-                }
-                
-                attainments.add(a);
-                attainsmentsByKey.put(key, a);
-                
-                // If there's no associated quota, put in a blank
-                ForecastingQuota q = forecastingQuotas.get(key);
-                if (q != null) {
-                    a.quota = q.IsAmount ? q.QuotaAmount : q.QuotaQuantity;
-                }
+                for (String productFamily : getActiveProductFamilies()) {
+                    // Create an attainment record per product family, but 
+                    // only if this ForecastingType is related to product family.
+                    
+                    if (!isProductFamily(t) && !String.isEmpty(productFamily))
+                        continue;
+                    
+                    PeriodFtypeKey key = new PeriodFtypeKey(period.Id, t.Id, productFamily);
+                	ForecastAttainmentModel a = createAttainmentModel(t, period, productFamily);
+                    
+                    attainments.add(a);
+                    attainsmentsByKey.put(key, a);
+                    // If there's no associated quota, put in a blank
+                    ForecastingQuota q = forecastingQuotas.get(key);
+                    if (q != null) {
+                        a.quota = q.IsAmount ? q.QuotaAmount : q.QuotaQuantity;
+                    }   
+                }                
             }
         }
         
         // Go through all the Forecasting Items. Match them to the right attainment
         for (ForecastingItem item : forecastingItems) {
-            PeriodFtypeKey key = new PeriodFtypeKey(item.PeriodId, item.ForecastingTypeId);
+            PeriodFtypeKey key;
+            if (String.isEmpty(item.ProductFamily))
+                key = new PeriodFtypeKey(item.PeriodId, item.ForecastingTypeId);
+            else
+                key = new PeriodFtypeKey(item.PeriodId, item.ForecastingTypeId, item.ProductFamily);
             ForecastAttainmentModel a = attainsmentsByKey.get(key);
             if (a == null)
                 continue;
@@ -109,23 +104,56 @@ public with sharing class QuotaAttainmentController {
         return ret;
     }
     
+    
+    private ForecastAttainmentModel createAttainmentModel(ForecastingType t, Period period, String productFamily) {
+        ForecastAttainmentModel a = new ForecastAttainmentModel();
+        a.forecastTypeStr = t.MasterLabel;
+        if (!String.isEmpty(productFamily))
+            a.forecastTypeStr += ' - ' + productFamily;
+        else if (isProductFamily(t))
+            a.forecastTypeStr += ' - Uncategorized';
+             
+        a.timeRemainingInPeriod = timeBetweenTwoDates(today, period.EndDate);
+        a.unitsPrefix = t.IsAmount ? '$' : '';
+
+        for (String catName : forecastCategoryList.keySet()) {
+            Integer catNumber = forecastCategoryList.get(catName);
+            if (catNumber == 0) {
+                a.closedCategoryStr = catName;                
+            } else if (catNumber == 1) {
+                a.commitCategoryStr = catName;
+            } else if (catNumber == 2) {
+                a.bestcaseCategoryStr = catName;
+            }
+        }
+        
+        return a;
+    }
+    
+    
     private Map<PeriodFtypeKey, ForecastingQuota> getForecastingQuotas() {
         List<ForecastingQuota> quotas = [SELECT PeriodId, ForecastingTypeId, QuotaAmount, QuotaQuantity, 
-                                         IsAmount, IsQuantity FROM ForecastingQuota
+                                         IsAmount, IsQuantity, ProductFamily FROM ForecastingQuota
                                          WHERE QuotaOwnerId=:userId AND PeriodId IN :periodIds];
         
         Map<PeriodFtypeKey,ForecastingQuota> ret = new Map<PeriodFtypeKey,ForecastingQuota>();
         for (ForecastingQuota q : quotas) {
-            ret.put(new PeriodFtypeKey(q.PeriodId, q.ForecastingTypeId), q);
+            PeriodFtypeKey key;
+            if (String.isEmpty(q.ProductFamily))
+                key = new PeriodFtypeKey(q.PeriodId, q.ForecastingTypeId);
+            else
+                key = new PeriodFtypeKey(q.PeriodId, q.ForecastingTypeId, q.ProductFamily);
+            
+            ret.put(key, q);
         }
         return ret;
     }
         
     private List<ForecastingItem> getForecastingItems() {
-        // TODO: Handle adjusted value, owner-only, product family
+        // TODO: Handle adjusted value, owner-only
         
         List<ForecastingItem> items = [SELECT PeriodId, ForecastCategoryName, ForecastingTypeId, IsAmount, 
-                                       ForecastAmount, ForecastQuantity, HasAdjustment
+                                       ForecastAmount, ForecastQuantity, HasAdjustment, ProductFamily
                                        FROM ForecastingItem where OwnerId=:userId AND 
                                        PeriodId IN :periodIds];
 
@@ -160,7 +188,23 @@ public with sharing class QuotaAttainmentController {
         return 'Period ends today!';
     }
     
+    private List<String> getActiveProductFamilies() {
+        Schema.DescribeFieldResult f = Schema.sObjectType.Product2.fields.Family;
+        List<Schema.PicklistEntry> entries = f.getPicklistValues();
+        List<String> ret = new List<String>();
+        
+        ret.add('');
+        
+        for (Schema.Picklistentry entry : entries) {
+            ret.add(entry.getValue());
+        }
+        
+        return ret;
+    }    
     
+    private Boolean isProductFamily(ForecastingType t) {
+        return t.DeveloperName.contains('LineItem');
+    }
     
     private Map<String,Integer> initForecastCategories() {        
       Map<String,Integer> ret = new Map<String,Integer>();
@@ -182,8 +226,13 @@ public with sharing class QuotaAttainmentController {
     public class PeriodFtypeKey {
         String code;
         
-        public PeriodFtypeKey(Id a, Id b) {
-            code = String.valueOf(a) + String.valueOf(b);
+        public PeriodFtypeKey(Id periodId, Id forecastingTypeId) {
+            code = String.valueOf(periodId) + String.valueOf(forecastingTypeId);
+        }
+        
+        public PeriodFtypeKey(Id periodId, Id forecastingTypeId, String productFamily) {
+            this(periodId, forecastingTypeId);
+            code += productFamily;
         }
         
         public Boolean equals(Object obj) {
