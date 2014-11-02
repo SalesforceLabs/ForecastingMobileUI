@@ -252,6 +252,8 @@ button[disabled], html input[disabled] {
  * 2. Remove excess padding in IE 8/9.
  */
 input[type="checkbox"], input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -307,8 +309,8 @@ table {
  * with no prefix.
  * */
 *, *:before, *:after {
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 /* endif */
@@ -396,7 +398,7 @@ table {
   background-color: #a5afb7; }
 
 .bg-10 {
-  background-color: #278ac7; }
+  background-color: #1378b7; }
 
 .bg-11 {
   background-color: #15232f; }
@@ -411,13 +413,16 @@ table {
   background-color: #2c3d4e; }
 
 .bg-15 {
-  background-color: #0b6196; }
+  background-color: rgba(0, 0, 0, 0.14); }
+
+.bg-20 {
+  background-color: #253647; }
 
 .bg-black {
   background-color: black; }
 
 .bg-error {
-  background-color: #b15148; }
+  background-color: #c06057; }
 
 .bg-warning {
   background-color: #e6b739; }
@@ -428,59 +433,75 @@ table {
 /* Drop Shadows
    ========================================================================== */
 .ds-1 {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+  -webkit-box-shadow: 0 1px 0 rgba(52, 74, 95, 0.09);
+  box-shadow: 0 1px 0 rgba(52, 74, 95, 0.09); }
 
 .ds-1b {
+  -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2); }
 
 .ds-2 {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
 .ds_3 {
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02); }
 
 .ds_4 {
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05); }
 
 .ds_5 {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06); }
 
 /* Inner Shadows
    ========================================================================== */
 .is_1 {
+  -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.07);
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.07); }
 
 .is_2 {
+  -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.14);
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.14); }
 
 .is_3 {
+  -webkit-box-shadow: inset 0 2px 2px rgba(0, 82, 134, 0.16);
   box-shadow: inset 0 2px 2px rgba(0, 82, 134, 0.16); }
 
 .is_4 {
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); }
 
 /* Inner Glow
    ========================================================================== */
 .ig_1 {
+  -webkit-box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5); }
 
 .ig_2 {
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.21);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.21); }
 
 /* Shadow + Glow
    ========================================================================== */
 .dropglow-1 {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px rgba(255, 255, 255, 0.21); }
+  -webkit-box-shadow: 0 1px 0 rgba(52, 74, 95, 0.09), inset 0 1px rgba(255, 255, 255, 0.21);
+  box-shadow: 0 1px 0 rgba(52, 74, 95, 0.09), inset 0 1px rgba(255, 255, 255, 0.21); }
 
 .dropglow-2 {
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 1px rgba(255, 255, 255, 0.21);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 1px rgba(255, 255, 255, 0.21); }
 
 .dropstroke-1 {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), inset 0 0 0 8px white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), inset 0 0 0 8px white; }
 
 /* Inner Stroke
    ========================================================================== */
 .inner_stroke {
+  -webkit-box-shadow: inset 0 0 0 8px white;
   box-shadow: inset 0 0 0 8px white; }
 
 /*  Background Gradients
@@ -494,129 +515,35 @@ table {
 
    ========================================================================== */
 .bg-anchor {
-  background-color: #33495f;
-  /* {1} */
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#23394d), to(#33495f));
-  /* {2} */
-  background-image: -webkit-linear-gradient(top, #23394d, #33495f);
-  /* {3} */
-  background-image: -moz-linear-gradient(top, #23394d, #33495f);
-  /* {4} */
-  background-image: -ms-linear-gradient(top, #23394d, #33495f);
-  /* {5} */
-  background-image: -o-linear-gradient(top, #23394d, #33495f);
-  /* {6} */ }
+  background-color: #344a5f;
+  /* {1} */ }
 
 .bg-global-header {
-  background-color: #107abb;
-  /* {1} */
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2a93d5), to(#107abb));
-  /* {2} */
-  background-image: -webkit-linear-gradient(top, #2a93d5, #107abb);
-  /* {3} */
-  background-image: -moz-linear-gradient(top, #2a93d5, #107abb);
-  /* {4} */
-  background-image: -ms-linear-gradient(top, #2a93d5, #107abb);
-  /* {5} */
-  background-image: -o-linear-gradient(top, #2a93d5, #107abb);
-  /* {6} */ }
+  background-color: #2a94d6; }
 
 .bg-secondary-header {
-  background-color: transparent;
-  /* {1} */
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(71, 71, 71, 0.8)), to(rgba(45, 45, 45, 0.8)));
-  /* {2} */
-  background-image: -webkit-linear-gradient(top, rgba(71, 71, 71, 0.8), rgba(45, 45, 45, 0.8));
-  /* {3} */
-  background-image: -moz-linear-gradient(top, rgba(71, 71, 71, 0.8), rgba(45, 45, 45, 0.8));
-  /* {4} */
-  background-image: -ms-linear-gradient(top, rgba(71, 71, 71, 0.8), rgba(45, 45, 45, 0.8));
-  /* {5} */
-  background-image: -o-linear-gradient(top, rgba(71, 71, 71, 0.8), rgba(45, 45, 45, 0.8));
-  /* {6} */ }
+  background-color: #5c7995;
+  /* {1} */ }
 
 .bg-generic-1 {
-  background-color: #efeff1;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#efeff1), to(#e3e5e7));
-  /* {2} */
-  background-image: -webkit-linear-gradient(top, #efeff1, #e3e5e7);
-  /* {3} */
-  background-image: -moz-linear-gradient(top, #efeff1, #e3e5e7);
-  /* {4} */
-  background-image: -ms-linear-gradient(top, #efeff1, #e3e5e7);
-  /* {5} */
-  background-image: -o-linear-gradient(top, #efeff1, #e3e5e7);
-  /* {6} */ }
+  background-color: #e8eaec; }
 
 .bg-generic-2 {
   background-color: rgba(255, 255, 255, 0);
-  /* {1} */
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.15)));
-  /* {2} */
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15));
-  /* {3} */
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15));
-  /* {4} */
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15));
-  /* {5} */
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15));
-  /* {5} */ }
+  /* {1} */ }
 
 .bg-global-header-btn {
-  background-color: #1482c7;
-  /* {1} */
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1482c7), to(#0565a0));
-  /* {2} */
-  background-image: -webkit-linear-gradient(top, #1482c7, #0565a0);
-  /* {3} */
-  background-image: -moz-linear-gradient(top, #1482c7, #0565a0);
-  /* {4} */
-  background-image: -ms-linear-gradient(top, #1482c7, #0565a0);
-  /* {5} */
-  background-image: -o-linear-gradient(top, #1482c7, #0565a0);
-  /* {6} */ }
+  background: rgba(0, 0, 0, 0.14); }
 
 .bg-secondary-header-btn {
-  background-color: #666666;
-  /* {1} */
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#666666), to(#444444));
-  /* {2} */
-  background-image: -webkit-linear-gradient(top, #666666, #444444);
-  /* {3} */
-  background-image: -moz-linear-gradient(top, #666666, #444444);
-  /* {4} */
-  background-image: -ms-linear-gradient(top, #666666, #444444);
-  /* {5} */
-  background-image: -o-linear-gradient(top, #666666, #444444);
-  /* {6} */ }
+  background: rgba(0, 0, 0, 0.14); }
 
 .bg-primary-btn {
-  background-color: #3f9fd9;
-  /* {1} */
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3f9fd9), to(#2789c7));
-  /* {2} */
-  background-image: -webkit-linear-gradient(top, #3f9fd9, #2789c7);
-  /* {3} */
-  background-image: -moz-linear-gradient(top, #3f9fd9, #2789c7);
-  /* {4} */
-  background-image: -ms-linear-gradient(top, #3f9fd9, #2789c7);
-  /* {5} */
-  background-image: -o-linear-gradient(top, #3f9fd9, #2789c7);
-  /* {6} */ }
+  background-color: #2a94d6; }
 
 .bg-secondary-btn {
   background-color: white;
-  /* {1} */
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f1f1));
-  /* {2} */
-  background-image: -webkit-linear-gradient(top, #ffffff, #f1f1f1);
-  /* {3} */
-  background-image: -moz-linear-gradient(top, #ffffff, #f1f1f1);
-  /* {4} */
-  background-image: -ms-linear-gradient(top, #ffffff, #f1f1f1);
-  /* {5} */
-  background-image: -o-linear-gradient(top, #ffffff, #f1f1f1);
-  /* {6} */ }
+  /* {1} */ }
 
 /* ==========================================================================
    Horizontal Rules
@@ -626,7 +553,7 @@ table {
   height: 1px; }
 
 .hr--1 {
-  background-color: #eceef0; }
+  background-color: #edeff0; }
 
 .hr--2 {
   background-color: #cfd4d9; }
@@ -640,6 +567,12 @@ table {
 /* ==========================================================================
    Border Radius
    ========================================================================== */
+.brc, .bra {
+  border-radius: 100%; }
+
+.br-20 {
+  border-radius: 20px; }
+
 .brl {
   border-radius: 8px; }
 
@@ -648,9 +581,6 @@ table {
 
 .brs {
   border-radius: 3px; }
-
-.brc {
-  border-radius: 100%; }
 
 .brtop {
   border-radius: 8px 8px 0 0; }
@@ -668,6 +598,21 @@ table {
   border-radius: 0 0 0 5px; }
 
 /* ==========================================================================
+   Rotations
+   ========================================================================== */
+.rotate-90 {
+  -webkit-transform: rotate(90deg); }
+
+.rotate-180 {
+  -webkit-transform: rotate(180deg); }
+
+.rotate-270 {
+  -webkit-transform: rotate(270deg); }
+
+.rotate-360 {
+  -webkit-transform: rotate(360deg); }
+
+/* ==========================================================================
    Border Styles
    ========================================================================== */
 .border {
@@ -677,6 +622,9 @@ table {
 .no-border {
   border: none !important; }
 
+.border--transparent {
+  border-color: transparent; }
+
 .border--1 {
   border-color: #1c78b1; }
 
@@ -684,13 +632,13 @@ table {
   border-color: #bbc0c4; }
 
 .border--3 {
-  border-color: #cfd4d9; }
+  border-color: #dfe0e1; }
 
 .border--4 {
   border-color: #dfe0e1; }
 
 .border--5 {
-  border-color: #3c3d3e; }
+  border-color: #f5f5f6; }
 
 .border--6 {
   border-color: #293f54; }
@@ -699,7 +647,7 @@ table {
   border-color: #203345; }
 
 .border--8 {
-  border-color: #eceef0; }
+  border-color: #edeff0; }
 
 .border-top {
   border-top-width: 1px;
@@ -726,7 +674,13 @@ table {
 .border-top-none {
   border-top-width: 0; }
 
+.border-bottom-none {
+  border-top-width: 0; }
+
 .border-left-none {
+  border-left-width: 0; }
+
+.border-right-none {
   border-left-width: 0; }
 
 .border-top--4 {
@@ -739,7 +693,7 @@ table {
   border-color: #bbc0c4; }
 
 .border--header_button {
-  border-color: #095c90; }
+  border-color: rgba(255, 255, 255, 0.2); }
 
 /* ==========================================================================
    Typography
@@ -754,19 +708,22 @@ table {
   color: #afb5b9; }
 
 .text-color-4 {
-  color: #44596c; }
+  color: #5c7995; }
 
 .text-color-5 {
   color: white; }
 
 .text-color-6 {
-  color: #969899; }
+  color: #696e71; }
 
 .text-color-7 {
-  color: #aad0e9; }
+  color: rgba(255, 255, 255, 0.5); }
 
 .text-color-8 {
   color: #6e7e8a; }
+
+.text-color-13 {
+  color: #293f54; }
 
 .text-shadow {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }
@@ -775,7 +732,7 @@ table {
   color: #2a94d6; }
 
 .text-error {
-  color: #b15148; }
+  color: #c06057; }
 
 .text-warning {
   color: #e6b739; }
@@ -812,22 +769,22 @@ table {
 /* Standard Objects
    ========================================================================== */
 .bg-account {
-  background-color: #717ecd; }
+  background-color: #7f8de1; }
 
 .bg-campaign {
-  background-color: #ee8f4d; }
+  background-color: #f49756; }
 
 .bg-case {
-  background-color: #f0c45e; }
+  background-color: #f2cf5b; }
 
 .bg-contact {
-  background-color: #8b7fd5; }
+  background-color: #a094ed; }
 
 .bg-contract {
-  background-color: #66b966; }
+  background-color: #6ec06e; }
 
 .bg-dashboard {
-  background-color: #c96358; }
+  background-color: #ef6e64; }
 
 .bg-document {
   background-color: #09a0a0; }
@@ -845,127 +802,127 @@ table {
   background-color: #ed7e58; }
 
 .bg-opportunity {
-  background-color: #f3ae4e; }
+  background-color: #fcb95b; }
 
 .bg-portal {
   background-color: #aec770; }
 
 .bg-product {
-  background-color: #aa7bc3; }
+  background-color: #b781d3; }
 
 .bg-report {
-  background-color: #ee6868; }
+  background-color: #f77373; }
 
 .bg-setup {
   background-color: #d75143; }
 
 .bg-solution {
-  background-color: #8ac26e; }
+  background-color: #8fc972; }
 
 /* Standard Misc
    ========================================================================== */
 .bg-approval {
-  background-color: #41b568; }
+  background-color: #50cc7a; }
 
 .bg-apps {
-  background-color: #5597bc; }
+  background-color: #3c97dd; }
 
 .bg-avatar {
-  background-color: #55a2d2; }
+  background-color: #62b7ed; }
 
 .bg-email {
-  background-color: #879eb3; }
+  background-color: #95aec5; }
 
 .bg-event {
-  background-color: #d96383; }
+  background-color: #eb7092; }
 
 .bg-feed {
-  background-color: #489dd0; }
+  background-color: #62b7ed; }
 
 .bg-file {
-  background-color: #b19f7e; }
+  background-color: #baac93; }
 
 .bg-groups {
-  background-color: #5e87de; }
+  background-color: #779ef2; }
 
 .bg-link {
-  background-color: #6078c2; }
+  background-color: #7a9ae6; }
 
 .bg-note {
-  background-color: #dcd861; }
+  background-color: #e6d478; }
 
 .bg-people {
-  background-color: #20aeb8; }
+  background-color: #34becd; }
 
 .bg-photo {
-  background-color: #dedede; }
+  background-color: #d7d1d1; }
 
 .bg-poll {
-  background-color: #5181c4; }
+  background-color: #699be1; }
 
 .bg-post {
-  background-color: #4eb1cb; }
+  background-color: #65cae4; }
 
 .bg-record {
-  background-color: #6cb76c; }
+  background-color: #7dc37d; }
 
 .bg-related-list {
-  background-color: #4fac9c; }
+  background-color: #59bcab; }
 
 .bg-social {
-  background-color: #e0709c; }
+  background-color: #ea74a2; }
 
 .bg-task {
-  background-color: #4ab471; }
+  background-color: #4bc076; }
 
 .bg-thanks {
-  background-color: #cf5c60; }
+  background-color: #e9696e; }
 
 .bg-today {
-  background-color: #dd6195; }
+  background-color: #ef7ead; }
 
 /* Standard 3rd party
    ========================================================================== */
 .bg-files {
-  background-color: #489dd0; }
+  background-color: #5bb6ee; }
 
 .bg-concur {
-  background-color: #48b4b8; }
+  background-color: #4cc3c7; }
 
 .bg-dropbox {
-  background-color: #67a9f0; }
+  background-color: #52aef9; }
 
 .bg-evernote {
-  background-color: #88b861; }
+  background-color: #86c86f; }
 
 /* Standard Case
    ========================================================================== */
 .bg-answer-best {
-  background-color: #eac95a; }
+  background-color: #f2cf5b; }
 
 .bg-answer-private {
-  background-color: #eac95a; }
+  background-color: #f2cf5b; }
 
 .bg-answer-public {
-  background-color: #eac95a; }
+  background-color: #f2cf5b; }
 
 .bg-article {
-  background-color: #eac95a; }
+  background-color: #f2cf5b; }
 
 .bg-case-change-status {
-  background-color: #eac95a; }
+  background-color: #f2cf5b; }
 
 .bg-case-comment {
-  background-color: #eac95a; }
+  background-color: #f2cf5b; }
 
 .bg-case-email {
-  background-color: #eac95a; }
+  background-color: #f2cf5b; }
 
 .bg-case-log-a-call {
-  background-color: #eac95a; }
+  background-color: #f2cf5b; }
 
 .bg-case-transcript {
-  background-color: #eac95a; }
+  background-color: #f2cf5b; }
 
 /* Standard Custom
    ========================================================================== */
@@ -1349,19 +1306,22 @@ table {
  * To vertically center a single line of text within an element with a known height, set the line height of that text element to the height of the parent element.
  * */
 .lh-14 {
-  line-height: 11px !important; }
+  line-height: 14px !important; }
 
 .lh-16 {
   line-height: 16px !important; }
 
-.lh-30 {
-  line-height: 28px !important; }
-
-.lh-44 {
-  line-height: 42px !important; }
-
 .lh-20 {
   line-height: 20px !important; }
+
+.lh-30 {
+  line-height: 30px !important; }
+
+.lh-44 {
+  line-height: 44px !important; }
+
+.lh-58 {
+  line-height: 58px !important; }
 
 /**
  * Text: Hide Accessibly
@@ -1530,13 +1490,13 @@ body {
 a {
   text-decoration: none; }
   a:link {
-    color: #006eb3; }
+    color: #2a94d6; }
   a:visited {
-    color: #006eb3; }
+    color: #2a94d6; }
   a:hover {
-    color: #005c94; }
+    color: #2483bd; }
   a:active {
-    color: #006eb3; }
+    color: #2a94d6; }
 
 /* Miscellaneous */
 .group:before, .group:after {
@@ -1548,6 +1508,9 @@ a {
 
 .opacity-0 {
   opacity: 0; }
+
+.opacity-40 {
+  opacity: 0.4; }
 
 /* Dim the opacity of active links */
 .active-dim:active {
@@ -1562,11 +1525,8 @@ a {
 .active--list-3:active {
   background-color: #fafafa; }
 
-.active--icon-1:active {
-  color: #105b89; }
-
-.active--icon-2:active {
-  color: #3c3d3e; }
+.active--icon-1:active, .active--icon-2:active {
+  color: rgba(0, 0, 0, 0.21); }
 
 /* Dividers  e.g. hr is used in cards. extended in card-divider */
 hr, .divider {
@@ -1592,668 +1552,757 @@ hr, .divider {
 .icon {
   display: inline-block;
   background-position: 50%;
-  background-repeat: no-repeat;
-  border-radius: 5px; }
+  background-repeat: no-repeat; }
 
 /* Standard Icons
    ========================================================================== */
 .icon--account {
-  background-color: #717ecd;
-  background-image: url("assets/icons/standard/account_120.png"); }
+  background-color: #7f8de1;
+  background-image: url(assets/icons/standard/account.svg); }
 
 .icon--campaign {
-  background-color: #ee8f4d;
-  background-image: url("assets/icons/standard/campaign_120.png"); }
+  background-color: #f49756;
+  background-image: url(assets/icons/standard/campaign.svg); }
+
+.icon--campaign-members {
+  background-color: #f49756;
+  background-image: url(assets/icons/standard/campaign_members.svg); }
 
 .icon--case {
-  background-color: #f0c45e;
-  background-image: url("assets/icons/standard/case_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/case.svg); }
 
 .icon--contact {
-  background-color: #8b7fd5;
-  background-image: url("assets/icons/standard/contact_120.png"); }
+  background-color: #a094ed;
+  background-image: url(assets/icons/standard/contact.svg); }
 
 .icon--contract {
-  background-color: #66b966;
-  background-image: url("assets/icons/standard/contract_120.png"); }
+  background-color: #6ec06e;
+  background-image: url(assets/icons/standard/contract.svg); }
 
 .icon--dashboard {
-  background-color: #c96358;
-  background-image: url("assets/icons/standard/dashboard_120.png"); }
+  background-color: #ef6e64;
+  background-image: url(assets/icons/standard/dashboard.svg); }
 
 .icon--document {
-  background-color: #09a0a0; }
+  background-color: #09a0a0;
+  background-image: url(assets/icons/standard/document.svg); }
 
 .icon--forecast {
-  background-color: #7774d5; }
+  background-color: #7774d5;
+  background-image: url(assets/icons/standard/forecast.svg); }
 
 .icon--home {
   background-color: #44a12c; }
 
 .icon--invoice {
-  background-color: #17a380; }
+  background-color: #17a380;
+  background-image: url(assets/icons/standard/invoice.svg); }
 
 .icon--lead {
   background-color: #ed7e58;
-  background-image: url("assets/icons/standard/lead_120.png"); }
+  background-image: url(assets/icons/standard/lead.svg); }
 
 .icon--opportunity {
-  background-color: #f3ae4e;
-  background-image: url("assets/icons/standard/opportunity_120.png"); }
+  background-color: #fcb95b;
+  background-image: url(assets/icons/standard/opportunity.svg); }
+
+.icon--orders {
+  background-color: #769ed9;
+  background-image: url(assets/icons/standard/orders.svg); }
 
 .icon--portal {
   background-color: #aec770;
-  background-image: url("assets/icons/standard/portal_120.png"); }
+  background-image: url(assets/icons/standard/portal.svg); }
 
 .icon--product {
-  background-color: #aa7bc3; }
+  background-color: #b781d3;
+  background-image: url(assets/icons/standard/product.svg); }
 
-.icon--report {
-  background-color: #ee6868; }
+.icon--record {
+  background-color: #7dc37d;
+  background-image: url(assets/icons/standard/record.svg); }
 
 .icon--setup {
   background-color: #d75143; }
 
 .icon--solution {
-  background-color: #8ac26e; }
+  background-color: #8fc972;
+  background-image: url(assets/icons/standard/solution.svg); }
+
+.icon--topic {
+  background-color: #56aadf;
+  background-image: url(assets/icons/standard/topic.svg); }
+
+.icon--transcript {
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/transcript.svg); }
 
 /* Standard Misc
    ========================================================================== */
 .icon--avatar {
-  background-color: #55a2d2;
-  background-image: url("assets/icons/standard/avatar_120.png"); }
+  background-color: #62b7ed;
+  background-image: url(assets/icons/standard/avatar.svg); }
 
 .icon--approval {
-  background-color: #41b568;
-  background-image: url("assets/icons/standard/approval_120.png"); }
+  background-color: #50cc7a;
+  background-image: url(assets/icons/standard/approval.svg); }
 
 .icon--apps {
-  background-color: #5597bc;
-  background-image: url("assets/icons/standard/apps_120.png"); }
+  background-color: #3c97dd;
+  background-image: url(assets/icons/standard/apps.svg); }
+
+.icon--connected-apps-admins {
+  background-color: #9895ee;
+  background-image: url(assets/icons/standard/connected_apps_admins.svg); }
+
+.icon--calibration {
+  background-color: #47cfd2;
+  background-image: url(assets/icons/standard/calibration.svg); }
 
 .icon--collaborationgroup {
-  background-color: #5e87de;
-  background-image: url("assets/icons/standard/groups_120.png"); }
+  background-color: #779ef2;
+  background-image: url(assets/icons/standard/groups_120.png); }
+
+.icon--coaching {
+  background-color: #f67594;
+  background-image: url(assets/icons/standard/coaching.svg); }
+
+.icon--drafts {
+  background-color: #6ca1e9;
+  background-image: url(assets/icons/standard/drafts.svg); }
 
 .icon--email {
-  background-color: #879eb3;
-  background-image: url("assets/icons/standard/email_120.png"); }
+  background-color: #95aec5;
+  background-image: url(assets/icons/standard/email.svg); }
 
 .icon--event {
-  background-color: #d96383;
-  background-image: url("assets/icons/standard/event_120.png"); }
+  background-color: #eb7092;
+  background-image: url(assets/icons/standard/event.svg); }
+
+.icon--endorsement {
+  background-color: #8b9ae3;
+  background-image: url(assets/icons/standard/endorsement.svg); }
 
 .icon--feed {
-  background-color: #489dd0;
-  background-image: url("assets/icons/standard/feed_120.png"); }
+  background-color: #62b7ed;
+  background-image: url(assets/icons/standard/feed.svg); }
+
+.icon--feedback {
+  background-color: #6da1ea;
+  background-image: url(assets/icons/standard/feedback.svg); }
 
 .icon--file {
-  background-color: #b19f7e;
-  background-image: url("assets/icons/standard/file_120.png"); }
+  background-color: #baac93;
+  background-image: url(assets/icons/standard/file.svg); }
+
+.icon--goals {
+  background-color: #7fc574;
+  background-image: url(assets/icons/standard/goals.svg); }
 
 .icon--groups {
-  background-color: #5e87de;
-  background-image: url("assets/icons/standard/groups_120.png"); }
+  background-color: #779ef2;
+  background-image: url(assets/icons/standard/groups.svg); }
 
 .icon--link {
-  background-color: #6078c2;
-  background-image: url("assets/icons/standard/link_120.png"); }
+  background-color: #7a9ae6;
+  background-image: url(assets/icons/standard/link.svg); }
 
 .icon--note {
-  background-color: #dcd861;
-  background-image: url("assets/icons/standard/note_120.png"); }
+  background-color: #e6d478;
+  background-image: url(assets/icons/standard/note.svg); }
 
 .icon--people {
-  background-color: #20aeb8;
-  background-image: url("assets/icons/standard/people_120.png"); }
+  background-color: #34becd;
+  background-image: url(assets/icons/standard/people.svg); }
+
+.icon--performance {
+  background-color: #f8b156;
+  background-image: url(assets/icons/standard/performance.svg); }
 
 .icon--photo {
-  background-color: #dedede;
-  background-image: url("assets/icons/standard/photo_120.png"); }
+  background-color: #d7d1d1;
+  background-image: url(assets/icons/standard/photo.svg); }
 
 .icon--poll {
-  background-color: #5181c4;
-  background-image: url("assets/icons/standard/poll_120.png"); }
+  background-color: #699be1;
+  background-image: url(assets/icons/standard/poll.svg); }
 
 .icon--post {
-  background-color: #4eb1cb;
-  background-image: url("assets/icons/standard/post_120.png"); }
+  background-color: #65cae4;
+  background-image: url(assets/icons/standard/post.svg); }
+
+.icon--question-best {
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/question_best.svg); }
+
+.icon--question-feed {
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/question_feed.svg); }
+
+.icon--quotes {
+  background-color: #88c651;
+  background-image: url(assets/icons/standard/quotes.svg); }
 
 .icon--record {
-  background-color: #6cb76c;
-  background-image: url("assets/icons/standard/record_120.png"); }
+  background-color: #7dc37d;
+  background-image: url(assets/icons/standard/record.svg); }
+
+.icon--report {
+  background-color: #f77373;
+  background-image: url(assets/icons/standard/report.svg); }
+
+.icon--recent {
+  background-color: #6ca1e9;
+  background-image: url(assets/icons/standard/recent.svg); }
 
 .icon--related-list {
-  background-color: #4fac9c;
-  background-image: url("assets/icons/standard/related_list_120.png"); }
+  background-color: #59bcab;
+  background-image: url(assets/icons/standard/related_list.svg); }
+
+.icon--scan-card {
+  background-color: #f39e58;
+  background-image: url(assets/icons/standard/scan_card.svg); }
+
+.icon--skill-entity {
+  background-color: #8b9ae3;
+  background-image: url(assets/icons/standard/skill_entity.svg); }
 
 .icon--social {
-  background-color: #e0709c;
-  background-image: url("assets/icons/standard/social_post_120.png"); }
+  background-color: #ea74a2;
+  background-image: url(assets/icons/standard/social_post.svg); }
 
 .icon--task {
-  background-color: #4ab471;
-  background-image: url("assets/icons/standard/task_120.png"); }
+  background-color: #4bc076;
+  background-image: url(assets/icons/standard/task.svg); }
 
 .icon--thanks {
-  background-color: #cf5c60;
-  background-image: url("assets/icons/standard/thanks_120.png"); }
+  background-color: #e9696e;
+  background-image: url(assets/icons/standard/thanks.svg); }
 
 .icon--today {
-  background-color: #dd6195;
-  background-image: url("assets/icons/standard/today_120.png"); }
+  background-color: #ef7ead;
+  background-image: url(assets/icons/standard/today.svg); }
 
 .icon--canvas {
-  background-color: #849cb1;
-  background-image: url("assets/icons/standard/canvas_120.png"); }
+  background-color: #8199af;
+  background-image: url(assets/icons/standard/canvas.svg); }
 
 .icon--custom {
-  background-color: #849cb1;
-  background-image: url("assets/icons/standard/custom_120.png"); }
+  background-color: #8199af;
+  background-image: url(assets/icons/standard/custom.svg); }
 
 .icon--default {
-  background-color: #849cb1;
-  background-image: url("assets/icons/standard/default_120.png"); }
+  background-color: #8199af;
+  background-image: url(assets/icons/standard/default.svg); }
 
 .icon--empty {
   background-color: #849cb1;
-  background-image: url("assets/icons/standard/empty_120.png"); }
+  background-image: url(assets/icons/standard/empty.svg); }
 
 .icon--avatar-loading {
-  background-color: #bac3cc;
-  background-image: url("assets/icons/standard/avatar_loading_120.png"); }
+  background-color: #b8c3ce;
+  background-image: url(assets/icons/standard/avatar_loading.svg); }
 
 .icon--blank-loading {
   background-color: #bac3cc;
-  background-image: url("assets/icons/standard/blank_loading_120.png"); }
+  background-image: url(assets/icons/standard/blank_loading_120.png); }
 
 .icon--groups-loading {
   background-color: #bac3cc;
-  background-image: url("assets/icons/standard/groups_loading_120.png"); }
+  background-image: url(assets/icons/standard/group_loading.svg); }
 
 .icon--thanks-loading {
   background-color: #bac3cc;
-  background-image: url("assets/icons/standard/thanks_loading_120.png"); }
+  background-image: url(assets/icons/standard/thanks_loading.svg); }
 
 /* Standard 3rd Party
    ========================================================================== */
 .icon--files {
-  background-color: #489dd0;
-  background-image: url("assets/icons/standard/chatterbox_120.png"); }
+  background-color: #5bb6ee;
+  background-image: url(assets/icons/standard/chatterbox.svg); }
 
 .icon--concur {
-  background-color: #48b4b8;
-  background-image: url("assets/icons/standard/concur_120.png"); }
+  background-color: #4cc3c7;
+  background-image: url(assets/icons/standard/concur.svg); }
 
 .icon--dropbox {
-  background-color: #67a9f0;
-  background-image: url("assets/icons/standard/dropbox_120.png"); }
+  background-color: #52aef9;
+  background-image: url(assets/icons/standard/dropbox.svg); }
 
 .icon--evernote {
-  background-color: #88b861;
-  background-image: url("assets/icons/standard/evernote_120.png"); }
+  background-color: #86c86f;
+  background-image: url(assets/icons/standard/evernote.svg); }
 
 /* Standard Case
    ========================================================================== */
 .icon--answer-best {
-  background-color: #eac95a;
-  background-image: url("assets/icons/standard/answer_best_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/answer_best.svg); }
 
 .icon--answer-private {
-  background-color: #eac95a;
-  background-image: url("assets/icons/standard/answer_private_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/answer_private.svg); }
 
 .icon--answer-public {
-  background-color: #eac95a;
-  background-image: url("assets/icons/standard/answer_public_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/answer_public.svg); }
 
 .icon--article {
-  background-color: #eac95a;
-  background-image: url("assets/icons/standard/article_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/article.svg); }
 
 .icon--case-change-status {
-  background-color: #eac95a;
-  background-image: url("assets/icons/standard/case_change_status_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/case_change_status.svg); }
 
 .icon--case-comment {
-  background-color: #eac95a;
-  background-image: url("assets/icons/standard/case_comment_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/case_comment.svg); }
 
 .icon--case-email {
-  background-color: #eac95a;
-  background-image: url("assets/icons/standard/case_email_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/email_chatter.svg); }
 
 .icon--case-log-a-call {
-  background-color: #eac95a;
-  background-image: url("assets/icons/standard/case_log_a_call_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/log_a_call_chatter.svg); }
 
 .icon--case-transcript {
-  background-color: #eac95a;
-  background-image: url("assets/icons/standard/case_transcript_120.png"); }
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/case_transcript.svg); }
+
+.icon--team-member {
+  background-color: #f2cf5b;
+  background-image: url(assets/icons/standard/team_member.svg); }
 
 /* Standard Custom Icons
    ========================================================================== */
 .icon--custom-1 {
   background-color: #ff7b84;
-  background-image: url("assets/icons/custom/custom1_120.png"); }
+  background-image: url(assets/icons/custom/custom1_120.png); }
 
 .icon--custom-2 {
   background-color: #cfd05c;
-  background-image: url("assets/icons/custom/custom2_120.png"); }
+  background-image: url(assets/icons/custom/custom2_120.png); }
 
 .icon--custom-3 {
   background-color: #ecb46c;
-  background-image: url("assets/icons/custom/custom3_120.png"); }
+  background-image: url(assets/icons/custom/custom3_120.png); }
 
 .icon--custom-4 {
   background-color: #e1d951;
-  background-image: url("assets/icons/custom/custom4_120.png"); }
+  background-image: url(assets/icons/custom/custom4_120.png); }
 
 .icon--custom-5 {
   background-color: #9fdb66;
-  background-image: url("assets/icons/custom/custom5_120.png"); }
+  background-image: url(assets/icons/custom/custom5_120.png); }
 
 .icon--custom-6 {
   background-color: #54c473;
-  background-image: url("assets/icons/custom/custom6_120.png"); }
+  background-image: url(assets/icons/custom/custom6_120.png); }
 
 .icon--custom-7 {
   background-color: #6a89e5;
-  background-image: url("assets/icons/custom/custom7_120.png"); }
+  background-image: url(assets/icons/custom/custom7_120.png); }
 
 .icon--custom-8 {
   background-color: #50ceb9;
-  background-image: url("assets/icons/custom/custom8_120.png"); }
+  background-image: url(assets/icons/custom/custom8_120.png); }
 
 .icon--custom-9 {
   background-color: #6b9ee2;
-  background-image: url("assets/icons/custom/custom9_120.png"); }
+  background-image: url(assets/icons/custom/custom9_120.png); }
 
 .icon--custom-10 {
   background-color: #6488e3;
-  background-image: url("assets/icons/custom/custom10_120.png"); }
+  background-image: url(assets/icons/custom/custom10_120.png); }
 
 .icon--custom-11 {
   background-color: #8784ea;
-  background-image: url("assets/icons/custom/custom11_120.png"); }
+  background-image: url(assets/icons/custom/custom11_120.png); }
 
 .icon--custom-12 {
   background-color: #dc71d1;
-  background-image: url("assets/icons/custom/custom12_120.png"); }
+  background-image: url(assets/icons/custom/custom12_120.png); }
 
 .icon--custom-13 {
   background-color: #df6184;
-  background-image: url("assets/icons/custom/custom13_120.png"); }
+  background-image: url(assets/icons/custom/custom13_120.png); }
 
 .icon--custom-14 {
   background-color: #3cc2b3;
-  background-image: url("assets/icons/custom/custom14_120.png"); }
+  background-image: url(assets/icons/custom/custom14_120.png); }
 
 .icon--custom-15 {
   background-color: #f77e75;
-  background-image: url("assets/icons/custom/custom15_120.png"); }
+  background-image: url(assets/icons/custom/custom15_120.png); }
 
 .icon--custom-16 {
   background-color: #e9af67;
-  background-image: url("assets/icons/custom/custom16_120.png"); }
+  background-image: url(assets/icons/custom/custom16_120.png); }
 
 .icon--custom-17 {
   background-color: #acd360;
-  background-image: url("assets/icons/custom/custom17_120.png"); }
+  background-image: url(assets/icons/custom/custom17_120.png); }
 
 .icon--custom-18 {
   background-color: #4dca76;
-  background-image: url("assets/icons/custom/custom18_120.png"); }
+  background-image: url(assets/icons/custom/custom18_120.png); }
 
 .icon--custom-19 {
   background-color: #3abeb1;
-  background-image: url("assets/icons/custom/custom19_120.png"); }
+  background-image: url(assets/icons/custom/custom19_120.png); }
 
 .icon--custom-20 {
   background-color: #48c7c8;
-  background-image: url("assets/icons/custom/custom20_120.png"); }
+  background-image: url(assets/icons/custom/custom20_120.png); }
 
 .icon--custom-21 {
   background-color: #8a7aed;
-  background-image: url("assets/icons/custom/custom21_120.png"); }
+  background-image: url(assets/icons/custom/custom21_120.png); }
 
 .icon--custom-22 {
   background-color: #8b85f9;
-  background-image: url("assets/icons/custom/custom22_120.png"); }
+  background-image: url(assets/icons/custom/custom22_120.png); }
 
 .icon--custom-23 {
   background-color: #b070e6;
-  background-image: url("assets/icons/custom/custom23_120.png"); }
+  background-image: url(assets/icons/custom/custom23_120.png); }
 
 .icon--custom-24 {
   background-color: #e56798;
-  background-image: url("assets/icons/custom/custom24_120.png"); }
+  background-image: url(assets/icons/custom/custom24_120.png); }
 
 .icon--custom-25 {
   background-color: #e46fbe;
-  background-image: url("assets/icons/custom/custom25_120.png"); }
+  background-image: url(assets/icons/custom/custom25_120.png); }
 
 .icon--custom-26 {
   background-color: #7698f0;
-  background-image: url("assets/icons/custom/custom26_120.png"); }
+  background-image: url(assets/icons/custom/custom26_120.png); }
 
 .icon--custom-27 {
   background-color: #5ab0d2;
-  background-image: url("assets/icons/custom/custom27_120.png"); }
+  background-image: url(assets/icons/custom/custom27_120.png); }
 
 .icon--custom-28 {
   background-color: #89c059;
-  background-image: url("assets/icons/custom/custom28_120.png"); }
+  background-image: url(assets/icons/custom/custom28_120.png); }
 
 .icon--custom-29 {
   background-color: #bdd25f;
-  background-image: url("assets/icons/custom/custom29_120.png"); }
+  background-image: url(assets/icons/custom/custom29_120.png); }
 
 .icon--custom-30 {
   background-color: #f59f71;
-  background-image: url("assets/icons/custom/custom30_120.png"); }
+  background-image: url(assets/icons/custom/custom30_120.png); }
 
 .icon--custom-31 {
   background-color: #eb687f;
-  background-image: url("assets/icons/custom/custom31_120.png"); }
+  background-image: url(assets/icons/custom/custom31_120.png); }
 
 .icon--custom-32 {
   background-color: #38c393;
-  background-image: url("assets/icons/custom/custom32_120.png"); }
+  background-image: url(assets/icons/custom/custom32_120.png); }
 
 .icon--custom-33 {
   background-color: #97cf5d;
-  background-image: url("assets/icons/custom/custom33_120.png"); }
+  background-image: url(assets/icons/custom/custom33_120.png); }
 
 .icon--custom-34 {
   background-color: #d58a6a;
-  background-image: url("assets/icons/custom/custom34_120.png"); }
+  background-image: url(assets/icons/custom/custom34_120.png); }
 
 .icon--custom-35 {
   background-color: #e9637e;
-  background-image: url("assets/icons/custom/custom35_120.png"); }
+  background-image: url(assets/icons/custom/custom35_120.png); }
 
 .icon--custom-36 {
   background-color: #d472d4;
-  background-image: url("assets/icons/custom/custom36_120.png"); }
+  background-image: url(assets/icons/custom/custom36_120.png); }
 
 .icon--custom-37 {
   background-color: #8c89f2;
-  background-image: url("assets/icons/custom/custom37_120.png"); }
+  background-image: url(assets/icons/custom/custom37_120.png); }
 
 .icon--custom-38 {
   background-color: #53b6d7;
-  background-image: url("assets/icons/custom/custom38_120.png"); }
+  background-image: url(assets/icons/custom/custom38_120.png); }
 
 .icon--custom-39 {
   background-color: #4fbe75;
-  background-image: url("assets/icons/custom/custom39_120.png"); }
+  background-image: url(assets/icons/custom/custom39_120.png); }
 
 .icon--custom-40 {
   background-color: #83c75e;
-  background-image: url("assets/icons/custom/custom40_120.png"); }
+  background-image: url(assets/icons/custom/custom40_120.png); }
 
 .icon--custom-41 {
   background-color: #43b5b5;
-  background-image: url("assets/icons/custom/custom41_120.png"); }
+  background-image: url(assets/icons/custom/custom41_120.png); }
 
 .icon--custom-42 {
   background-color: #cfd05b;
-  background-image: url("assets/icons/custom/custom42_120.png"); }
+  background-image: url(assets/icons/custom/custom42_120.png); }
 
 .icon--custom-43 {
   background-color: #7f93f9;
-  background-image: url("assets/icons/custom/custom43_120.png"); }
+  background-image: url(assets/icons/custom/custom43_120.png); }
 
 .icon--custom-44 {
   background-color: #c8ca58;
-  background-image: url("assets/icons/custom/custom44_120.png"); }
+  background-image: url(assets/icons/custom/custom44_120.png); }
 
 .icon--custom-45 {
   background-color: #d95879;
-  background-image: url("assets/icons/custom/custom45_120.png"); }
+  background-image: url(assets/icons/custom/custom45_120.png); }
 
 .icon--custom-46 {
   background-color: #67a5e7;
-  background-image: url("assets/icons/custom/custom46_120.png"); }
+  background-image: url(assets/icons/custom/custom46_120.png); }
 
 .icon--custom-47 {
   background-color: #5fcc64;
-  background-image: url("assets/icons/custom/custom47_120.png"); }
+  background-image: url(assets/icons/custom/custom47_120.png); }
 
 .icon--custom-48 {
   background-color: #ef697f;
-  background-image: url("assets/icons/custom/custom48_120.png"); }
+  background-image: url(assets/icons/custom/custom48_120.png); }
 
 .icon--custom-49 {
   background-color: #e25c80;
-  background-image: url("assets/icons/custom/custom49_120.png"); }
+  background-image: url(assets/icons/custom/custom49_120.png); }
 
 .icon--custom-50 {
   background-color: #49bcd3;
-  background-image: url("assets/icons/custom/custom50_120.png"); }
+  background-image: url(assets/icons/custom/custom50_120.png); }
 
 .icon--custom-51 {
   background-color: #d8c760;
-  background-image: url("assets/icons/custom/custom51_120.png"); }
+  background-image: url(assets/icons/custom/custom51_120.png); }
 
 .icon--custom-52 {
   background-color: #ee8e6f;
-  background-image: url("assets/icons/custom/custom52_120.png"); }
+  background-image: url(assets/icons/custom/custom52_120.png); }
 
 .icon--custom-53 {
   background-color: #f36e83;
-  background-image: url("assets/icons/custom/custom53_120.png"); }
+  background-image: url(assets/icons/custom/custom53_120.png); }
 
 .icon--custom-54 {
   background-color: #ea70b1;
-  background-image: url("assets/icons/custom/custom54_120.png"); }
+  background-image: url(assets/icons/custom/custom54_120.png); }
 
 .icon--custom-55 {
   background-color: #d66ee0;
-  background-image: url("assets/icons/custom/custom55_120.png"); }
+  background-image: url(assets/icons/custom/custom55_120.png); }
 
 .icon--custom-56 {
   background-color: #718deb;
-  background-image: url("assets/icons/custom/custom56_120.png"); }
+  background-image: url(assets/icons/custom/custom56_120.png); }
 
 .icon--custom-57 {
   background-color: #5a9cdd;
-  background-image: url("assets/icons/custom/custom57_120.png"); }
+  background-image: url(assets/icons/custom/custom57_120.png); }
 
 .icon--custom-58 {
   background-color: #34b59d;
-  background-image: url("assets/icons/custom/custom58_120.png"); }
+  background-image: url(assets/icons/custom/custom58_120.png); }
 
 .icon--custom-59 {
   background-color: #e3d067;
-  background-image: url("assets/icons/custom/custom59_120.png"); }
+  background-image: url(assets/icons/custom/custom59_120.png); }
 
 .icon--custom-60 {
   background-color: #bf5a88;
-  background-image: url("assets/icons/custom/custom60_120.png"); }
+  background-image: url(assets/icons/custom/custom60_120.png); }
 
 .icon--custom-61 {
   background-color: #f57376;
-  background-image: url("assets/icons/custom/custom61_120.png"); }
+  background-image: url(assets/icons/custom/custom61_120.png); }
 
 .icon--custom-62 {
   background-color: #6b92dc;
-  background-image: url("assets/icons/custom/custom62_120.png"); }
+  background-image: url(assets/icons/custom/custom62_120.png); }
 
 .icon--custom-63 {
   background-color: #7ccf60;
-  background-image: url("assets/icons/custom/custom63_120.png"); }
+  background-image: url(assets/icons/custom/custom63_120.png); }
 
 .icon--custom-64 {
   background-color: #618fd8;
-  background-image: url("assets/icons/custom/custom64_120.png"); }
+  background-image: url(assets/icons/custom/custom64_120.png); }
 
 .icon--custom-65 {
   background-color: #f279ab;
-  background-image: url("assets/icons/custom/custom65_120.png"); }
+  background-image: url(assets/icons/custom/custom65_120.png); }
 
 .icon--custom-66 {
   background-color: #d8be5f;
-  background-image: url("assets/icons/custom/custom66_120.png"); }
+  background-image: url(assets/icons/custom/custom66_120.png); }
 
 .icon--custom-67 {
   background-color: #f87d76;
-  background-image: url("assets/icons/custom/custom67_120.png"); }
+  background-image: url(assets/icons/custom/custom67_120.png); }
 
 .icon--custom-68 {
   background-color: #f26979;
-  background-image: url("assets/icons/custom/custom68_120.png"); }
+  background-image: url(assets/icons/custom/custom68_120.png); }
 
 .icon--custom-69 {
   background-color: #ed6387;
-  background-image: url("assets/icons/custom/custom69_120.png"); }
+  background-image: url(assets/icons/custom/custom69_120.png); }
 
 .icon--custom-70 {
   background-color: #e769b4;
-  background-image: url("assets/icons/custom/custom70_120.png"); }
+  background-image: url(assets/icons/custom/custom70_120.png); }
 
 .icon--custom-71 {
   background-color: #e36ee3;
-  background-image: url("assets/icons/custom/custom71_120.png"); }
+  background-image: url(assets/icons/custom/custom71_120.png); }
 
 .icon--custom-72 {
   background-color: #8d9bfb;
-  background-image: url("assets/icons/custom/custom72_120.png"); }
+  background-image: url(assets/icons/custom/custom72_120.png); }
 
 .icon--custom-73 {
   background-color: #679ef0;
-  background-image: url("assets/icons/custom/custom73_120.png"); }
+  background-image: url(assets/icons/custom/custom73_120.png); }
 
 .icon--custom-74 {
   background-color: #41c8a0;
-  background-image: url("assets/icons/custom/custom74_120.png"); }
+  background-image: url(assets/icons/custom/custom74_120.png); }
 
 .icon--custom-75 {
   background-color: #cd9f65;
-  background-image: url("assets/icons/custom/custom75_120.png"); }
+  background-image: url(assets/icons/custom/custom75_120.png); }
 
 .icon--custom-76 {
   background-color: #db6d7a;
-  background-image: url("assets/icons/custom/custom76_120.png"); }
+  background-image: url(assets/icons/custom/custom76_120.png); }
 
 .icon--custom-77 {
   background-color: #b55d5b;
-  background-image: url("assets/icons/custom/custom77_120.png"); }
+  background-image: url(assets/icons/custom/custom77_120.png); }
 
 .icon--custom-78 {
   background-color: #5a95dd;
-  background-image: url("assets/icons/custom/custom78_120.png"); }
+  background-image: url(assets/icons/custom/custom78_120.png); }
 
 .icon--custom-79 {
   background-color: #8ed363;
-  background-image: url("assets/icons/custom/custom79_120.png"); }
+  background-image: url(assets/icons/custom/custom79_120.png); }
 
 .icon--custom-80 {
   background-color: #659ad5;
-  background-image: url("assets/icons/custom/custom80_120.png"); }
+  background-image: url(assets/icons/custom/custom80_120.png); }
 
 .icon--custom-81 {
   background-color: #da627f;
-  background-image: url("assets/icons/custom/custom81_120.png"); }
+  background-image: url(assets/icons/custom/custom81_120.png); }
 
 .icon--custom-82 {
   background-color: #d15b97;
-  background-image: url("assets/icons/custom/custom82_120.png"); }
+  background-image: url(assets/icons/custom/custom82_120.png); }
 
 .icon--custom-83 {
   background-color: #e7806f;
-  background-image: url("assets/icons/custom/custom83_120.png"); }
+  background-image: url(assets/icons/custom/custom83_120.png); }
 
 .icon--custom-84 {
   background-color: #f6707b;
-  background-image: url("assets/icons/custom/custom84_120.png"); }
+  background-image: url(assets/icons/custom/custom84_120.png); }
 
 .icon--custom-85 {
   background-color: #f26891;
-  background-image: url("assets/icons/custom/custom85_120.png"); }
+  background-image: url(assets/icons/custom/custom85_120.png); }
 
 .icon--custom-86 {
   background-color: #e260ab;
-  background-image: url("assets/icons/custom/custom86_120.png"); }
+  background-image: url(assets/icons/custom/custom86_120.png); }
 
 .icon--custom-87 {
   background-color: #d876e5;
-  background-image: url("assets/icons/custom/custom87_120.png"); }
+  background-image: url(assets/icons/custom/custom87_120.png); }
 
 .icon--custom-88 {
   background-color: #996fe6;
-  background-image: url("assets/icons/custom/custom88_120.png"); }
+  background-image: url(assets/icons/custom/custom88_120.png); }
 
 .icon--custom-89 {
   background-color: #3e99be;
-  background-image: url("assets/icons/custom/custom89_120.png"); }
+  background-image: url(assets/icons/custom/custom89_120.png); }
 
 .icon--custom-90 {
   background-color: #22a48a;
-  background-image: url("assets/icons/custom/custom90_120.png"); }
+  background-image: url(assets/icons/custom/custom90_120.png); }
 
 .icon--custom-91 {
   background-color: #bf7b66;
-  background-image: url("assets/icons/custom/custom91_120.png"); }
+  background-image: url(assets/icons/custom/custom91_120.png); }
 
 .icon--custom-92 {
   background-color: #517e82;
-  background-image: url("assets/icons/custom/custom92_120.png"); }
+  background-image: url(assets/icons/custom/custom92_120.png); }
 
 .icon--custom-93 {
   background-color: #904d4c;
-  background-image: url("assets/icons/custom/custom93_120.png"); }
+  background-image: url(assets/icons/custom/custom93_120.png); }
 
 .icon--custom-94 {
   background-color: #439cba;
-  background-image: url("assets/icons/custom/custom94_120.png"); }
+  background-image: url(assets/icons/custom/custom94_120.png); }
 
 .icon--custom-95 {
   background-color: #8bcf6a;
-  background-image: url("assets/icons/custom/custom95_120.png"); }
+  background-image: url(assets/icons/custom/custom95_120.png); }
 
 .icon--custom-96 {
   background-color: #6d9de3;
-  background-image: url("assets/icons/custom/custom96_120.png"); }
+  background-image: url(assets/icons/custom/custom96_120.png); }
 
 .icon--custom-97 {
   background-color: #dd6085;
-  background-image: url("assets/icons/custom/custom97_120.png"); }
+  background-image: url(assets/icons/custom/custom97_120.png); }
 
 .icon--custom-98 {
   background-color: #e1be5c;
-  background-image: url("assets/icons/custom/custom98_120.png"); }
+  background-image: url(assets/icons/custom/custom98_120.png); }
 
 .icon--custom-99 {
   background-color: #f0856e;
-  background-image: url("assets/icons/custom/custom99_120.png"); }
+  background-image: url(assets/icons/custom/custom99_120.png); }
 
 .icon--custom-100 {
   background-color: #e15d76;
-  background-image: url("assets/icons/custom/custom100_120.png"); }
+  background-image: url(assets/icons/custom/custom100_120.png); }
 
 /* Sizing
    ========================================================================== */
 .icon--s {
   width: 56px;
   height: 56px;
+  -webkit-background-size: 100%;
   background-size: 100%; }
 
 .icon--m {
   width: 60px;
   height: 60px;
+  -webkit-background-size: 100%;
   background-size: 100%; }
 
 .icon--l {
   width: 120px;
   height: 120px;
+  -webkit-background-size: 100%;
   background-size: 100%;
   border-radius: 8px; }
 
 .icon--d {
   width: 100px;
   height: 100px;
+  -webkit-background-size: 100%;
   background-size: 100%;
   border-radius: 8px; }
 
@@ -2308,7 +2357,7 @@ Layout utilities
  * N.B. This will clip overflow. Use the alternative method below if this is
  * problematic.
  */
-.nbfc {
+.o-hidden {
   overflow: hidden; }
 
 /**
@@ -2957,8 +3006,14 @@ Layout utilities
 .ht-75 {
   height: 75px; }
 
-.ht-450 {
-  height: 450px; }
+.ht-430 {
+  height: 430px; }
+
+.ht-568 {
+  height: 568px; }
+
+.mht-568 {
+  min-height: 568px; }
 
 /* Percentage heights */
 .ht-third {
@@ -2971,6 +3026,7 @@ Layout utilities
    BACKGROUND SIZES
    ========================================================================== */
 .bgs-100 {
+  -webkit-background-size: 100%;
   background-size: 100%; }
 
 /* ==========================================================================
@@ -2979,6 +3035,9 @@ FORMS
 /* Removes large blue border in chrome on focus and active states */
 input:focus, button:focus {
   outline: 0; }
+
+.active--search:active {
+  background-color: #253647; }
 
 .input, .textarea {
   border-radius: 5px;
@@ -2991,40 +3050,50 @@ input:focus, button:focus {
 
 .input--default, .textarea--default {
   background-color: #e8eaeb;
-  border-color: #cfd0d2;
-  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.07); }
+  border-color: #cfd0d2; }
 
 .input--white {
   background-color: white;
-  border-color: #bbc0c4; }
+  border-color: transparent; }
 
 .input--error, .textarea--error {
   background-color: #f6e4e4;
-  border-color: #b15148;
-  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.07); }
+  border-color: #c06057; }
 
-.input--stageleft {
-  background-color: #2c3d4e;
-  border-color: #203345;
-  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.14); }
+.input--stageleft:link {
+  background-color: #293f54;
+  border-color: transparent;
+  color: #afb5b9; }
+
+.input--stageleft:visited {
+  color: #afb5b9; }
+
+.input--stageleft:hover {
+  color: #afb5b9; }
+
+.input--stageleft:active {
+  color: #afb5b9;
+  background-color: #253647; }
 
 .input--header-primary {
-  background-color: #0b6196;
-  border-color: #1c78b1;
-  box-shadow: inset 0 2px 2px rgba(0, 82, 134, 0.16);
-  color: #aad0e9; }
+  background-color: rgba(0, 0, 0, 0.14);
+  border-color: transparent;
+  color: rgba(255, 255, 255, 0.5); }
+
+.input--header-secondary {
+  border-color: transparent;
+  background-color: white; }
 
 .input--picklist {
-  border-color: #bbc0c4;
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5), 0 1px 0 rgba(0, 0, 0, 0.02); }
+  border-color: #dfe0e1; }
 
 .input--picklist:active, .input--picklist-error:active {
+  -webkit-box-shadow: none;
   box-shadow: none;
-  background: #e9e9e9 !important; }
+  background: #fafafa !important; }
 
 .input--picklist-error {
-  border-color: #b15148;
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5), 0 1px 0 rgba(0, 0, 0, 0.02); }
+  border-color: #c06057; }
 
 .checkbox, .radio {
   -webkit-appearance: none;
@@ -3036,26 +3105,26 @@ input:focus, button:focus {
 
 .checkbox--default, .radio--default {
   border-color: #bbc0c4;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02), inset 0 0 0 2px rgba(255, 255, 255, 0.5); }
+  -webkit-box-shadow: none;
+  box-shadow: none; }
 
 .checkbox--states-1:focus, .checkbox--states-1:active, .radio--states-1:focus, .radio--states-1:active {
   background: #e8eaeb; }
 .checkbox--states-1:checked, .radio--states-1:checked {
-  border-color: #1c78b1;
   background: #2a94d6 !important;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02); }
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid transparent; }
 
 .checkbox--states-1:checked::after {
   display: block;
   position: relative;
   content: '';
-  left: 3px;
-  top: 4px;
   height: 8px;
   width: 14px;
   border-bottom: 4px solid white;
   border-left: 4px solid white;
-  -webkit-transform: rotate(-45deg); }
+  -webkit-transform: translate(3px, 5px) rotate(-45deg); }
 
 .radio--states-1:checked::after {
   display: block;
@@ -3072,7 +3141,7 @@ input:focus, button:focus {
 .label--search:before {
   position: absolute;
   top: 8px;
-  left: 9px;
+  left: 8px;
   font-size: 15px; }
 
 .label--fixedtext:before {
@@ -3089,7 +3158,7 @@ input:focus, button:focus {
 
 .label--icon-r:before {
   position: absolute;
-  top: 16px;
+  top: 17px;
   right: 14px;
   font-size: 15px; }
 
@@ -3101,46 +3170,46 @@ input:focus, button:focus {
 
 .label--icon-r-out:before {
   position: absolute;
-  top: 38px;
+  top: 40px;
   right: 14px;
   font-size: 15px; }
 
 .input--focus-1:focus, .textarea--focus-1:focus {
   background-color: white;
-  border: 1px solid #bbc0c4;
+  -webkit-box-shadow: none;
   box-shadow: none;
   outline: none; }
 
 .input--focus-2:focus {
   background-color: white;
-  border: 1px solid #1c78b1;
+  -webkit-box-shadow: none;
   box-shadow: none;
-  color: #3c3d3e !important;
+  color: #2b4257 !important;
   outline: none; }
-  .input--focus-2:focus:-moz-placeholder {
-    color: #969899; }
   .input--focus-2:focus::-moz-placeholder {
-    color: #969899; }
+    color: #696e71; }
   .input--focus-2:focus::-webkit-input-placeholder {
-    color: #969899; }
+    color: #696e71; }
   .input--focus-2:focus:-ms-input-placeholder {
-    color: #969899; }
+    color: #696e71; }
 
 .input--disabled-1:disabled {
   background-color: #e4e5e7;
   border: none; }
+.input--disabled-1::-moz-placeholder {
+  color: #696e71; }
+.input--disabled-1::-webkit-input-placeholder {
+  color: #696e71; }
+.input--disabled-1:-ms-input-placeholder {
+  color: #696e71; }
 
 .input--ph-1, .textarea--ph-1 {
   font-weight: 300; }
-  .input--ph-1:-moz-placeholder, .textarea--ph-1:-moz-placeholder {
-    color: #969899; }
   .input--ph-1::-moz-placeholder, .textarea--ph-1::-moz-placeholder {
-    color: #969899; }
+    color: #696e71; }
   .input--ph-1::-webkit-input-placeholder, .textarea--ph-1::-webkit-input-placeholder {
-    color: #969899; }
+    color: #696e71; }
   .input--ph-1:-ms-input-placeholder, .textarea--ph-1:-ms-input-placeholder {
-    color: #969899; }
-  .input--ph-1:focus:-moz-placeholder, .textarea--ph-1:focus:-moz-placeholder {
     color: #696e71; }
   .input--ph-1:focus::-moz-placeholder, .textarea--ph-1:focus::-moz-placeholder {
     color: #696e71; }
@@ -3151,16 +3220,12 @@ input:focus, button:focus {
 
 .input--ph-2 {
   font-weight: 300; }
-  .input--ph-2:-moz-placeholder {
-    color: #aad0e9; }
   .input--ph-2::-moz-placeholder {
-    color: #aad0e9; }
+    color: rgba(255, 255, 255, 0.5); }
   .input--ph-2::-webkit-input-placeholder {
-    color: #aad0e9; }
+    color: rgba(255, 255, 255, 0.5); }
   .input--ph-2:-ms-input-placeholder {
-    color: #aad0e9; }
-  .input--ph-2:focus:-moz-placeholder {
-    color: #696e71; }
+    color: rgba(255, 255, 255, 0.5); }
   .input--ph-2:focus::-moz-placeholder {
     color: #696e71; }
   .input--ph-2:focus::-webkit-input-placeholder {
@@ -3170,14 +3235,21 @@ input:focus, button:focus {
 
 .input--ph-3 {
   font-weight: 300; }
-  .input--ph-3:-moz-placeholder {
-    color: #afb5b9; }
   .input--ph-3::-moz-placeholder {
     color: #afb5b9; }
   .input--ph-3::-webkit-input-placeholder {
     color: #afb5b9; }
   .input--ph-3:-ms-input-placeholder {
     color: #afb5b9; }
+
+.input--ph-error, .textarea--ph-error {
+  font-weight: 300; }
+  .input--ph-error::-moz-placeholder, .textarea--ph-error::-moz-placeholder {
+    color: #c06057; }
+  .input--ph-error::-webkit-input-placeholder, .textarea--ph-error::-webkit-input-placeholder {
+    color: #c06057; }
+  .input--ph-error:-ms-input-placeholder, .textarea--ph-error:-ms-input-placeholder {
+    color: #c06057; }
 
 /* Button Styles
  *
@@ -3189,19 +3261,18 @@ input:focus, button:focus {
   opacity: 0.5; }
 
 /* Header Buttons */
-.btn--header-primary:active {
-  background: #086ba9 !important; }
-
-.btn--header-secondary:active {
-  background: #555555 !important; }
+.btn--header-primary:active, .btn--header-secondary:active {
+  background: rgba(0, 0, 0, 0.21) !important; }
 
 /* Standard Buttons */
 .btn--primary:active {
-  background: #278ac7 !important;
+  background: #1378b7 !important;
+  -webkit-box-shadow: none !important;
   box-shadow: none !important; }
 
 .btn--secondary:active {
-  background: #e9e9e9 !important;
+  background: #edeff0 !important;
+  -webkit-box-shadow: none !important;
   box-shadow: none !important; }
 
 /*
@@ -3212,30 +3283,29 @@ input:focus, button:focus {
 <hr class="man pan hr hr-1">
 
     <header class="bg-anchor tc ptm">
-      <div class="icon icon--d icon--{{anchorDarkIcon}} sq-60"></div>
-      <h1 class="f1 wht text-shadow man">
-        {{anchorDarkTitle}}
+      <div class="icon icon--d icon--{{anchordarkicon}} sq-60"></div>
+      <h1 class="f1 text-color-5 man">
+        {{anchordarktitle}}
       </h1>
-      <h2 class="f3 text-color-3 text-shadow man pbm">
-        {{anchorDarkDescription}}
+      <h2 class="f3 text-color-5 opacity-40 man pbm">
+        {{anchordarkdescription}}
       </h2>
-      <ul class="list-horizontal grid bg-5 wht font-size-icon lh-44 border-top border-top--4 phm"
-          role="menubar">
-        <li class="size-1of3 grid-cell tc">
-          <a href="javascript: void(0)" title="Email" role="menuitem">
-            <span class="icon-utility-email wht active-dim"></span>
+      <ul class="list-horizontal grid bg-5 ht-44 f2" role="menubar">
+        <li class="size-1of3 grid-cell lh-44 tc">
+          <a href="javascript: void(0)" title="Email" class="ptxs" role="menuitem">
+            <span class="icon-utility-email sq-20 text-color-5 active-dim"></span>
             <span class="tha">email</span>
           </a>
         </li>
-        <li class="size-1of3 grid-cell tc">
-          <a href="javascript: void(0)" title="Call" role="menuitem">
-            <span class="icon-utility-call wht active-dim"></span>
+        <li class="size-1of3 grid-cell lh-44 tc">
+          <a href="javascript: void(0)" title="Call" class="ptxs" role="menuitem">
+            <span class="icon-utility-call sq-20 text-color-5 active-dim"></span>
             <span class="tha">call</span>
           </a>
         </li>
-        <li class="size-1of3 grid-cell tc">
-          <a href="javascript: void(0)" title="Map" role="menuitem">
-            <span class="icon-utility-location wht active-dim"></span>
+        <li class="size-1of3 grid-cell lh-44 tc">
+          <a href="javascript: void(0)" title="Map" class="ptxs" role="menuitem">
+            <span class="icon-utility-location sq-20 text-color-5 active-dim"></span>
             <span class="tha">map</span>
           </a>
         </li>
@@ -3252,17 +3322,17 @@ input:focus, button:focus {
 <p><span class="component-subtype">Default</span></p>
 
     <header class="bg-1 border-bottom border--3">
-      <div class="icon icon--{{anchorLightIcon}} bgs-100 a-mid mhm sq-30"></div>
+      <div class="icon icon--{{anchorlighticon}} brs bgs-100 a-mid mhm sq-30"></div>
       <h1 class="dib thin a-mid">
         <span class="db f6 lower">
-          {{anchorLightLabel}}
+          {{anchorlightlabel}}
         </span>
         <span class="db f3 text-color-1">
-          {{anchorLightTitle}}
+          {{anchorlighttitle}}
         </span>
       </h1>
-      <button class="btn btn--secondary bg-secondary-btn brm pvs phm border border--2 fr mrm mvm text-color-4 f4 fw-semibold">
-          {{anchorLightButtonLabel}}
+      <button class="btn btn--secondary bg-secondary-btn brm pvs phm border border--3 fr mrm mvm text-color-4 f4 fw-semibold">
+          {{anchorlightbuttonlabel}}
       </button>
     </header>
 
@@ -3271,17 +3341,17 @@ input:focus, button:focus {
 <p><span class="component-subtype">Label on Bottom</span></p>
 
     <header class="bg-1 border-bottom border--3">
-      <div class="icon icon--{{anchorLightBottomIcon}} bgs-100 a-mid mhm sq-30"></div>
+      <div class="icon icon--{{anchorlightbottomicon}} brs bgs-100 a-mid mhm sq-30"></div>
       <h1 class="dib thin a-mid">
         <span class="db f3 text-color-1">
-          {{anchorLightBottomTitle}}
+          {{anchorlightbottomtitle}}
         </span>
         <span class="db f6 lower">
-          {{anchorLightBottomLabel}}
+          {{anchorlightbottomlabel}}
         </span>
       </h1>
-      <button class="btn btn--secondary bg-secondary-btn brm pvs phm border border--2 fr mrm mvm text-color-4 f4 fw-semibold">
-          {{anchorLightButtonBottomLabel}}
+      <button class="btn btn--secondary bg-secondary-btn brm pvs phm border border--3 fr mrm mvm text-color-4 f4 fw-semibold">
+          {{anchorlightbuttonbottomlabel}}
       </button>
     </header>
 
@@ -3290,13 +3360,13 @@ input:focus, button:focus {
 <p><span class="component-subtype">No Background</span></p>
 
     <header class="bg-2">
-      <div class="icon icon--{{anchorLightNoBGIcon}} bgs-100 a-mid mhm sq-30"></div>
+      <div class="icon icon--{{anchorlightnobgicon}} brs bgs-100 a-mid mhm sq-30"></div>
       <h1 class="dib thin a-mid">
         <span class="db f3 text-color-1">
-          {{anchorLightNoBGTitle}}
+          {{anchorlightnobgtitle}}
         </span>
         <span class="db f6 lower">
-          {{anchorLightNoBGLabel}}
+          {{anchorlightnobglabel}}
         </span>
       </h1>
     </header>
@@ -3310,15 +3380,15 @@ input:focus, button:focus {
 <hr class="man pan hr hr-1">
 <p><span class="component-subtype">Default</span></p>
 
-    <img src="{{avatarImage}}" width="45" height="45" alt="gt" class="brm">
+    <img src="{{avatarimage}}" width="45" height="45" alt="gt" class="brm">
 
 */
 /*
 
-<p><span class="component-subtype">Following</span></p>
+<p><span class="component-subtype">Attending</span></p>
 
     <div class="pos-rel sq-30">
-      <img src="{{avatarFollowingImage}}" width="30" height="30" alt="gt" class="brm">
+      <img src="{{avatarfollowingimage}}" width="30" height="30" alt="gt" class="brm">
       <img src="assets/icons/feed/checkmark_badge.png" class="avatar-badge pos-abs" alt="following">
     </div>
 
@@ -3336,8 +3406,8 @@ input:focus, button:focus {
 <hr class="man pan hr hr-1">
 <p><span class="component-subtype">Default</span></p>
 
-    <button class="btn bg-primary-btn btn--primary pvs size-full brm border border--1 wht f3 fw-semibold">
-      {{buttonPrimaryLabel}}
+    <button class="btn bg-primary-btn btn--primary pvs size-full brm no-border">
+      <span class="text-color-5 f3 fw-semibold">{{buttonprimarylabel}}</span>
     </button>
 
 */
@@ -3345,8 +3415,8 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Disabled</span></p>
 
-    <button disabled class="btn bg-primary-btn btn--primary pvs size-full brm border border--1">
-      <span class="wht f3 fw-semibold">Primary Button</span>
+    <button disabled class="btn bg-primary-btn btn--primary pvs size-full brm no-border">
+      <span class="text-color-5 f3 fw-semibold">Primary Button</span>
     </button>
 
 */
@@ -3359,8 +3429,8 @@ input:focus, button:focus {
 <hr class="man pan hr hr-1">
 <p><span class="component-subtype">Default</span></p>
 
-    <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2 text-color-4 f3 fw-semibold">
-      {{buttonSecondaryLabel}}
+    <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3">
+      <span class="text-color-4 f3 fw-semibold">{{buttonsecondarylabel}}</span>
     </button>
 
 */
@@ -3368,7 +3438,7 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Disabled</span></p>
 
-    <button disabled class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2">
+    <button disabled class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3">
       <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
     </button>
 
@@ -3382,12 +3452,12 @@ input:focus, button:focus {
 <hr class="man pan hr hr-1">
 
 		<div class="phm">
-			<button class="btn bg-secondary-btn btn--secondary pvs phx fr mlm brm border border--2">
+			<button class="btn bg-secondary-btn btn--secondary pvs phx fr mlm brm border border--3">
 				<span class="text-color-4 icon-utility-down f3 fw-semibold"></span>
 			</button>
 			<div class="size-fill">
-				<button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2 text-color-4 f3 fw-semibold">
-				{{buttonGroupLabel}}
+				<button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3">
+					<span class="text-color-4 f3 fw-semibold">{{buttongrouplabel}}</span>
 				</button>
 			</div>
 		</div>
@@ -3419,14 +3489,12 @@ input:focus, button:focus {
         <a class="fl" title="Left">
           <span class="text-color-2 f4 lh-20 icon-utility-left"></span>
         </a>
-        <a class="fr" title="Right" >
+        <a class="fr" title="Right">
           <span class="text-color-2 f4 lh-20 icon-utility-right"></span>
         </a>
-        <h1 class="text-color-1 dib man fw-bold f3">
-          March 2013
-        </h1>
+        <h1 class="text-color-1 dib man fw-bold f3">March 2014</h1>
       </caption>
-      <thead class="border-bottom border--3 f6 text-color-2 caps bg-2">
+      <thead class="bg-2 text-color-2 caps f6">
         <tr>
           <th class="fw-normal pbs tc">Sun</th>
           <th class="fw-normal pbs tc">Mon</th>
@@ -3437,7 +3505,7 @@ input:focus, button:focus {
           <th class="fw-normal pbs tc">Sat</th>
         </tr>
       </thead>
-      <tbody class="bg-1 f2 border-bottom border--3 tc">
+      <tbody class="bg-1 f2 tc">
         <tr class="cal-row">
           <td class="cal-cell cal-cell--top pvm fw-normal text-color-2 bg-3">24</td>
           <td class="cal-cell cal-cell--top pvm fw-normal text-color-2 bg-3">25</td>
@@ -3503,32 +3571,22 @@ input:focus, button:focus {
   border-collapse: collapse; }
 
 .cal-cell {
-  border: 1px solid #eceef0; }
+  border: 1px solid #edeff0; }
   .cal-cell:hover {
     cursor: pointer; }
   .cal-cell:active {
     color: white;
     background-color: #3f9fd9;
-    /* {1} */
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3f9fd9), to(#2789c7));
-    /* {2} */
-    background-image: -webkit-linear-gradient(top, #3f9fd9, #2789c7);
-    /* {3} */
-    background-image: -moz-linear-gradient(top, #3f9fd9, #2789c7);
-    /* {4} */
-    background-image: -ms-linear-gradient(top, #3f9fd9, #2789c7);
-    /* {5} */
-    background-image: -o-linear-gradient(top, #3f9fd9, #2789c7);
-    /* {6} */ }
+    /* {1} */ }
 
 .cal-row:last-child {
   border-right-width: 0; }
 
 .cal-cell--top {
-  border-top-color: #cfd4d9 !important; }
+  border-top-color: #dfe0e1 !important; }
 
 .cal-cell--bot {
-  border-bottom-color: #cfd4d9; }
+  border-bottom-color: #dfe0e1; }
 
 /*
 
@@ -3540,21 +3598,21 @@ input:focus, button:focus {
 <p><span class="component-subtype">Related List</span></p>
 
     <article class="mam bg-1 border border--3 brm">
-      <header class="clear pam border-bottom border--8">
+      <header class="clear pam border-bottom border--5">
         <h1 class="fl man fw-normal f5 text-color-1">Contacts</h1>
         <a href="javascript:void(0)" title="More" class="fr">
-          <span class="fl f5">More</span>
-          <span class="lh-16 fl mls f6 text-color-2 icon-utility-right"></span>
+          <span class="fl f5 text-color-1">More</span>
+          <span class="lh-16 fl mls f6 text-color-3 icon-utility-right"></span>
         </a>
       </header>
       <ul class="man pan list-plain">
-        <li class="pam border-bottom border--8">
+        <li class="pam border-bottom border--5">
           <div class="mbs flag flag--rev">
             <div class="flag--body">
               <span class="f3 text-color-1 fw-semibold">Jonathan Perilla-Jones</span>
             </div>
             <div class="flag--image prm">
-							<div class="icon icon--contact bgs-100 a-mid sq-30"></div>
+							<div class="icon icon--contact brs bgs-100 a-mid sq-30"></div>
             </div>
           </div>
           <ul class="list-plain man pan">
@@ -3563,13 +3621,13 @@ input:focus, button:focus {
             <li class="f5 text-color-2">(415)432-5456</li>
           </ul>
         </li>
-        <li class="pam border-bottom border--8">
+        <li class="pam border-bottom border--5">
           <div class="mbs flag flag--rev">
             <div class="flag--body">
               <span class="f3 text-color-1 fw-semibold">Jonathan Perilla-Jones</span>
             </div>
             <div class="flag--image prm">
-							<div class="icon icon--contact bgs-100 a-mid sq-30"></div>
+							<div class="icon icon--contact brs bgs-100 a-mid sq-30"></div>
             </div>
           </div>
           <ul class="list-plain man pan">
@@ -3584,7 +3642,7 @@ input:focus, button:focus {
               <span class="f3 text-color-1 fw-semibold">Jonathan Perilla-Jones</span>
             </div>
             <div class="flag--image prm">
-							<div class="icon icon--contact bgs-100 a-mid sq-30"></div>
+							<div class="icon icon--contact brs bgs-100 a-mid sq-30"></div>
             </div>
           </div>
           <ul class="list-plain man pan">
@@ -3602,11 +3660,11 @@ input:focus, button:focus {
 
     <article class="mam bg-1 border border--3 pam brm">
 			<h1 class="man f3 text-color-1 fw-semibold">
-				{{accountCardTitle}}
+				{{accountcardtitle}}
 			</h1>
       <ul class="list-plain man pan">
-        <li class="f5 text-color-2">{{accountCardDetail1}}</li>
-        <li class="f5 text-color-2">{{accountCardDetail2}}</li>
+        <li class="f5 text-color-2">{{accountcarddetail1}}</li>
+        <li class="f5 text-color-2">{{accountcarddetail2}}</li>
       </ul>
     </article>
 
@@ -3616,11 +3674,11 @@ input:focus, button:focus {
 
     <article class="mam bg-1 border border--3 pam brm">
 			<h1 class="mtn mbs f3 text-color-1 fw-semibold">
-				{{caseCardTitle}}
+				{{casecardtitle}}
 			</h1>
       <ul class="clear list-plain man pan">
-        <li class="fl f5 text-color-2">{{caseCardDetail1}} &#8226; {{caseCardDetail2}}</li>
-        <li class="fr f5 text-color-2">#{{caseCardDetail3}}</li>
+        <li class="fl f5 text-color-2">{{casecarddetail1}} &#8226; {{casecarddetail2}}</li>
+        <li class="fr f5 text-color-2">#{{casecarddetail3}}</li>
       </ul>
     </article>
 
@@ -3631,13 +3689,13 @@ input:focus, button:focus {
     <article class="mam bg-1 border border--3 pam brm">
       <div class="flag">
         <div class="flag--image prm">
-					<div class="icon icon--{{chatterCardIcon}} bgs-100 a-mid sq-30"></div>
+					<div class="icon icon--{{chattercardicon}} brs bgs-100 a-mid sq-30"></div>
         </div>
         <div class="flag--body">
           <h1 class="man f3 text-color-1 fw-semibold">
-            {{chatterCardTitle}}
+            {{chattercardtitle}}
           </h1>
-					<p class="man f5 text-color-2">{{chatterCardDetail1}}</li>
+					<p class="man f5 text-color-2">{{chattercarddetail1}}</li>
         </div>
       </div>
     </article>
@@ -3650,17 +3708,17 @@ input:focus, button:focus {
       <div class="mbs flag flag--rev">
         <div class="flag--body">
           <h1 class="man f3 text-color-1 fw-semibold">
-            {{contactCardTitle}}
+            {{contactcardtitle}}
           </h1>
         </div>
         <div class="flag--image prm">
-					<div class="icon icon--{{contactCardIcon}} bgs-100 a-mid sq-30"></div>
+					<div class="icon icon--{{contactcardicon}} brs bgs-100 a-mid sq-30"></div>
         </div>
       </div>
       <ul class="list-plain man pan">
-        <li class="f5 text-color-2">{{contactCardDetail1}}</li>
-        <li class="f5 text-color-2">{{contactCardDetail2}}</li>
-        <li class="f5 text-color-2">{{contactCardDetail3}}</li>
+        <li class="f5 text-color-2">{{contactcarddetail1}}</li>
+        <li class="f5 text-color-2">{{contactcarddetail2}}</li>
+        <li class="f5 text-color-2">{{contactcarddetail3}}</li>
       </ul>
     </article>
 
@@ -3671,17 +3729,17 @@ input:focus, button:focus {
     <article class="mam bg-1 border border--3 pam brm">
       <div class="flag flag--top">
         <div class="flag--image prm">
-					<img class="ht-30" src="assets/icons/doctype/{{fileCardIcon}}_120.png">
+					<img class="ht-30" src="assets/icons/doctype/{{filecardicon}}_120.png">
         </div>
         <div class="flag--body">
           <h1 class="man f3 text-color-1 fw-semibold">
-            {{fileCardTitle}}
+            {{filecardtitle}}
           </h1>
 					<ul class="list-plain man pan">
-						<li class="f5 text-color-2">{{fileCardDetail1}}</li>
-						<li class="dib f5 text-color-2">{{fileCardDetail2}} &#8226; </li>
-						<li class="dib f5 text-color-2">{{fileCardDetail3}} &#8226; </li>
-						<li class="dib f5 text-color-2">{{fileCardDetail4}}</li>
+						<li class="f5 text-color-2">{{filecarddetail1}}</li>
+						<li class="dib f5 text-color-2">{{filecarddetail2}} &#8226; </li>
+						<li class="dib f5 text-color-2">{{filecarddetail3}} &#8226; </li>
+						<li class="dib f5 text-color-2">{{filecarddetail4}}</li>
 					</ul>
         </div>
       </div>
@@ -3693,12 +3751,12 @@ input:focus, button:focus {
 
     <article class="mam bg-1 border border--3 pam brm">
 			<h1 class="man f3 text-color-1 fw-semibold">
-				{{opptyCardTitle}}
+				{{opptycardtitle}}
 			</h1>
       <ul class="clear list-plain man pan">
-        <li class="mbs f5 text-color-2">{{opptyCardDetail1}} &#8226; {{opptyCardDetail2}}</li>
-        <li class="fl f3 text-color-1">${{opptyCardDetail3}}</li>
-        <li class="fr f3 text-color-1">{{opptyCardDetail4}}</li>
+        <li class="mbs f5 text-color-2">{{opptycarddetail1}} &#8226; {{opptycarddetail2}}</li>
+        <li class="fl f3 text-color-1">${{opptycarddetail3}}</li>
+        <li class="fr f3 text-color-1">{{opptycarddetail4}}</li>
       </ul>
     </article>
 
@@ -3708,17 +3766,17 @@ input:focus, button:focus {
 
     <article class="mam bg-1 border border--3 pam brm">
 			<h1 class="mtn mbs f3 text-color-1 fw-semibold">
-				{{customCardTitle}}
+				{{customcardtitle}}
 			</h1>
       <dl class="clear list-plain man pan">
-				<dt class="fl wid-third text-truncate f5 text-color-2">{{customCardLabel1}}</dt>
-        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{customCardDetail1}}</dd>
-				<dt class="cl wid-third fl text-truncate f5 text-color-2">{{customCardLabel2}}</dt>
-        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{customCardDetail2}}</dd>
-				<dt class="cl wid-third fl text-truncate f5 text-color-2">{{customCardLabel3}}</dt>
-        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{customCardDetail3}}</dd>
-				<dt class="cl wid-third fl text-truncate f5 text-color-2">{{customCardLabel4}}</dt>
-        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{customCardDetail4}}</dd>
+				<dt class="fl wid-third text-truncate f5 text-color-2">{{customcardlabel1}}</dt>
+        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{customcarddetail1}}</dd>
+				<dt class="cl wid-third fl text-truncate f5 text-color-2">{{customcardlabel2}}</dt>
+        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{customcarddetail2}}</dd>
+				<dt class="cl wid-third fl text-truncate f5 text-color-2">{{customcardlabel3}}</dt>
+        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{customcarddetail3}}</dd>
+				<dt class="cl wid-third fl text-truncate f5 text-color-2">{{customcardlabel4}}</dt>
+        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{customcarddetail4}}</dd>
       </dl>
     </article>
 
@@ -3732,21 +3790,21 @@ input:focus, button:focus {
 					<input
 						class="checkbox checkbox--default checkbox--states-1 brm bg-secondary-btn sq-22 a-mid dib"
 						type="checkbox"
-						id="filter-1">
+						id="task-1">
 				</div>
 				<div class="flag--body">
-					<label for="filter-1">
+					<label for="task-1">
 						<h1 class="dib man f3 text-color-1">
-							{{taskCardTitle}}
+							{{taskcardtitle}}
 						</h1>
 						<ul class="clear list-plain man pan">
-							<li class="f5 text-truncate text-color-2">{{taskCardDetail1}}</li>
-							<li class="f5 text-truncate text-color-2">{{taskCardDetail2}}</li>
+							<li class="f5 text-truncate text-color-2">{{taskcarddetail1}}</li>
+							<li class="f5 text-truncate text-color-2">{{taskcarddetail2}}</li>
 						</ul>
 					</label>
 				</div>
 				<div class="prn plm flag--image">
-					<time datetime="2009-02-21" class="f6 text-color-2">{{taskCardDetail3}}</time>
+					<time datetime="2009-02-21" class="f6 text-color-2">{{taskcarddetail3}}</time>
 				</div>
 			</div>
     </article>
@@ -3756,36 +3814,35 @@ input:focus, button:focus {
 <p><span class="component-subtype">Event</span></p>
 
     <article class="mam bg-1 border border--3 pam brm">
-			<time datetime="10:00" class="f1 text-color-2 dib mrs">{{eventCardTime}}</time>
-			<span class="f6 text-color-2 mbs dib">{{eventCardDuration}}</span>
+			<time datetime="10:00" class="f1 text-color-1 dib mrs">{{eventcardtime}}</time>
+			<span class="f6 text-color-2 mbs dib">{{eventcardduration}}</span>
 			<h1 class="man f3 text-color-1 fw-semibold">
 				<a href="javascript:void(0)">
-					{{eventCardTitle}}
+					{{eventcardtitle}}
 				</a>
 			</h1>
 			<p class="mtn mbm f4 text-color-2 text-truncate">
-				{{eventCardDetail1}}
+				{{eventcarddetail1}}
 			</p>
 			<hr class="hr hr--2">
       <ul class="list-plain man pan">
-        <li class="text-truncate f5 text-color-2">{{eventCardDetail2}}</li>
-        <li class="text-truncate f5 text-color-2">{{eventCardDetail3}}</li>
+        <li class="text-truncate f5 text-color-2">{{eventcarddetail2}}</li>
+        <li class="text-truncate f5 text-color-2">{{eventcarddetail3}}</li>
       </ul>
     </article>
 
 */
 /*
-<p><span class="component-subtype">List</span></p>
+<p><span class="component-subtype">List header</span></p>
 
     <article class="mam bg-1 border border--3 brm">
-      <header class="clear pam border-bottom border--8">
-        <h1 class="fl man fw-normal f5 text-color-1">{{cardListLabel}}</h1>
+      <header class="pam ht-44 clear">
+        <h1 class="fl man fw-normal f5 text-color-1">{{cardlistlabel}}</h1>
         <a href="javascript:void(0)" title="More" class="fr">
           <span class="fl f5">More</span>
-          <span class="lh-16 fl mls f6 text-color-2 icon-utility-right"></span>
+          <span class="fl lh-20 mlxs f6 text-color-3 icon-utility-right"></span>
         </a>
       </header>
-      <ul class="man pan list-plain" ng-transclude></ul>
     </article>
 */
 /*
@@ -3795,30 +3852,32 @@ input:focus, button:focus {
 <p class="component-description">Checkboxes are visual representations of a boolean field, where the value is either true or false.</p>
 <hr class="man pan hr hr-1">
 
-    <div class="mbm db">
-      <input
-        class="checkbox checkbox--default checkbox--states-1 brm mrs bg-secondary-btn sq-22 a-mid dib"
-        type="checkbox"
-        id="filter-1">
-      <label class="f4 text-color-1" for="filter-1">
-        {{checkboxLabel}}
-      </label>
-    </div>
+    <section>
+      <article class="mbm db">
+        <input type="checkbox" class="checkbox checkbox--default checkbox--states-1 brm mrs bg-secondary-btn sq-22 a-mid dib" id="checkbox-1a" checked>
+        <label class="f4 text-color-1" for="checkbox-1a">{{checkboxlabel}}</label>
+      </article>
+      <article class="db">
+        <input type="checkbox" class="checkbox checkbox--default checkbox--states-1 brm mrs bg-secondary-btn sq-22 a-mid dib" id="checkbox-2a">
+        <label class="f4 text-color-1" for="checkbox-2a">{{checkboxlabel}}</label>
+      </article>
+    </section>
 
 */
 /*
 
 <p><span class="component-subtype">Disabled</span></p>
 
-    <div class="mbm db">
-      <input disabled
-        class="checkbox checkbox--default checkbox--states-1 brm mrs bg-secondary-btn sq-22 a-mid clear dib"
-        type="checkbox"
-        id="filter-2">
-      <label class="f4 text-color-1" for="filter-2">
-        Filter 2 (Disabled)
-      </label>
-    </div>
+    <section>
+      <article class="mbm db">
+        <input type="checkbox" class="checkbox checkbox--default checkbox--states-1 brm mrs bg-secondary-btn sq-22 a-mid clear dib" id="checkbox-1b" checked>
+        <label class="f4 text-color-1" for="checkbox-1b">Filter 2</label>
+      </article>
+      <article class="db">
+        <input type="checkbox" class="checkbox checkbox--default checkbox--states-1 brm mrs bg-secondary-btn sq-22 a-mid clear dib" id="checkbox-2b" disabled>
+        <label class="f4 text-color-1" for="checkbox-2b">Filter 2 (Disabled)</label>
+      </article>
+    </section>
 
 */
 /*
@@ -3830,11 +3889,11 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Default</span></p>
 
-    <footer class="bg-generic-1 ht-44 ds-1b" role="group">
-      <a href="javascript:void(0)" title="close" class="btn--secondary brm border bg-secondary-btn border--2 fl mts mls ht-30 phs">
+    <footer class="border-top border--3 bg-generic-1 ht-44 " role="group">
+      <a href="javascript:void(0)" title="close" class="btn--secondary brm border bg-secondary-btn border--transparent fl mts mls ht-30 phs">
         <span class="text-color-4 f4 icon-utility-adduser lh-30"></span>
       </a>
-      <a href="javascript:void(0)" title="close" class="btn--primary brm border bg-primary-btn border--1 fr mts mrs ht-30 phs">
+      <a href="javascript:void(0)" title="close" class="btn--primary brm border bg-primary-btn border--transparent fr mts mrs ht-30 phs">
         <span class="wht fw-semibold f5 lh-30">Send</span>
       </a>
       <div class="pos-rel size-fill phs pvs">
@@ -3853,14 +3912,14 @@ input:focus, button:focus {
 /*
 <p><span class="component-subtype">With Warning</span></p>
 
-    <p class="border-top border-bottom border--3 bg-7 pas man f6 text-color-1">
+    <p class="border-top border-bottom border--3 bg-generic-1 pas man f6 text-color-1">
         This is an example of a warning message that appears inside the composer screen.
     </p>
     <footer class="ht-44 bg-generic-1" role="group">
-      <a href="javascript:void(0)" title="close" class="btn--secondary brm border bg-secondary-btn border--2 fl mts mls ht-30 phs">
+      <a href="javascript:void(0)" title="close" class="btn--secondary brm border bg-secondary-btn border--transparent fl mts mls ht-30 phs">
         <span class="text-color-4 f4 icon-utility-adduser lh-30"></span>
       </a>
-      <a href="javascript:void(0)" title="close" class="btn--primary brm border bg-primary-btn border--1 fr mts mrs ht-30 phs">
+      <a href="javascript:void(0)" title="close" class="btn--primary brm border bg-primary-btn border--transparent fr mts mrs ht-30 phs">
         <span class="wht fw-semibold f5 lh-30">Send</span>
       </a>
       <div class="pos-rel size-fill phs pvs">
@@ -3871,7 +3930,7 @@ input:focus, button:focus {
           type="text"
           name="default"
           placeholder="Write a comment..."
-          class="input input--white input--ph-1 input--focus-1 size-full phs ht-30">
+          class="size-full phs ht-30 input input--white input--ph-1 input--focus-1">
       </div>
     </footer>
 
@@ -3885,24 +3944,24 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Default</span></p>
 
-    <ul class="list-plain man pan brm bg-1 border border--3 ds-2">
-      <li class="brtopm active--list-3 pam border-bottom border--8">
-        <span class="f4 text-color-1">{{dropdownDefaultItem1}}</span>
+    <ul class="list-plain man pan brm bg-1 border border--3">
+      <li class="brtopm active--list-3 pam border-bottom border--5">
+        <span class="f4 text-color-1">{{dropdowndefaultitem1}}</span>
       </li>
-      <li class="active--list-3 pam border-bottom border--8">
-        <span class="f4 text-color-1">{{dropdownDefaultItem2}}</span>
+      <li class="active--list-3 pam border-bottom border--5">
+        <span class="f4 text-color-1">{{dropdowndefaultitem2}}</span>
       </li>
-      <li class="active--list-3 pam border-bottom border--8">
-        <span class="f4 text-color-1">{{dropdownDefaultItem3}}</span>
+      <li class="active--list-3 pam border-bottom border--5">
+        <span class="f4 text-color-1">{{dropdowndefaultitem3}}</span>
       </li>
-      <li class="active--list-3 pam border-bottom border--8">
-        <span class="f4 text-color-1">{{dropdownDefaultItem4}}</span>
+      <li class="active--list-3 pam border-bottom border--5">
+        <span class="f4 text-color-1">{{dropdowndefaultitem4}}</span>
       </li>
-      <li class="active--list-3 pam border-bottom border--8">
-        <span class="f4 text-color-1">{{dropdownDefaultItem5}}</span>
+      <li class="active--list-3 pam border-bottom border--5">
+        <span class="f4 text-color-1">{{dropdowndefaultitem5}}</span>
       </li>
       <li class="brbotm active--list-3 pam">
-        <span class="f4 text-color-1">{{dropdownDefaultItem6}}</span>
+        <span class="f4 text-color-1">{{dropdowndefaultitem6}}</span>
       </li>
     </ul>
 
@@ -3910,64 +3969,64 @@ input:focus, button:focus {
 /*
 <p><span class="component-subtype">With Photo</span></p>
 
-    <ul class="man pan brm bg-1 border border--3 ds-2">
-      <li class="brtopm db active--list-3 pam border-bottom border--8">
+    <ul class="man pan brm bg-1 border border--3">
+      <li class="brtopm db active--list-3 pam border-bottom border--5">
         <div class="flag">
           <div class="flag--image prm">
-            <img src="{{dropdownWithPhotoImage1}}" class="brm" alt="kitten">
+            <img src="{{dropdownwithphotoimage}}" class="brm" alt="gt" width="25" height="25">
           </div>
           <div class="flag--body">
-            <span class="f4 text-color-1">{{dropdownWithPhotoItem1}}</span>
+            <span class="f4 text-color-1">{{dropdownwithphotoitem1}}</span>
           </div>
         </div>
       </li>
-      <li class="db active--list-3 pam border-bottom border--8">
+      <li class="db active--list-3 pam border-bottom border--5">
         <div class="flag">
           <div class="flag--image prm">
-            <img src="{{dropdownWithPhotoImage2}}" class="brm" alt="kitten">
+            <img src="{{dropdownwithphotoimage}}" class="brm" alt="gt" width="25" height="25">
           </div>
           <div class="flag--body">
-            <span class="f4 text-color-1">{{dropdownWithPhotoItem2}}</span>
+            <span class="f4 text-color-1">{{dropdownwithphotoitem2}}</span>
           </div>
         </div>
       </li>
-      <li class="db active--list-3 pam border-bottom border--8">
+      <li class="db active--list-3 pam border-bottom border--5">
         <div class="flag">
           <div class="flag--image prm">
-            <img src="{{dropdownWithPhotoImage3}}" class="brm" alt="kitten">
+            <img src="{{dropdownwithphotoimage}}" class="brm" alt="gt" width="25" height="25">
           </div>
           <div class="flag--body">
-            <span class="f4 text-color-1">{{dropdownWithPhotoItem3}}</span>
+            <span class="f4 text-color-1">{{dropdownwithphotoitem3}}</span>
           </div>
         </div>
       </li>
-      <li class="db active--list-3 pam border-bottom border--8">
+      <li class="db active--list-3 pam border-bottom border--5">
         <div class="flag">
           <div class="flag--image prm">
-            <img src="{{dropdownWithPhotoImage4}}" class="brm" alt="kitten">
+            <img src="{{dropdownwithphotoimage}}" class="brm" alt="gt" width="25" height="25">
           </div>
           <div class="flag--body">
-            <span class="f4 text-color-1">{{dropdownWithPhotoItem4}}</span>
+            <span class="f4 text-color-1">{{dropdownwithphotoitem4}}</span>
           </div>
         </div>
       </li>
-      <li class="db active--list-3 pam border-bottom border--8">
+      <li class="db active--list-3 pam border-bottom border--5">
         <div class="flag">
           <div class="flag--image prm">
-            <img src="{{dropdownWithPhotoImage5}}" class="brm" alt="kitten">
+            <img src="{{dropdownwithphotoimage}}" class="brm" alt="gt" width="25" height="25">
           </div>
           <div class="flag--body">
-            <span class="f4 text-color-1">{{dropdownWithPhotoItem5}}</span>
+            <span class="f4 text-color-1">{{dropdownwithphotoitem5}}</span>
           </div>
         </div>
       </li>
       <li class="brbotm db active--list-3 pam">
         <div class="flag">
           <div class="flag--image prm">
-            <img src="{{dropdownWithPhotoImage6}}" class="brm" alt="kitten">
+            <img src="{{dropdownwithphotoimage}}" class="brm" alt="gt" width="25" height="25">
           </div>
           <div class="flag--body">
-            <span class="f4 text-color-1">{{dropdownWithPhotoItem6}}</span>
+            <span class="f4 text-color-1">{{dropdownwithphotoitem6}}</span>
           </div>
         </div>
       </li>
@@ -4029,10 +4088,10 @@ input:focus, button:focus {
         I am desperate for your approval and appreciation.
         Shower me with love and affection. Fishing for compliments here.
       </p>
-      <article class="brm border border--4 bg-3 pam">
+      <article class="brm border border--3 bg-3 pam">
         <div class="flag">
           <div class="flag--image prm">
-            <img src="assets/icons/doctype/excel_120.png" class="sq-30" alt="excel">
+            <img src="assets/icons/doctype/excel_120.png" class="ht-30" alt="excel">
           </div>
           <div class="flag--body">
             <span class="f4 text-color-1 db">photo.pdf</span>
@@ -4095,28 +4154,28 @@ input:focus, button:focus {
     <article class="mam bg-1 brm border border--3">
       <div class="flag pam">
         <div class="flag--image prm">
-          <img src="{{feedItemActorImage}}" width="45" height="45" alt="gt" class="brm">
+          <img src="{{feeditemactorimage}}" width="45" height="45" alt="gt" class="brm">
         </div>
         <div class="flag--body">
-          <a href="javascript:void(0)" name="actor" title="{{feedItemActor}}" class="fw-semibold f3 db">
-            {{feedItemActor}}
+          <a href="javascript:void(0)" name="actor" title="{{feeditemactor}}" class="fw-semibold f3 db">
+            {{feeditemactor}}
           </a>
           <time class="db f6 text-color-2" datetime="2013-11-13">
-            {{feedItemTimestamp}}
+            {{feeditemtimestamp}}
           </time>
         </div>
       </div>
       <p class="phm mtn fw-normal f4 text-color-1">
-        {{feedItemBody}}
+        {{feeditembody}}
       </p>
       <div ng-transclude></div>
-      <footer class="clear phm ptm mbm border-top border--3">
+      <footer class="clear pvm phm border-top border--5">
         <a href="javascript:void(0)" name="like" title="Liked" class="f5 fl">
           <span class="dib mrs icon-utility-like f4"></span>
           Liked
         </a>
-        <span class="f5 fr mlm">{{feedItemLikes}}</span>
-        <span class="f5 fr">{{feedItemComments}}</span>
+        <span class="f5 fr mlm">{{feeditemcomments}}</span>
+        <span class="f5 fr">{{feeditemlikes}}</span>
       </footer>
     </article>
 
@@ -4139,7 +4198,7 @@ input:focus, button:focus {
       <p class="phm mtn fw-normal f4 text-color-1">
         Feedback from everyone else is welcome also! Please let me know what you think. I am desperate for your approval and appreciation. Shower me with love and affection. Fishing for compliments here.
       </p>
-      <article class="mhm brm mbm border border--4 bg-3 pam">
+      <article class="mhm brm mbm border border--3 bg-3 pam">
         <div class="flag">
           <div class="flag--image prm">
             <img src="assets/icons/doctype/excel_120.png" class="ht-30" alt="excel">
@@ -4150,13 +4209,13 @@ input:focus, button:focus {
           </div>
         </div>
       </article>
-      <footer class="clear phm ptm mbm border-top border--3">
+      <footer class="clear pvm phm border-top border--5">
         <a href="javascript:void(0)" name="like" title="Like" class="f5 fl">
           <span class="text-color-2 dib mrs icon-utility-like f4"></span>
           <span class="text-color-2">Like</span>
         </a>
-        <span class="f5 fr mlm">3 likes</span>
-        <span class="f5 fr">5 comments</span>
+        <span class="f5 fr mlm">5 comments</span>
+        <span class="f5 fr">3 likes</span>
       </footer>
     </article>
 
@@ -4164,7 +4223,7 @@ input:focus, button:focus {
 /*
 <p><span class="component-subtype">On Drill-In</span></p>
 
-    <article class="bg-1 border-bottom border--3 pos-rel pam">
+    <article class="bg-1 border-bottom border--3 pos-rel ptm phm">
       <img src="assets/icons/feed/favoritepost.png" alt="favorite" class="sq-30 pos-abs corner-tr">
       <a href="javascript:void(0)" class="active-dim pos-abs pax f5 corner-tr">
         <span class="icon-utility-down text-color-1"></span>
@@ -4183,8 +4242,7 @@ input:focus, button:focus {
       <p class="mvm fw-normal f4 text-color-1">
         Feedback from everyone else is welcome also! Please let me know what you think. I am desperate for your approval and appreciation. Shower me with love and affection. Fishing for compliments here.
       </p>
-      <hr class="hr hr--2">
-      <footer class="clear">
+      <footer class="clear pvm border-top border--5">
         <a href="javascript:void(0)" name="like" title="Like" class="f5 fl">
           <span class="text-color-2 dib mrs icon-utility-like f4"></span>
           <span class="text-color-2">Like</span>
@@ -4202,7 +4260,7 @@ input:focus, button:focus {
 <hr class="man pan hr hr-1">
 <p><span class="component-subtype">Primary</span></p>
 
-    <article class="brm border border--4 bg-3 pam">
+    <article class="brm border border--3 bg-3 pam">
       <div class="flag">
         <div class="flag--image prm">
           <img src="assets/icons/doctype/excel_120.png" class="ht-30" alt="excel">
@@ -4222,7 +4280,7 @@ input:focus, button:focus {
 <hr class="man pan hr hr-1">
 <p><span class="component-subtype">Secondary</span></p>
 
-    <article class="brm border border--4 bg-1 pam">
+    <article class="brm border border--3 bg-1 pam">
       <div class="flag">
         <div class="flag--image prm">
           <img src="assets/icons/standard_bg/thanks_120.png" class="sq-30" alt="thanks">
@@ -4242,7 +4300,7 @@ input:focus, button:focus {
 <hr class="man pan hr hr-1">
 <p><span class="component-subtype">Compound</span></p>
 
-    <article class="nbfc brm border border--4">
+    <article class="o-hidden brm border border--3">
       <div class="flag pam bg-3 border-bottom border--8">
         <div class="flag--image prm">
           <img src="assets/icons/standard_bg/opportunity_120.png" class="sq-30" alt="thanks">
@@ -4266,15 +4324,11 @@ input:focus, button:focus {
 <p class="component-description">A file preview in the feed can either be a single image or multiple scrollable images.</p>
 <hr class="man pan hr hr-1">
 
-    <div class="file-preview dropstroke-1 brm">
-      <img src="http://placekitten.com/350/232" width="350" height="220" alt="kitten" class="size-full z-below">
+    <div class="mam pas bg-1 border border--3 brm">
+      <img src="http://placekitten.com/350/232" width="350" height="232" alt="kitten" class="db mw-100p ht-100p">
     </div>
 
 */
-.file-preview {
-  background-image: url('http://placekitten.com/350/232');
-  background-size: 100%; }
-
 /*
 
 ## Footer (Secondary)
@@ -4323,11 +4377,11 @@ input:focus, button:focus {
 <hr class="man pan hr hr-1">
 <p><span class="component-subtype">Default</span></p>
 
-    <header class="bg-global-header brtop ht-44 dropglow-1" role="group">
+    <header class="bg-global-header ht-44" role="group">
       <ul class="fl man pan list-horizontal ht-44">
         <li class="pos-rel fl ht-44">
           <a href="javascript:void(0)" title="Navigation" class="phm ht-44 pam">
-            <span class="icon-utility-{{headerPrimaryLeftIcon}} active--icon-1 text-color-5 "></span>
+            <span class="icon-utility-{{headerprimarylefticon}} active--icon-1 text-color-5 "></span>
             <span class="tha">Navigation</span>
           </a>
         </li>
@@ -4336,7 +4390,7 @@ input:focus, button:focus {
         <li class="pos-rel fl ht-44">
           <a href="javascript:void(0)" title="Notifications" class="phm ht-44 pam">
             <span class="icon-utility-notification active--icon-1 text-color-5 notifications"
-              data-notification-count="{{headerPrimaryNotifications}}">
+              data-notification-count="{{headerprimarynotifications}}">
             </span>
             <span class="tha"> Notifications</span>
           </a>
@@ -4349,7 +4403,7 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Search</span></p>
 
-    <header class="bg-global-header brtop ht-44 dropglow-1" role="group">
+    <header class="bg-global-header ht-44 " role="group">
       <a href="javascript:void(0)" title="Back" class="db mtm fl mlm">
         <span class="icon-utility-back active--icon-1 text-color-5"></span>
       </a>
@@ -4359,7 +4413,7 @@ input:focus, button:focus {
         </label>
         <input type="text"
                name="default"
-               placeholder="{{headerPrimarySearchPlaceholder}}"
+               placeholder="{{headerprimarysearchplaceholder}}"
                class="size-full phs ht-30 input input--header-primary input--ph-2 input--focus-2">
       </div>
     </header>
@@ -4369,16 +4423,16 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Modal</span></p>
 
-    <header class="bg-global-header brtop ht-44 dropglow-1 tc" role="group">
-      <a href="javascript:void(0)" title="{{Close}}"
-         class="btn--header-primary brm border border--header_button bg-global-header-btn fl mts mls phm ht-30 is_1">
-        <span class="text-color-5 lh-30 f6">{{headerPrimaryModalButtonLeft}}</span>
+    <header class="bg-global-header ht-44 tc" role="group">
+      <a href="javascript:void(0)" title="Close"
+         class="btn--header-primary brm bg-global-header-btn fl mts mls phm ht-30 ">
+        <span class="text-color-5 lh-30 f6">{{headerprimarymodalbuttonleft}}</span>
       </a>
       <a href="javascript:void(0)" title="Submit"
-         class="btn--header-primary brm border bg-global-header-btn border--header_button is_1 ht-30 phm pos-rel fr mts mrs">
-        <span class="text-color-5 lh-30 f6">{{headerPrimaryModalButtonRight}}</span>
+         class="btn--header-primary brm bg-global-header-btn ht-30 phm pos-rel fr mts mrs">
+        <span class="text-color-5 lh-30 f6">{{headerprimarymodalbuttonright}}</span>
       </a>
-      <span class="text-color-5 dib lh-44 fw-semibold f3">{{headerPrimaryModalTitle}}</span>
+      <span class="text-color-5 dib lh-44 fw-semibold f3">{{headerprimarymodaltitle}}</span>
     </header>
 
 */
@@ -4391,7 +4445,7 @@ input:focus, button:focus {
   border-radius: 9999px;
   font-family: 'ProximaNova', sans-serif;
   font-size: 12px;
-  background-color: #b15148;
+  background-color: #c06057;
   color: white !important; }
 
 .notifications[data-notification-count=""]:after, .notifications[data-notification-count="0"]:after {
@@ -4406,9 +4460,9 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">File Preview</span></p>
 
-    <header class="bg-secondary-header brtop ht-44 dropglow-1" role="group">
+    <header class="bg-secondary-header ht-44 " role="group">
       <a href="javascript:void(0)" title="close"
-         class="btn--header-secondary brm border bg-secondary-header-btn border--5 fl mts mls ht-30 phm is_1">
+         class="btn--header-secondary brm bg-secondary-header-btn fl mts mls ht-30 phm ">
         <span class="text-color-5 f6 lh-30">Close</span>
       </a>
       <a href="javascript:void(0)" title="info" class="fr mtm mrm">
@@ -4420,10 +4474,10 @@ input:focus, button:focus {
 /*
 <p><span class="component-subtype">Child Browser</span></p>
 
-    <header class="bg-secondary-header brtop ht-44 dropglow-1" role="group">
+    <header class="bg-secondary-header ht-44 " role="group">
       <a href="javascript:void(0)"
          title="close"
-         class="btn--header-secondary brm border bg-secondary-header-btn border--5 fr mts mrs ht-30 phm is_1">
+         class="btn--header-secondary brm bg-secondary-header-btn fr mts mrs ht-30 phm ">
         <span class="text-color-5 f6 lh-30">Close</span>
       </a>
       <div class="pos-rel size-fill phs pvs">
@@ -4433,7 +4487,7 @@ input:focus, button:focus {
         <input type="text"
                name="default"
                value="http://www.salesforce.com"
-               class="size-full phs ht-30 input input--white input--ph-1 input--focus-1">
+               class="size-full phs ht-30 input input--header-secondary input--ph-1 input--focus-1">
       </div>
     </header>
 
@@ -4449,17 +4503,17 @@ input:focus, button:focus {
 
     <ul class="list-horizontal tc mln pln">
       <li class="sq-14 lh-14 a-mid">
-        <a href="javascript:void(0)" class="sq-7 bg-10 brc ig_2" title="Page 1">
+        <a href="javascript:void(0)" class="sq-7 bg-10 brc " title="Page 1">
           <span class="tha">Page 1</span>
         </a>
       </li>
       <li class="sq-14 lh-14 a-mid">
-        <a href="javascript:void(0)" class="sq-7 bg-9 brc is_4" title="Page 2">
+        <a href="javascript:void(0)" class="sq-7 bg-9 brc " title="Page 2">
           <span class="tha">Page 2</span>
         </a>
       </li>
       <li class="sq-14 lh-14 a-mid">
-        <a href="javascript:void(0)" class="sq-7 bg-9 brc is_4" title="Page 3">
+        <a href="javascript:void(0)" class="sq-7 bg-9 brc " title="Page 3">
           <span class="tha">Page 3</span>
         </a>
       </li>
@@ -4471,17 +4525,17 @@ input:focus, button:focus {
 
     <ul class="list-horizontal tc bg-5 mln pln">
       <li class="sq-14 lh-14 a-mid">
-        <a href="javascript:void(0)" class="sq-7 bg-10 brc dropglow-1" title="Page 1">
+        <a href="javascript:void(0)" class="sq-7 bg-10 brc " title="Page 1">
           <span class="tha">Page 1</span>
         </a>
       </li>
       <li class="sq-14 lh-14 a-mid">
-        <a href="javascript:void(0)" class="sq-7 bg-11 brc is_4" title="Page 2">
+        <a href="javascript:void(0)" class="sq-7 bg-11 brc " title="Page 2">
           <span class="tha">Page 2</span>
         </a>
       </li>
       <li class="sq-14 lh-14 a-mid">
-        <a href="javascript:void(0)" class="sq-7 bg-11 brc is_4" title="Page 3">
+        <a href="javascript:void(0)" class="sq-7 bg-11 brc " title="Page 3">
           <span class="tha">Page 3</span>
         </a>
       </li>
@@ -4497,7 +4551,7 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Single Line of Text</span></p>
 
-    <ul class="list-plain fw-normal bg-2 man pan">
+    <ul class="list-plain fw-normal man pan">
       <li class="active--list-1 pam text-color-1 f4 border-bottom border--3">List Item 1</li>
       <li class="active--list-1 pam text-color-1 f4 border-bottom border--3">List Item 2</li>
       <li class="active--list-1 pam text-color-1 f4 border-bottom border--3">List Item 3</li>
@@ -4508,7 +4562,7 @@ input:focus, button:focus {
 /*
 <p><span class="component-subtype">With Labels</span></p>
 
-    <ul class="list-plain fw-normal bg-2 man pan">
+    <ul class="list-plain fw-normal man pan">
       <li class="active--list-1 pam border-bottom border--3">
         <span class="db text-color-1 f4">List Item 1</span>
         <span class="db text-color-2 f6">Label 1</span>
@@ -4531,15 +4585,15 @@ input:focus, button:focus {
 /*
 <p><span class="component-subtype">Flag Objects</span></p>
 
-    <ul class="fw-normal bg-2 man pan">
+    <ul class="fw-normal man pan">
       <li class="flag flag--top active--list-1 pam border-bottom border--3">
         <div class="flag--image prm">
           <img src="assets/icons/doctype/excel_120.png" class="ht-30" alt="excel">
         </div>
         <div class="flag--body">
-          <span class="db text-color-1 f4">{{s1ListFlagObjectsFirstTitle}}</span>
-          <span class="db text-color-2 f6">{{s1ListFlagObjectsFirstMetaOne}}</span>
-          <span class="db text-color-2 f6">{{s1ListFlagObjectsFirstMetaTwo}}</span>
+          <span class="db text-color-1 f4">{{s1listflagobjectsfirsttitle}}</span>
+          <span class="db text-color-2 f6">{{s1listflagobjectsfirstmetaone}}</span>
+          <span class="db text-color-2 f6">{{s1listflagobjectsfirstmetatwo}}</span>
         </div>
       </li>
       <li class="flag flag--top active--list-1 pam border-bottom border--3">
@@ -4547,9 +4601,9 @@ input:focus, button:focus {
           <img src="assets/icons/doctype/html_120.png" class="ht-30" alt="html">
         </div>
         <div class="flag--body">
-          <span class="db text-color-1 f4">{{s1ListFlagObjectsSecondTitle}}</span>
-          <span class="db text-color-2 f6">{{s1ListFlagObjectsSecondMetaOne}}</span>
-          <span class="db text-color-2 f6">{{s1ListFlagObjectsSecondMetaTwo}}</span>
+          <span class="db text-color-1 f4">{{s1listflagobjectssecondtitle}}</span>
+          <span class="db text-color-2 f6">{{s1listflagobjectssecondmetaone}}</span>
+          <span class="db text-color-2 f6">{{s1listflagobjectssecondmetatwo}}</span>
         </div>
       </li>
       <li class="flag flag--top active--list-1 pam border-bottom border--3">
@@ -4557,9 +4611,9 @@ input:focus, button:focus {
           <img src="assets/icons/doctype/psd_120.png" class="ht-30" alt="psd">
         </div>
         <div class="flag--body">
-          <span class="db text-color-1 f4">{{s1ListFlagObjectsThirdTitle}}</span>
-          <span class="db text-color-2 f6">{{s1ListFlagObjectsThirdMetaOne}}</span>
-          <span class="db text-color-2 f6">{{s1ListFlagObjectsThirdMetaTwo}}</span>
+          <span class="db text-color-1 f4">{{s1listflagobjectsthirdtitle}}</span>
+          <span class="db text-color-2 f6">{{s1listflagobjectsthirdmetaone}}</span>
+          <span class="db text-color-2 f6">{{s1listflagobjectsthirdmetatwo}}</span>
         </div>
       </li>
       <li class="flag flag--top active--list-1 pam">
@@ -4567,9 +4621,9 @@ input:focus, button:focus {
           <img src="assets/icons/doctype/ai_120.png" class="ht-30" alt="ai">
         </div>
         <div class="flag--body">
-          <span class="db text-color-1 f4">{{s1ListFlagObjectsForthTitle}}</span>
-          <span class="db text-color-2 f6">{{s1ListFlagObjectsForthMetaOne}}</span>
-          <span class="db text-color-2 f6">{{s1ListFlagObjectsForthMetaTwo}}</span>
+          <span class="db text-color-1 f4">{{s1listflagobjectsforthtitle}}</span>
+          <span class="db text-color-2 f6">{{s1listflagobjectsforthmetaone}}</span>
+          <span class="db text-color-2 f6">{{s1listflagobjectsforthmetatwo}}</span>
         </div>
       </li>
     </ul>
@@ -4584,7 +4638,7 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Default</span></p>
 
-      <li class="list-plain active--list-1 pam text-color-1 f4 border-bottom border--3">{{listItemDefaultTitle}}</li>
+      <li class="list-plain active--list-1 pam text-color-1 f4 border-bottom border--3">{{listitemdefaulttitle}}</li>
 
 */
 /*
@@ -4592,10 +4646,10 @@ input:focus, button:focus {
 
 		<li class="flag flag--top active--list-1 pam border-bottom border--3">
 			<div class="flag--image prm">
-				<span class="icon-utility-{{listItemIconIcon}} text-color-3"></span>
+				<span class="icon-utility-{{listitemiconicon}} text-color-3"></span>
 			</div>
 			<div class="flag--body">
-				<span class="db text-color-1 f4">{{listItemIconTitle}}</span>
+				<span class="db text-color-1 f4">{{listitemicontitle}}</span>
 			</div>
 		</li>
 
@@ -4604,8 +4658,8 @@ input:focus, button:focus {
 <p><span class="component-subtype">With Label</span></p>
 
 		<li class="list-plain active--list-1 pam border-bottom border--3">
-			<span class="db text-color-1 f4">{{listItemLabelTitle}}</span>
-			<span class="db text-color-2 f6">{{listItemLabelMeta}}</span>
+			<span class="db text-color-1 f4">{{listitemlabeltitle}}</span>
+			<span class="db text-color-2 f6">{{listitemlabelmeta}}</span>
 		</li>
 
 */
@@ -4614,12 +4668,12 @@ input:focus, button:focus {
 
 		<li class="flag flag--top active--list-1 pam border-bottom border--3">
 			<div class="flag--image prm">
-				<img src="{{listItemFlagImg}}" class="ht-30" alt="excel">
+				<img src="{{listitemflagimg}}" class="ht-30" alt="excel">
 			</div>
 			<div class="flag--body">
-				<span class="db text-color-1 f4">{{listItemFlagTitle}}</span>
-				<span class="db text-color-2 f6">{{listItemFlagMeta1}}</span>
-				<span class="db text-color-2 f6">{{listItemFlagMeta2}}</span>
+				<span class="db text-color-1 f4">{{listitemflagtitle}}</span>
+				<span class="db text-color-2 f6">{{listitemflagmeta1}}</span>
+				<span class="db text-color-2 f6">{{listitemflagmeta2}}</span>
 			</div>
 		</li>
 
@@ -4644,16 +4698,16 @@ input:focus, button:focus {
 			<div class="flag--body">
 				<label for="filter-1">
 					<h1 class="dib man f3 text-color-1">
-						{{listItemTaskTitle}}
+						{{listitemtasktitle}}
 					</h1>
 					<ul class="clear list-plain man pan">
-						<li class="f5 text-truncate text-color-2">{{listItemTaskDetail1}}</li>
-						<li class="f5 text-truncate text-color-2">{{listItemTaskDetail2}}</li>
+						<li class="f5 text-truncate text-color-2">{{listitemtaskdetail1}}</li>
+						<li class="f5 text-truncate text-color-2">{{listitemtaskdetail2}}</li>
 					</ul>
 				</label>
 			</div>
 			<div class="prn plm flag--image">
-				<time datetime="2009-02-21" class="f6 text-color-2">{{listItemTaskDetail3}}</time>
+				<time datetime="2009-02-21" class="f6 text-color-2">{{listitemtaskdetail3}}</time>
 			</div>
 		</li>
 
@@ -4663,22 +4717,131 @@ input:focus, button:focus {
 <p><span class="component-subtype">Event</span></p>
 
 		<li class="flag flag--top pam">
-			<time datetime="10:00" class="f1 text-color-2 dib mrs">{{listItemEventTime}}</time>
-			<span class="f6 text-color-2 mbs dib">{{listItemEventDuration}}</span>
+			<time datetime="10:00" class="f1 text-color-2 dib mrs">{{listitemeventtime}}</time>
+			<span class="f6 text-color-2 mbs dib">{{listitemeventduration}}</span>
 			<h1 class="man f3 text-color-1 fw-semibold">
 				<a href="javascript:void(0)">
-					{{listItemEventTitle}}
+					{{listitemeventtitle}}
 				</a>
 			</h1>
 			<p class="mtn mbm f4 text-color-2 text-truncate">
-				{{listItemEventDetail1}}
+				{{listitemeventdetail1}}
 			</p>
 			<hr class="hr hr--2">
       <ul class="list-plain man pan">
-        <li class="text-truncate f5 text-color-2">{{listItemEventDetail2}}</li>
-        <li class="text-truncate f5 text-color-2">{{listItemEventDetail3}}</li>
+        <li class="text-truncate f5 text-color-2">{{listitemeventdetail2}}</li>
+        <li class="text-truncate f5 text-color-2">{{listitemeventdetail3}}</li>
       </ul>
     </li>
+
+*/
+/*
+
+<p><span class="component-subtype">Account</span></p>
+
+		<li class="flag flag--top pam">
+			<h1 class="man f3 text-color-1 fw-semibold">
+				{{listitemaccounttitle}}
+			</h1>
+      <ul class="list-plain man pan">
+        <li class="f5 text-color-2">{{listitemaccountdetail1}}</li>
+        <li class="f5 text-color-2">{{listitemaccountdetail2}}</li>
+      </ul>
+		</li>
+
+*/
+/*
+<p><span class="component-subtype">Case</span></p>
+
+		<li class="flag flag--top pam">
+			<h1 class="mtn mbs f3 text-color-1 fw-semibold">
+				{{listitemcasetitle}}
+			</h1>
+      <ul class="clear list-plain man pan">
+        <li class="fl f5 text-color-2">{{listitemcasedetail1}} &#8226; {{listitemcasedetail2}}</li>
+        <li class="fr f5 text-color-2">#{{listitemcasedetail3}}</li>
+      </ul>
+		</li>
+
+*/
+/*
+<p><span class="component-subtype">Contact</span></p>
+
+		<li class="flag flag--top pam">
+      <div class="mbs flag flag--rev">
+        <div class="flag--body">
+          <h1 class="man f3 text-color-1 fw-semibold">
+            {{listitemcontacttitle}}
+          </h1>
+        </div>
+        <div class="flag--image prm">
+					<div class="icon icon--{{listitemcontacticon}} brs bgs-100 a-mid sq-30"></div>
+        </div>
+      </div>
+      <ul class="list-plain man pan">
+        <li class="f5 text-color-2">{{listitemcontactdetail1}}</li>
+        <li class="f5 text-color-2">{{listitemcontactdetail2}}</li>
+        <li class="f5 text-color-2">{{listitemcontactdetail3}}</li>
+      </ul>
+		</li>
+
+*/
+/*
+<p><span class="component-subtype">File</span></p>
+
+		<li class="flag flag--top pam">
+      <div class="flag flag--top">
+        <div class="flag--image prm">
+					<img class="ht-30" src="assets/icons/doctype/{{listitemfileicon}}_120.png">
+        </div>
+        <div class="flag--body">
+          <h1 class="man f3 text-color-1 fw-semibold">
+            {{listitemfiletitle}}
+          </h1>
+					<ul class="list-plain man pan">
+						<li class="f5 text-color-2">{{listitemfiledetail1}}</li>
+						<li class="dib f5 text-color-2">{{listitemfiledetail2}} &#8226; </li>
+						<li class="dib f5 text-color-2">{{listitemfiledetail3}} &#8226; </li>
+						<li class="dib f5 text-color-2">{{listitemfiledetail4}}</li>
+					</ul>
+        </div>
+      </div>
+		</li>
+
+*/
+/*
+<p><span class="component-subtype">Opportunity</span></p>
+
+		<li class="flag flag--top pam">
+			<h1 class="man f3 text-color-1 fw-semibold">
+				{{listitemopptytitle}}
+			</h1>
+      <ul class="clear list-plain man pan">
+        <li class="mbs f5 text-color-2">{{listitemopptydetail1}} &#8226; {{listitemopptydetail2}}</li>
+        <li class="fl f3 text-color-1">${{listitemopptydetail3}}</li>
+        <li class="fr f3 text-color-1">{{listitemopptydetail4}}</li>
+      </ul>
+		</li>
+
+*/
+/*
+<p><span class="component-subtype">Custom Object</span></p>
+
+		<li class="flag flag--top pam">
+			<h1 class="mtn mbs f3 text-color-1 fw-semibold">
+				{{listitemcustomtitle}}
+			</h1>
+      <dl class="clear list-plain man pan">
+				<dt class="fl wid-third text-truncate f5 text-color-2">{{listitemcustomlabel1}}</dt>
+        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{listitemcustomdetail1}}</dd>
+				<dt class="cl wid-third fl text-truncate f5 text-color-2">{{listitemcustomlabel2}}</dt>
+        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{listitemcustomdetail2}}</dd>
+				<dt class="cl wid-third fl text-truncate f5 text-color-2">{{listitemcustomlabel3}}</dt>
+        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{listitemcustomdetail3}}</dd>
+				<dt class="cl wid-third fl text-truncate f5 text-color-2">{{listitemcustomlabel4}}</dt>
+        <dd class="man plm wid-twothird fl text-truncate f5 text-color-1">{{listitemcustomdetail4}}</dd>
+      </dl>
+		</li>
 
 */
 /*
@@ -4691,10 +4854,10 @@ input:focus, button:focus {
 <p><span class="component-subtype">Default</span></p>
 
     <div class="mbm pos-rel">
-      <label class="size-full icon-utility-search pos-abs label--lookup">
-        <span class="dn">Lookup</span>
+      <label class="size-full icon-utility-search pos-abs text-color-3 label--lookup">
+        <span class="tha">Lookup</span>
       </label>
-      <input type="text" name="default" placeholder="Lookup" class="size-full plm prx pvm input input--default input--ph-1 input--focus-1">
+      <input type="text" name="default" placeholder="Lookup" class="size-full ht-44 plm prx pvm input input--default input--ph-1 input--focus-1">
     </div>
 
 */
@@ -4702,14 +4865,14 @@ input:focus, button:focus {
 <p><span class="component-subtype">Error</span></p>
 
     <div class="mbm pos-rel">
-      <label class="size-full icon-utility-search pos-abs label--lookup">
-        <span class="dn">Lookup</span>
+      <label class="size-full icon-utility-search pos-abs text-color-3 label--lookup">
+        <span class="tha">Lookup</span>
       </label>
       <input
         type="text"
         name="default"
         placeholder="Lookup"
-        class="size-full plm prx pvm input input--error input--ph-1 input--focus-1">
+        class="size-full ht-44 plm prx pvm input input--error input--ph-error input--focus-1">
     </div>
     <p class="text-color-2 f6">
       <span class="text-error fw-semibold f6">Error:</span>
@@ -4722,9 +4885,9 @@ input:focus, button:focus {
 <p><span class="component-subtype">With Label</span></p>
 
     <label class="mbm db pos-rel">
-      <span class="db mbs f5 text-color-2">{{lookupWithLabelLabel}}</span>
-      <span class="size-full icon-utility-search pos-abs label--lookup"></span>
-      <input type="text" name="default" value="{{lookupWithLabelValue}}" placeholder="{{lookupWithLabelPlaceholder}}" class="size-full plm prx pvm input input--default input--ph-1 input--focus-1">
+      <span class="db mbs f5 text-color-2">{{lookupwithlabellabel}}</span>
+      <span class="size-full icon-utility-search pos-abs text-color-3 label--lookup"></span>
+      <input type="text" name="default" value="{{lookupwithlabelvalue}}" placeholder="{{lookupwithlabelplaceholder}}" class="size-full ht-44 plm prx pvm input input--default input--ph-1 input--focus-1">
     </label>
 
 */
@@ -4735,7 +4898,7 @@ input:focus, button:focus {
 <p class="component-description">The MDP button appears by default on the bottom right of the screen. It allows the user to access the Multi-Dimensional Publisher.</p>
 <hr class="man pan hr hr-1">
 
-    <button class="bg-global-header sq-44 brm dropglow-1 no-border dib">
+    <button class="bg-global-header sq-44 brm dropglow-1 no-border dib pan">
       <span class="lh-44 wht f2 icon-utility-add"></span>
     </button>
 
@@ -4748,65 +4911,67 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Default</span></p>
 
-    <div>
-      <div class="bg-4 brtopm mdp-launcher ht-450">
-        <ul class="tc fixed-table man pan ht-third">
-          <li class="active--list-2 a-mid dtc border-bottom border-right border--6">
-            <img src="{{mdpLauncherIconTL}}" alt="post" class="sq-60 dib">
-            <br>
-            <span class="dib mtm f5 wht fw-normal">{{mdpLauncherLabelTL}}</span>
-          </li>
-          <li class="active--list-2 a-mid dtc border-bottom border--6">
-            <img src="assets/icons/standard_bg/photo_120.png" alt="post" class="sq-60 dib">
-            <br>
-            <span class="dib mtm f5 wht fw-normal">Share Photo</span>
-          </li>
-        </ul>
-        <ul class="tc fixed-table man pan ht-third">
-          <li class="active--list-2 a-mid dtc border-bottom border-right border--6">
-            <img src="assets/icons/standard_bg/file_120.png" alt="post" class="sq-60 dib">
-            <br>
-            <span class="dib mtm f5 wht fw-normal">Share File</span>
-          </li>
-          <li class="active--list-2 a-mid dtc border-bottom border--6">
-            <img src="assets/icons/standard_bg/opportunity_120.png" alt="post" class="sq-60 dib">
-            <br>
-            <span class="dib mtm f5 wht fw-normal">New Opportunity</span>
-          </li>
-        </ul>
-        <ul class="tc fixed-table man pan ht-third">
-          <li class="active--list-2 a-mid dtc border-bottom border-right border--6">
-            <img src="assets/icons/standard_bg/contact_120.png" alt="post" class="sq-60 dib">
-            <br>
-            <span class="dib mtm f5 wht fw-normal">New Contact</span>
-          </li>
-          <li class="active--list-2 a-mid dtc border-bottom border--6">
-            <img src="assets/icons/standard_bg/lead_120.png" alt="post" class="sq-60 dib">
-            <br>
-            <span class="dib mtm f5 wht fw-normal">New Lead</span>
-          </li>
-        </ul>
-      </div>
-      <div class="carousel-dots fixed-table">
-        <ul class="pos-rel dtc a-mid man pvn ht-75 list-horizontal tc bg-5 pln">
-          <li class="sq-14 lh-14 ">
-            <a href="javascript:void(0)" class="sq-7 bg-10 brc dropglow-1" title="Page 1">
-              <span class="tha">Page 1</span>
-            </a>
-          </li>
-          <li class="sq-14 lh-14 ">
-            <a href="javascript:void(0)" class="sq-7 bg-11 brc is_4" title="Page 2">
-              <span class="tha">Page 2</span>
-            </a>
-          </li>
-          <li class="sq-14 lh-14 ">
-            <a href="javascript:void(0)" class="sq-7 bg-11 brc is_4" title="Page 3">
-              <span class="tha">Page 3</span>
-            </a>
-          </li>
-          <span class="wht carousel-close icon-utility-close f1 pos-abs"></span>
-        </ul>
-      </div>
+    <div class="pos-rel ht-100p mht-568 w-100p bg-6-80p">
+      <section class="pos-abs corner-br">
+        <article class="bg-4 brtopm mdp-launcher ht-430">
+          <ul class="tc fixed-table man pan ht-third">
+            <li class="active--list-2 a-mid dtc border-bottom border-right border--6">
+              <img src="{{mdplaunchericontl}}" alt="post" class="sq-60 dib">
+              <br>
+              <span class="dib mtm f5 wht fw-normal">{{mdplauncherlabeltl}}</span>
+            </li>
+            <li class="active--list-2 a-mid dtc border-bottom border--6">
+              <img src="assets/icons/standard_bg/photo_120.png" alt="post" class="sq-60 dib">
+              <br>
+              <span class="dib mtm f5 wht fw-normal">Share Photo</span>
+            </li>
+          </ul>
+          <ul class="tc fixed-table man pan ht-third">
+            <li class="active--list-2 a-mid dtc border-bottom border-right border--6">
+              <img src="assets/icons/standard_bg/file_120.png" alt="post" class="sq-60 dib">
+              <br>
+              <span class="dib mtm f5 wht fw-normal">Share File</span>
+            </li>
+            <li class="active--list-2 a-mid dtc border-bottom border--6">
+              <img src="assets/icons/standard_bg/opportunity_120.png" alt="post" class="sq-60 dib">
+              <br>
+              <span class="dib mtm f5 wht fw-normal">New Opportunity</span>
+            </li>
+          </ul>
+          <ul class="tc fixed-table man pan ht-third">
+            <li class="active--list-2 a-mid dtc border-bottom border-right border--6">
+              <img src="assets/icons/standard_bg/contact_120.png" alt="post" class="sq-60 dib">
+              <br>
+              <span class="dib mtm f5 wht fw-normal">New Contact</span>
+            </li>
+            <li class="active--list-2 a-mid dtc border-bottom border--6">
+              <img src="assets/icons/standard_bg/lead_120.png" alt="post" class="sq-60 dib">
+              <br>
+              <span class="dib mtm f5 wht fw-normal">New Lead</span>
+            </li>
+          </ul>
+        </article>
+        <article class="carousel-dots fixed-table">
+          <ul class="pos-rel dtc a-mid man pvn ht-75 list-horizontal tc bg-5 pln">
+            <li class="sq-14 lh-14 ">
+              <a href="javascript:void(0)" class="sq-7 bg-10 brc " title="Page 1">
+                <span class="tha">Page 1</span>
+              </a>
+            </li>
+            <li class="sq-14 lh-14 ">
+              <a href="javascript:void(0)" class="sq-7 bg-11 brc " title="Page 2">
+                <span class="tha">Page 2</span>
+              </a>
+            </li>
+            <li class="sq-14 lh-14 ">
+              <a href="javascript:void(0)" class="sq-7 bg-11 brc " title="Page 3">
+                <span class="tha">Page 3</span>
+              </a>
+            </li>
+            <span class="wht carousel-close icon-utility-close f1 pos-abs"></span>
+          </ul>
+        </article>
+      </section>
     </div>
 
 */
@@ -4830,17 +4995,17 @@ input:focus, button:focus {
     <div class="carousel-dots fixed-table">
       <ul class="pos-rel dtc a-mid man pvn ht-75 list-horizontal tc bg-5 pln">
         <li class="sq-14 lh-14 ">
-          <a href="javascript:void(0)" class="sq-7 bg-10 brc dropglow-1" title="Page 1">
+          <a href="javascript:void(0)" class="sq-7 bg-10 brc " title="Page 1">
             <span class="tha">Page 1</span>
           </a>
         </li>
         <li class="sq-14 lh-14 ">
-          <a href="javascript:void(0)" class="sq-7 bg-11 brc is_4" title="Page 2">
+          <a href="javascript:void(0)" class="sq-7 bg-11 brc " title="Page 2">
             <span class="tha">Page 2</span>
           </a>
         </li>
         <li class="sq-14 lh-14 ">
-          <a href="javascript:void(0)" class="sq-7 bg-11 brc is_4" title="Page 3">
+          <a href="javascript:void(0)" class="sq-7 bg-11 brc " title="Page 3">
             <span class="tha">Page 3</span>
           </a>
         </li>
@@ -4867,13 +5032,13 @@ input:focus, button:focus {
       <span class="db icon-utility-close f2 wht"></span>
     </a>
     <div class="bg-1 brm pam pos-rel tc">
-      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2 mbm">
+      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3 mbm">
         <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
       </button>
-      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2 mbm">
+      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3 mbm">
         <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
       </button>
-      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2">
+      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3">
         <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
       </button>
     </div>
@@ -4887,13 +5052,12 @@ input:focus, button:focus {
     </a>
     <div class="bg-1 brm pam pos-rel tc">
       <p class="mtn text-color-1 f4">
-        <strong>Strong text!</strong>
-        Detail text and lots of unicorns and rainbows.
+        <strong>Strong text!</strong> Detail text and lots of unicorns and rainbows.
       </p>
-      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2 mbm">
+      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3 mbm">
         <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
       </button>
-      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2">
+      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3">
         <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
       </button>
     </div>
@@ -4908,13 +5072,12 @@ input:focus, button:focus {
     <div class="bg-1 brm pam pos-rel tc">
       <span class="icon-utility-warning text-warning icon1 dib mbm"></span>
       <p class="mtn text-color-1 f4">
-        <strong>Strong text!</strong>
-        Detail text and lots of unicorns and rainbows.
+        <strong>Strong text!</strong> Detail text and lots of unicorns and rainbows.
       </p>
-      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2 mbm">
+      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3 mbm">
         <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
       </button>
-      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2">
+      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3">
         <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
       </button>
     </div>
@@ -4929,19 +5092,18 @@ input:focus, button:focus {
     <div class="bg-1 brm pam pos-rel tc clear">
       <span class="icon-utility-warning text-warning icon1 dib mbm"></span>
       <p class="mtn text-color-1 f4">
-        <strong>Strong text!</strong>
-        Detail text and lots of unicorns and rainbows.
+        <strong>Strong text!</strong> Detail text and lots of unicorns and rainbows.
       </p>
-      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2 mbm">
+      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3 mbm">
         <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
       </button>
-      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--2">
+      <button class="btn bg-secondary-btn btn--secondary pvs size-full brm border border--3">
         <span class="text-color-4 f3 fw-semibold">Secondary Button</span>
       </button>
       <div class="mtm fl">
-        <input type="checkbox" id="filter-1"
-               class="checkbox checkbox--default checkbox--states-1 brm mrs bg-secondary-btn sq-22 a-mid dib" />
-        <label class="f5 text-color-1" for="filter-1">
+        <input type="checkbox" id="modal-1"
+               class="checkbox checkbox--default checkbox--states-1 brm mrs bg-secondary-btn sq-22 a-mid dib">
+        <label class="f5 text-color-1" for="modal-1">
           Check this if you never want to see this modal again
         </label>
       </div>
@@ -4987,7 +5149,7 @@ input:focus, button:focus {
       <h1 class="text-color-2 fw-semibold f4 dib mam">
         Filter and Sort
       </h1>
-      <h2 class="text-color-2 f6 caps bg-2 dib size-full border-top border-bottom border--3 fw-normal phm pvs mvn">
+      <h2 class="text-color-2 f6 caps bg-2 dib size-full fw-normal phm pvs mvn">
         Label
       </h2>
       <ul class="text-color-1 phm f4 man">
@@ -4999,7 +5161,7 @@ input:focus, button:focus {
           Value 2
         </li>
       </ul>
-      <h2 class="text-color-2 f6 caps bg-2 dib size-full border-top border-bottom border--3 fw-normal phm pvs mvn">
+      <h2 class="text-color-2 f6 caps bg-2 dib size-full fw-normal phm pvs mvn">
         Label
       </h2>
       <ul class="text-color-1 phm f4 man">
@@ -5012,6 +5174,21 @@ input:focus, button:focus {
         </li>
       </ul>
     </div>
+
+*/
+/*
+
+## Sort Filter
+
+<p class="component-description">Words words words, divide everything into thirds thirds thirds.</p>
+<hr class="man pan hr hr-1">
+
+<p><span class="component-subtype"></span></p>
+
+    <article class="dib fr phs ht-20 bg-1 br-20">
+      <span class="dib rotate-90 f-10 lh-20 text-blue icon-utility-back"></span>
+      <span class="mlxs f-12 lh-20 text-color-1">{{sortfilterplaceholderdefault}}</span>
+    </article>
 
 */
 /*
@@ -5048,8 +5225,8 @@ input:focus, button:focus {
 <p class="component-description">The percentage indicator bar appears to show the user a visualization of some percentage. This can mean several things, including progress or popularity.</p>
 <hr class="man pan hr hr-1">
 
-    <div class="size-full bg-1 paxs border border--4 brl">
-      <div class="size-2of3 ht-7 bg-10 brm"></div>
+    <div class="size-full bg-1 paxs border border--3 brl">
+      <div class="size-2of3 ht-7 bg-global-header brm"></div>
     </div>
 
 */
@@ -5063,12 +5240,12 @@ input:focus, button:focus {
 <p><span class="component-subtype">Default</span></p>
 
     <div class="mbm pos-rel">
-      <span class="label--icon-r icon-utility-right size-full"></span>
+      <span class="label--icon-r icon-utility-right size-full lh-14 text-color-3"></span>
       <a href="javascript:void(0)"
          name="picklist"
          title="Picklist Value"
-         class="size-full plm prx pvm bg-secondary-btn input input--picklist">
-        <label class="dib mrs f5 text-color-2">{{picklistDefaultLabel}}</label><span class="text-color-1 dib">{{picklistDefaultValue}}</span>
+         class="size-full ht-44 lh-14 plm prx pvm bg-secondary-btn input input--picklist">
+        <label class="dib mrs f5 text-color-2">{{picklistdefaultlabel}}</label><span class="text-color-1 dib">{{picklistdefaultvalue}}</span>
       </a>
     </div>
 
@@ -5077,13 +5254,13 @@ input:focus, button:focus {
 <p><span class="component-subtype">Error</span></p>
 
     <div class="pos-rel">
-      <span class="label--icon-r icon-utility-right size-full"></span>
+      <span class="label--icon-r icon-utility-right size-full lh-14 text-color-3"></span>
       <a
         href="javascript:void(0)"
         name="picklist"
         title="Picklist Value"
         class="size-full plm prx pvm bg-secondary-btn input input--picklist-error">
-        <label class="dib mrs f5 text-color-2">{{picklistErrorLabel}}</label><span class="text-color-1 dib">{{picklistErrorValue}}</span>
+        <label class="dib mrs f5 text-color-2">{{picklisterrorlabel}}</label><span class="text-color-1 dib">{{picklisterrorvalue}}</span>
       </a>
     </div>
     <p class="mbm text-color-2 f6"><span class="text-error fw-semibold f6">Error:</span> This field is required.</p>
@@ -5093,14 +5270,14 @@ input:focus, button:focus {
 <p><span class="component-subtype">Label Outside</span></p>
 
     <div class="mbm pos-rel">
-      <label class="dib mbs f5 text-color-2 size-full">{{picklistOutsideLabelLabel}}</label>
-      <span class="label--icon-r-out icon-utility-right size-full"></span>
+      <label class="dib mbs f5 text-color-2 size-full">{{picklistoutsidelabellabel}}</label>
+      <span class="label--icon-r-out icon-utility-right size-full lh-14 text-color-3"></span>
       <a
         href="javascript:void(0)"
         name="picklist"
         title="Picklist Value"
-        class="size-full plm prx pvm bg-secondary-btn input input--picklist">
-        <span class="text-color-1 dib">{{picklistLabelOutsideValue}}</span>
+        class="size-full ht-44 lh-14 plm prx pvm bg-secondary-btn input input--picklist">
+        <span class="text-color-1 dib">{{picklistlabeloutsidevalue}}</span>
       </a>
     </div>
 
@@ -5138,18 +5315,18 @@ input:focus, button:focus {
 
     <form>
       <div class="mbm db">
-        <input class="radio radio--default radio--states-1 brc mrs bg-secondary-btn sq-22 a-mid dib" type="radio" name="filter" value="filter-1" id="filter-1" />
+        <input type="radio" class="radio radio--default radio--states-1 brc mrs bg-secondary-btn sq-22 a-mid dib" name="filter" value="filter-1" id="filter-1" checked>
         <label class="f4 text-color-1" for="filter-1">Filter 1</label>
       </div>
 
       <div class="mbm db">
-        <input class="radio radio--default radio--states-1 brc mrs bg-secondary-btn sq-22 a-mid clear dib" type="radio" name="filter" value="filter-2" id="filter-2" />
+        <input type="radio" class="radio radio--default radio--states-1 brc mrs bg-secondary-btn sq-22 a-mid clear dib" name="filter" value="filter-2" id="filter-2">
         <label class="f4 text-color-1" for="filter-2">Filter 2</label>
       </div>
 
       <div class="mbm db">
-        <input disabled class="radio radio--default radio--states-1 brc mrs bg-secondary-btn sq-22 a-mid clear dib" type="radio" name="filter" value="filter-3" id="filter-3" />
-        <label class="f4 text-color-1" for="filter-3">Filter 3 (Disabled)</label>
+        <input type="radio" disabled class="radio radio--default radio--states-1 brc mrs bg-secondary-btn sq-22 a-mid clear dib" name="filter" value="filter-3" id="filter-3">
+        <label class="f4 text-color-1" for="filter-3">Filter 3 (disabled)</label>
       </div>
     </form>
 */
@@ -5162,12 +5339,12 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Default</span></p>
 
-    <header class="bg-generic-1 ht-44 ds-1 lh-44" role="group">
+    <header class="bg-generic-1 ht-44 border-bottom border--3 lh-44" role="group">
       <div class="pos-rel size-fill phs pvs">
         <label class="icon-utility-search pos-abs label--search">
           <span class="tha">URL</span>
         </label>
-        <input type="text" name="default" placeholder="{{searchWidgetPlaceholder}}"
+        <input type="text" name="default" placeholder="{{searchwidgetplaceholder}}"
                class="size-full plx prs ht-30 input input--white input--ph-1 input--focus-1">
       </div>
     </header>
@@ -5176,7 +5353,7 @@ input:focus, button:focus {
 /*
 <p><span class="component-subtype">With sort/filter</span></p>
 
-    <header class="bg-generic-1 ht-44 ds-1 lh-44" role="group">
+    <header class="bg-generic-1 ht-44 border-bottom border--3 lh-44" role="group">
       <a href="javascript:void(0)" title="info" class="fr mhm">
         <span class="active-dim icon-utility-filter f2 a-mid text-color-4"></span>
       </a>
@@ -5184,7 +5361,7 @@ input:focus, button:focus {
         <label class="icon-utility-search pos-abs label--search">
           <span class="tha">URL</span>
         </label>
-        <input type="text" name="default" placeholder="{{searchWidgetSortFilterPlaceholder}}" class="size-full plx prs ht-30 input input--white input--ph-1 input--focus-1">
+        <input type="text" name="default" placeholder="{{searchwidgetsortfilterplaceholder}}" class="size-full plx prs ht-30 input input--white input--ph-1 input--focus-1">
       </div>
     </header>
 
@@ -5198,215 +5375,277 @@ input:focus, button:focus {
 
 <p><span class="component-subtype">Stage Left</span></p>
 
-    <nav role="navigation" class="bg-4">
-      <section>
-        <ul class="pan man f3 text-color-5">
-          <li class="ds-1 pas">
-            <label class="text-color-3 icon-utility-search pos-abs label--search">
-              <span class="tha">Search</span>
-            </label>
-            <input type="text" name="search" placeholder="Search Salesforce"
-            class="size-full plx prm pvs input input--stageleft input--ph-3 input--focus-1">
-          </li>
-          <li class="flag">
-            <a href="javascript:void(0)" class="flag--image pam active--list-2" title="Feed">
-              <img src="assets/icons/standard_bg/feed_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Feed</span>
-            </a>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h1 class="man f6 text-color-3 caps pvs plm size-full bg-5">Recent</h1>
-        <ul class="pan man f3 text-color-5">
-          <li class="flag border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam active--list-2" title="Contacts">
-              <img src="assets/icons/standard_bg/contact_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Contacts</span>
-            </a>
-          </li>
-          <li class="flag border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam active--list-2" title="Opportunities">
-              <img src="assets/icons/standard_bg/opportunity_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Opportunities</span>
-            </a>
-          </li>
-          <li class="flag border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam active--list-2" title="Accounts">
-              <img src="assets/icons/standard_bg/account_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Accounts</span>
-            </a>
-          </li>
-          <li class="flag border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam active--list-2" title="Contracts">
-              <img src="assets/icons/standard_bg/contract_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Contracts</span>
-            </a>
-          </li>
-          <li class="flag border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam active--list-2" title="Cases">
-              <img src="assets/icons/standard_bg/case_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Cases</span>
-            </a>
-          </li>
-          <li class="flag">
-            <a href="javascript:void(0)" class="size-full pam active--list-2" title="Leads">
-              <img src="assets/icons/standard_bg/lead_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Leads</span>
-            </a>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h1 class="man f6 text-color-3 caps pvs plm size-full bg-5">Apps</h1>
-        <ul class="pan man f3 text-color-5">
-          <li class="flag border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam active--list-2" title="Today">
-              <img src="assets/icons/standard_bg/today_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Today</span>
-            </a>
-          </li>
-          <li class="flag border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam active--list-2" title="Tasks">
-              <img src="assets/icons/standard_bg/task_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Tasks</span>
-            </a>
-          </li>
-          <li class="flag">
-            <a href="javascript:void(0)" class="size-full pam active--list-2" title="Notes">
-              <img src="assets/icons/standard_bg/note_120.png" class="sq-30 fl mrm" alt="">
-              <span class="f3 text-color-5 db lh-30">Notes</span>
-            </a>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <hr class="man ht-30 size-full bg-5">
-        <ul class="pan man f3 text-color-5">
-          <li class="flag active--list-2 border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam" title="Logout">
-							<div class="flag--image">
-								<img src="assets/icons/standard_bg/avatar_120.png" class="sq-30 fl mrm" alt="">
-							</div>
-							<div class="flag--body">
-								<span class="f3 text-color-5">rspohn@salesforce.com</span><br>
-								<span class="f4 text-color-3">na1.salesforce.com</span>
-							</div>
-            </a>
-          </li>
-          <li class="flag active--list-2 border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam" title="Settings">
-              <span class="a-mid sq-30 pls mrm f2 text-color-8 icon-utility-settings"></span>
-              <span class="f3 text-color-5 lh-30">Settings</span>
-            </a>
-          </li>
-          <li class="flag active--list-2 border-bottom border--6">
-            <a href="javascript:void(0)" class="size-full pam" title="Help">
-              <span class="a-mid sq-30 pls mrm f2 text-color-8 icon-utility-help"></span>
-              <span class="f3 text-color-5 lh-30">Help</span>
-            </a>
-          </li>
-          <li class="flag active--list-2">
-            <a href="javascript:void(0)" class="size-full pam" title="Logout">
-              <span class="a-mid sq-30 pls mrm f2 text-color-8 icon-utility-logout"></span>
-              <span class="f3 text-color-5 lh-30">Logout</span>
-            </a>
-          </li>
-        </ul>
-      </section>
+    <nav role="navigation" class="stage-frame bg-5 o-hidden">
+      <div class="status-bar"></div>
+      <img src="assets/stage-left-shim.png" class="stage-left-shim" alt="">
+      <div class="stage-left border-right border--6 scrollable">
+
+        <article class="db pos-rel bg-5 z-15">
+          <a href="javascript:void(0)" class="db flag pam">
+            <div class="dtc a-top">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" class="fl icon bgs-100 sq-45 brm">
+            </div>
+            <div class="flag--body plm clear">
+              <div class="fl">
+                <span class="mbsx text-color-5 f4">The Dude</span><br>
+                <span class="text-color-5 opacity-40 f6">internal.org</span>
+              </div>
+              <div class="fr mtxs sq-30 bra bg-20 tc">
+                <span class="db pos-rel pts f5 ss-standard-navigatedown text-color-5"></span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <section class="pos-rel z-12">
+          <ul class="list-plain pan man f3 text-color-5">
+            <li id="search" class="bg-4 pam">
+              <a href="javascript:void(0)" class="size-full pas brm bg-5 active--search">
+                <span class="mrs text-color-5 opacity-40 f6 icon-utility-search"></span>
+                <span class="text-color-5 opacity-40 f4">Search Salesforce</span>
+              </a>
+            </li>
+            <li class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="pos-rel size-full plm ptm pbm clear">
+                <span class="fl icon icon--feed bgs-100 mrm sq-30 brs"></span>
+                <span class="fl f3 text-color-5 db lh-30">Feed</span>
+                <span class="pos-abs corner-tr mrl lh-58 icon-utility-rows text-color-13"></span>
+              </a>
+            </li>
+            <li class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="pos-rel size-full plm ptm pbm clear">
+                <span class="fl icon icon--account bgs-100 mrm sq-30 brs"></span>
+                <span class="fl f3 text-color-5 db lh-30">Accounts</span>
+                <span class="pos-abs corner-tr mrl lh-58 icon-utility-rows text-color-13"></span>
+              </a>
+            </li>
+            <li class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="pos-rel size-full plm ptm pbm clear">
+                <span class="fl icon icon--contact bgs-100 mrm sq-30 brs"></span>
+                <span class="fl f3 text-color-5 db lh-30">Contacts</span>
+                <span class="pos-abs corner-tr mrl lh-58 icon-utility-rows text-color-13"></span>
+              </a>
+            </li>
+            <li class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="pos-rel size-full plm ptm pbm clear">
+                <span class="fl icon icon--opportunity bgs-100 mrm sq-30 brs"></span>
+                <span class="fl f3 text-color-5 db lh-30">Opportunities</span>
+                <span class="pos-abs corner-tr mrl lh-58 icon-utility-rows text-color-13"></span>
+              </a>
+            </li>
+            <li class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="pos-rel size-full plm ptm pbm clear">
+                <span class="fl icon icon--groups bgs-100 mrm sq-30 brs"></span>
+                <span class="fl f3 text-color-5 db lh-30">Groups</span>
+                <span class="pos-abs corner-tr mrl lh-58 icon-utility-rows text-color-13"></span>
+              </a>
+            </li>
+            <li class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="pos-rel size-full plm ptm pbm clear">
+                <span class="fl icon icon--people bgs-100 mrm sq-30 brs"></span>
+                <span class="fl f3 text-color-5 db lh-30">People</span>
+                <span class="pos-abs corner-tr mrl lh-58 icon-utility-rows text-color-13"></span>
+              </a>
+            </li>
+            <li class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="pos-rel size-full plm ptm pbm clear">
+                <span class="fl icon icon--dashboard bgs-100 mrm sq-30 brs"></span>
+                <span class="fl f3 text-color-5 db lh-30">Dashboards</span>
+                <span class="pos-abs corner-tr mrl lh-58 icon-utility-rows text-color-13"></span>
+              </a>
+            </li>
+            <li class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="size-full pam" title="More">
+                <span class="dib sq-30 fl tc ptxs mrm f2 text-color-5 opacity-40 ss-standard-ellipsis"></span>
+                <span class="f3 text-color-5 lh-30">More</span>
+              </a>
+            </li>
+          </ul>
+          <hr class="man ht-30 size-full bg-5">
+          <ul class="pan man f3 text-color-5">
+            <li id="exchange" class="flag bg-4">
+              <a href="javascript:void(0)" class="size-full pam" title="store">
+                <span class="dib sq-30 fl tc ptxs mrm f2 text-color-5 opacity-40 ss-pika-cart"></span>
+                <span class="f3 text-color-5 lh-30">Store</span>
+              </a>
+            </li>
+            <li id="settings" class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="size-full pam" title="Settings">
+                <span class="dib sq-30 fl tc ptxs mrm f2 text-color-5 opacity-40 icon-utility-settings"></span>
+                <span class="f3 text-color-5 lh-30">Settings</span>
+              </a>
+            </li>
+            <li class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="size-full pam" title="Offline" ng-click="isOffline()">
+                <span class="dib sq-30 fl tc ptxs mrm f2 text-color-5 opacity-40 ss-standard-downloadcloud"></span>
+                <span class="flag--body f3 text-color-5 lh-14">Offline<br>
+                  <span class="text-color-5 opacity-40 f6">Synced: &nbsp;2 days ago</span>
+                </span>
+              </a>
+            </li>
+            <li id="help" class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="size-full pam" title="Help">
+                <span class="dib sq-30 fl tc ptxs mrm f2 text-color-5 opacity-40 icon-utility-help"></span>
+                <span class="f3 text-color-5 lh-30">Help</span>
+              </a>
+            </li>
+            <li id="logout" class="size-full bg-4 border-top border--6">
+              <a href="javascript:void(0)" class="size-full pam" title="Logout">
+                <span class="dib sq-30 fl tc ptxs mrm f2 text-color-5 opacity-40 icon-utility-logout"></span>
+                <span class="f3 text-color-5 lh-30">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
     </nav>
 
 */
 /*
 <p><span class="component-subtype">Notifications</span></p>
 
-    <section class="bg-5">
-      <header class="tc pvm border-bottom border--7">
-        <h1 class="man fw-semibold f2 text-color-5">Notifications</h1>
-      </header>
-      <ul class="pan man bg-4">
-        <li class="flag pam active--list-2 border-bottom border--6">
-          <div class="flag--image prm">
-            <img src="http://pixelholdr.com/portrait,business,man/44x44/dimensions:hide" class="brm" alt="feed">
-          </div>
-          <div class="flag--body">
-            <p class="f4 text-color-5 man">
-              Janice Walters commented on your post.
-            </p>
-            <p class="f6 text-color-3 man">
-              15 minutes ago
-            </p>
-          </div>
-        </li>
-        <li class="flag pam active--list-2 border-bottom border--6">
-          <div class="flag--image prm">
-            <img src="http://pixelholdr.com/headshot,business,woman/44x44/dimensions:hide" class="brm" alt="feed">
-          </div>
-          <div class="flag--body">
-            <p class="f4 text-color-5 man">
-              Kirsten Smith commented on your post.
-            </p>
-            <p class="f6 text-color-3 man">
-              29 minutes ago
-            </p>
-          </div>
-        </li>
-        <li class="flag pam active--list-2 border-bottom border--7">
-          <div class="flag--image prm">
-            <img src="http://pixelholdr.com/picture,man/44x44/dimensions:hide" class="brm" alt="feed">
-          </div>
-          <div class="flag--body">
-            <p class="f4 text-color-5 man">
-              James Potter commented on a post on your wall.
-            </p>
-            <p class="f6 text-color-3 man">
-              54 minutes ago
-            </p>
-          </div>
-        </li>
-      </ul>
-      <ul class="pan man">
-        <li class="flag flag--top pam border-bottom border--7">
-          <div class="flag--image prm">
-            <img src="http://pixelholdr.com/headshot,man/44x44/dimensions:hide" class="brm" alt="feed">
-          </div>
-          <div class="flag--body">
-            <p class="f4 text-color-5 man">
-              "Hey Bill - wanted to ask you about EBR connections. Know anyone that
-              can help me out for a couple days..."
-            </p>
-            <p class="f6 text-color-3 man">
-              2 hours ago
-            </p>
-          </div>
-        </li>
-        <li class="flag pam active--list-2 border-bottom border--7">
-          <div class="flag--image prm">
-            <img src="http://pixelholdr.com/picture,woman/44x44/dimensions:hide" class="brm" alt="feed">
-          </div>
-          <div class="flag--body">
-            <p class="f4 text-color-5 man">
-              Patty Charles commented on your post.
-            </p>
-            <p class="f6 text-color-3 man">
-              3 hours ago
-            </p>
-          </div>
-        </li>
-        <li class="flag pam active--list-2 border-bottom border--7">
-          <div class="flag--image prm">
-            <img src="http://pixelholdr.com/business,picture,woman/44x44/dimensions:hide" class="brm" alt="feed">
-          </div>
-          <div class="flag--body">
-            <p class="f4 text-color-5 man">
-              Lorelei Chan commented on your post.
-            </p>
-            <p class="f6 text-color-3 man">
-              Yesterday
-            </p>
-          </div>
-        </li>
-      </ul>
+    <section class="bg-5 stage-frame">
+      <div class="status-bar"></div>
+        <img src="assets/stage-right-shim.png" class="stage-right-shim" alt="">
+      <div class="stage-right border-left border--6 scrollable">
+        <header class="tc pvm border-bottom border--7">
+          <h1 class="man fw-semibold f2 text-color-5">Notifications</h1>
+        </header>
+        <ul class="pan man bg-4">
+          <li class="flag pam active--list-2 border-bottom border--6">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                Janice Walters commented on your post.
+              </p>
+              <p class="f6 text-color-3 man">
+                15 minutes ago
+              </p>
+            </div>
+          </li>
+          <li class="flag pam active--list-2 border-bottom border--6">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                Kirsten Smith commented on your post.
+              </p>
+              <p class="f6 text-color-3 man">
+                29 minutes ago
+              </p>
+            </div>
+          </li>
+          <li class="flag pam active--list-2 border-bottom border--7">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                James Potter commented on a post on your wall.
+              </p>
+              <p class="f6 text-color-3 man">
+                54 minutes ago
+              </p>
+            </div>
+          </li>
+        </ul>
+        <ul class="pan man">
+          <li class="flag pam active--list-2 border-bottom border--7">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                Patty Charles commented on your post.
+              </p>
+              <p class="f6 text-color-3 man">
+                3 hours ago
+              </p>
+            </div>
+          </li>
+          <li class="flag pam active--list-2 border-bottom border--7">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                Lorelei Chan commented on your post.
+              </p>
+              <p class="f6 text-color-3 man">
+                3 hours ago
+              </p>
+            </div>
+          </li>
+          <li class="flag pam active--list-2 border-bottom border--7">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                Janice Walters commented on your post.
+              </p>
+              <p class="f6 text-color-3 man">
+                3 hours ago
+              </p>
+            </div>
+          </li>
+          <li class="flag pam active--list-2 border-bottom border--7">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                Kirsten Smith commented on your post.
+              </p>
+              <p class="f6 text-color-3 man">
+                3 hours ago
+              </p>
+            </div>
+          </li>
+          <li class="flag pam active--list-2 border-bottom border--7">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                Lorelei Chan commented on your post.
+              </p>
+              <p class="f6 text-color-3 man">
+                3 hours ago
+              </p>
+            </div>
+          </li>
+          <li class="flag pam active--list-2 border-bottom border--7">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                Janice Walters commented on your post.
+              </p>
+              <p class="f6 text-color-3 man">
+                3 hours ago
+              </p>
+            </div>
+          </li>
+          <li class="flag pam active--list-2 border-bottom border--7">
+            <div class="dt a-top prm">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/gt/128.jpg" width="45" class="brm" alt="feed">
+            </div>
+            <div class="flag--body">
+              <p class="f4 text-color-5 man">
+                Kirsten Smith commented on your post.
+              </p>
+              <p class="f6 text-color-3 man">
+                3 hours ago
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </section>
 
 */
@@ -5421,7 +5660,7 @@ input:focus, button:focus {
 
     <label>
       <span class="tha">Default</span>
-      <textarea name="default" placeholder="{{textareaDefaultPlaceholder}}" class="size-full phm pvm textarea textarea--default textarea--ph-1 textarea--focus-1"></textarea>
+      <textarea name="default" placeholder="{{textareadefaultplaceholder}}" class="size-full phm pvm textarea textarea--default textarea--ph-1 textarea--focus-1"></textarea>
     </label>
 
 */
@@ -5430,7 +5669,7 @@ input:focus, button:focus {
 
     <label>
       <span class="tha">Error</span>
-      <textarea name="default" placeholder="{{textareaErrorPlaceholder}}" class="size-full phm pvm textarea textarea--error textarea--ph-1 textarea--focus-1"></textarea>
+      <textarea name="default" placeholder="{{textareaerrorplaceholder}}" class="size-full phm pvm textarea textarea--error textarea--ph-error textarea--focus-1"></textarea>
     </label>
     <p class="text-color-2 f6"><span class="text-error fw-semibold f6">Error:</span> This field is required.</p>
 
@@ -5444,8 +5683,7 @@ input:focus, button:focus {
         <textarea
           name="default"
           placeholder="Textarea with buttons"
-          class="brtopm size-full phm pvm textarea textarea--default textarea--ph-1 textarea--focus-1">
-        </textarea>
+          class="brtopm size-full phm pvm textarea textarea--default textarea--ph-1 textarea--focus-1"></textarea>
       </label>
       <button class="btn bg-secondary-btn btn--secondary pvm phn size-1of2 brbotm-l border-bottom border-sides border-top-none border--2 fl">
         <span class="icon-utility-adduser text-color-4 f1"></span>
@@ -5465,8 +5703,7 @@ input:focus, button:focus {
         <textarea
           name="default"
           placeholder="Textarea with buttons"
-          class="brtopm size-full phm pvm textarea textarea--error textarea--ph-1 textarea--focus-1">
-        </textarea>
+          class="brtopm size-full phm pvm textarea textarea--error textarea--ph-error textarea--focus-1"></textarea>
       </label>
       <button class="btn bg-secondary-btn btn--secondary pvm size-1of2 brbotm-l border-bottom border-sides border-top-none border--2 fl">
         <span class="icon-utility-adduser text-color-4 f1"></span>
@@ -5488,8 +5725,18 @@ input:focus, button:focus {
 <p><span class="component-subtype">Default</span></p>
 
     <label>
-      <span class="dn">Default</span>
-      <input type="text" name="default" value="{{textInputValue}}" placeholder="{{textInputPlaceholder}}" class="mbm size-full phm pvm input input--default input--ph-1 input--focus-1">
+      <span class="tha">Default</span>
+      <input type="text" name="default" value="{{textinputvalue}}" placeholder="{{textinputplaceholder}}" class="mbm size-full phm pvm input input--default input--ph-1 input--focus-1">
+    </label>
+
+*/
+/*
+
+<p><span class="component-subtype">Disabled</span></p>
+
+    <label>
+      <span class="tha">Default</span>
+      <input disabled type="text" name="default" value="{{textinputvalue}}" placeholder="{{textinputplaceholder}}" class="mbm size-full phm pvm input input--disabled-1 no-border">
     </label>
 
 */
@@ -5498,8 +5745,8 @@ input:focus, button:focus {
 <p><span class="component-subtype">Error</span></p>
 
     <label>
-      <span class="dn">Default</span>
-      <input type="text" name="default" placeholder="Error Input" class="size-full phm pvm input input--error input--ph-1 input--focus-1" value="Error Input">
+      <span class="tha">Default</span>
+      <input type="text" name="default" placeholder="Error Input" class="size-full phm pvm input input--error input--ph-error input--focus-1">
     </label>
     <p class="mbm text-color-2 f6"><span class="text-error fw-semibold f6">Error:</span> This field is required.</p>
 
@@ -5509,8 +5756,8 @@ input:focus, button:focus {
 <p><span class="component-subtype">With Label</span></p>
 
     <label>
-      <span class="db mbs f5 text-color-2">{{textInputWithLabelLabel}}</span>
-      <input type="text" name="default" value="{{textInputWithLabelValue}}" placeholder="{{textInputWithLabelPlaceholder}}" class="mbm size-full phm pvm input input--default input--ph-1 input--focus-1">
+      <span class="db mbs f5 text-color-2">{{textinputwithlabellabel}}</span>
+      <input type="text" name="default" value="{{textinputwithlabelvalue}}" placeholder="{{textinputwithlabelplaceholder}}" class="mbm size-full phm pvm input input--default input--ph-1 input--focus-1">
     </label>
 
 */
@@ -5519,8 +5766,8 @@ input:focus, button:focus {
 <p><span class="component-subtype">Search Input</span></p>
 
     <div class="mbm pos-rel">
-      <label class="icon-utility-search pos-abs label--search">
-        <span class="dn">Search</span>
+      <label class="icon-utility-search pos-abs text-color-3 label--search">
+        <span class="tha">Search</span>
       </label>
       <input type="text" name="default" placeholder="Search Salesforce" class="size-full plx prm pvs input input--default input--ph-1 input--focus-1">
     </div>
@@ -5531,8 +5778,8 @@ input:focus, button:focus {
 <p><span class="component-subtype">With Fixed Text</span></p>
 
     <div class="mbm pos-rel">
-      <label class="pos-abs size-full label--fixedtext" data-fixedtext="%">
-        <span class="dn">Percentage</span>
+      <label class="pos-abs size-full text-color-3 label--fixedtext" data-fixedtext="%">
+        <span class="tha">Percentage</span>
       </label>
       <input type="text" name="default" placeholder="Percentage" class="size-full prx plm pvm input input--default input--ph-1 input--focus-1">
     </div>
@@ -5545,7 +5792,7 @@ input:focus, button:focus {
 <p class="component-description">Toast notifications are used as a lightweight way to let the user know that a background process has finished when there is no other indication. They can have icons in addition to text.</p>
 <hr class="man pan hr hr-1">
 
-    <div class="flag pam ds-1 brbotm bg-2-95p">
+    <div class="flag pam border-bottom border--3 bg-2-95p">
       <div class="flag--image prm">
         <span class="f1 icon-utility-warning text-warning"></span>
       </div>
@@ -5565,7 +5812,7 @@ input:focus, button:focus {
 <p class="component-description">The View Picker component allows the user to choose between different views of a list or a feed.</p>
 <hr class="man pan hr hr-1">
 
-		<section class="border-bottom border--3 clear">
+		<section class="clear">
 			<a href="javascript:void(0)" title="More" class="db ht-44 mhm mts">
 				<span class="dib lh-44 f2 text-color-1">
 					<strong>My Files</strong>
@@ -5659,7 +5906,7 @@ input:focus, button:focus {
 .man {
   margin: 0; }
 
-.masx {
+.maxs {
   margin: 3px; }
 
 .mas {
@@ -5682,7 +5929,7 @@ input:focus, button:focus {
   padding-top: 0;
   padding-bottom: 0; }
 
-.pvsx {
+.pvxs {
   padding-top: 3px;
   padding-bottom: 3px; }
 
@@ -5710,7 +5957,7 @@ input:focus, button:focus {
   margin-top: 0;
   margin-bottom: 0; }
 
-.mvsx {
+.mvxs {
   margin-top: 3px;
   margin-bottom: 3px; }
 
@@ -5739,7 +5986,7 @@ input:focus, button:focus {
   padding-left: 0;
   padding-right: 0; }
 
-.phsx {
+.phxs {
   padding-left: 3px;
   padding-right: 3px; }
 
@@ -5767,7 +6014,7 @@ input:focus, button:focus {
   margin-left: 0;
   margin-right: 0; }
 
-.mhsx {
+.mhxs {
   margin-left: 3px;
   margin-right: 3px; }
 
@@ -5795,7 +6042,7 @@ input:focus, button:focus {
 .ptn {
   padding-top: 0; }
 
-.ptsx {
+.ptxs {
   padding-top: 3px; }
 
 .pts {
@@ -5816,7 +6063,7 @@ input:focus, button:focus {
 .mtn {
   margin-top: 0; }
 
-.mtsx {
+.mtxs {
   margin-top: 3px; }
 
 .mts {
@@ -5838,7 +6085,7 @@ input:focus, button:focus {
 .pbn {
   padding-bottom: 0; }
 
-.pbsx {
+.pbxs {
   padding-bottom: 3px; }
 
 .pbs {
@@ -5859,7 +6106,7 @@ input:focus, button:focus {
 .mbn {
   margin-bottom: 0; }
 
-.mbsx {
+.mbxs {
   margin-bottom: 3px; }
 
 .mbs {
@@ -5881,7 +6128,7 @@ input:focus, button:focus {
 .pln {
   padding-left: 0; }
 
-.plsx {
+.plxs {
   padding-left: 3px; }
 
 .pls {
@@ -5902,7 +6149,7 @@ input:focus, button:focus {
 .mln {
   margin-left: 0; }
 
-.mlsx {
+.mlxs {
   margin-left: 3px; }
 
 .mls {
@@ -5924,7 +6171,7 @@ input:focus, button:focus {
 .prn {
   padding-right: 0; }
 
-.prsx {
+.prxs {
   padding-right: 3px; }
 
 .prs {
@@ -5945,7 +6192,7 @@ input:focus, button:focus {
 .mrn {
   margin-right: 0; }
 
-.mrsx {
+.mrxs {
   margin-right: 3px; }
 
 .mrs {
@@ -5991,6 +6238,15 @@ Note: Refactor as much as possible to use core styles
 .dark-0 {
   color: #2e4153; }
 
+.f-10 {
+  font-size: 10px; }
+
+.f-11 {
+  font-size: 11px; }
+
+.f-12 {
+  font-size: 12px; }
+
 .f-30 {
   font-size: 30px; }
 
@@ -5999,6 +6255,7 @@ Note: Refactor as much as possible to use core styles
 
 .bg-sct-light {
   background: white;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease; }
   .bg-sct-light .sg-h1 {
     color: #293f54; }
@@ -6008,6 +6265,7 @@ Note: Refactor as much as possible to use core styles
 .bg-sct-med {
   color: #293f54;
   background: #ecf0f3;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease; }
   .bg-sct-med .sg-h1 {
     color: #293f54; }
@@ -6023,6 +6281,7 @@ Note: Refactor as much as possible to use core styles
 
 .bg-sct-drk {
   background: #293f54;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease; }
   .bg-sct-drk .sg-h1 {
     color: white; }
@@ -6058,9 +6317,7 @@ Note: Refactor as much as possible to use core styles
 
 html {
   height: 100%;
-  user-select: none;
   -webkit-touch-callout: none;
-  -webkit-user-drag: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
@@ -6083,10 +6340,16 @@ body {
 .ht-100p {
   height: 100%; }
 
+.w-100p {
+  width: 100%; }
+
+.mw-100p {
+  max-width: 100%; }
+
 /* Main nav
 ========================================================================== */
 .sg-nav-selected:link {
-  background-color: #278ac7; }
+  background-color: #1378b7; }
 
 .sg-nav-mobile {
   top: 56px; }
@@ -6096,6 +6359,7 @@ body {
   left: 50%;
   margin-left: -140px;
   -webkit-transform: translate(0, 50px);
+  -ms-transform: translate(0, 50px);
   transform: translate(0, 50px); }
 
 /* Button styles
@@ -6110,6 +6374,7 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   opacity: 0.7;
+  -webkit-transition: opacity 0.1s ease-in-out;
   transition: opacity 0.1s ease-in-out; }
   .sg-btn:hover {
     opacity: 1;
@@ -6153,6 +6418,7 @@ body {
   height: 44px;
   border-radius: 30px;
   opacity: 0.8;
+  -webkit-transition: opacity 0.15s ease-in-out;
   transition: opacity 0.15s ease-in-out; }
   .sg-arrow:hover {
     color: white;
@@ -6188,9 +6454,7 @@ body {
 
 .sg-v-lne--r {
   -webkit-transform: scaleX(-1);
-  -moz-transform: scaleX(-1);
   -ms-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
   transform: scaleX(-1); }
 
 .sg-v-carousel {
@@ -6307,6 +6571,7 @@ body {
     border-radius: 5px;
     width: 50px;
     height: 50px;
+    -webkit-background-size: 100%;
     background-size: 100%;
     background-repeat: no-repeat; }
   .sg-icon p {
@@ -6354,11 +6619,13 @@ body {
   margin: 0 auto; }
 
 .sg-col-nav a:link, .sg-col-nav a:visited, .sg-col-nav a:active, .sg-left-nav a:link, .sg-left-nav a:visited, .sg-left-nav a:active, .sg-component-links a:link, .sg-component-links a:visited, .sg-component-links a:active {
-  color: #44596c; }
+  color: #5c7995; }
 .sg-col-nav a:hover, .sg-left-nav a:hover, .sg-component-links a:hover {
   color: #6e7e8a; }
 
 .sg-col-nav {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
   column-count: 2;
   -moz-column-count: 2;
   -webkit-column-count: 2; }
@@ -6368,7 +6635,7 @@ body {
   color: #2e4153;
   padding: 0 14px 14px;
   margin: 0 -14px;
-  border-bottom: #eceef0 1px solid; }
+  border-bottom: #edeff0 1px solid; }
 .sg-content-main .sg-panel h3 {
   color: #2e4153; }
 .sg-content-main .component {
@@ -6383,7 +6650,7 @@ body {
     display: inline-block;
     width: 100%;
     border-radius: 5px 5px 0 0;
-    border-bottom: #eceef0 1px solid;
+    border-bottom: #edeff0 1px solid;
     margin: 1em 0 0 0; }
   .sg-content-main .component > h3 {
     font-size: 18px;
@@ -6423,6 +6690,35 @@ body {
   background-color: #f9fbfc;
   text-transform: uppercase;
   display: block; }
+
+.stage-frame {
+  position: relative;
+  width: 100%;
+  min-height: 568px;
+  height: 100%;
+  overflow: hidden; }
+
+.stage-right, .stage-left {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto; }
+
+.stage-right {
+  left: 50px; }
+
+.stage-left {
+  right: 50px; }
+
+.stage-right-shim, .stage-left-shim {
+  position: absolute;
+  top: 20px;
+  width: 50px; }
+
+.stage-left-shim {
+  right: 0; }
 
 .bg-component {
   background-color: #f9fbfc; }
@@ -6475,18 +6771,11 @@ body {
       position: relative;
       background-color: #344a5f;
       z-index: 2; }
-    .sg-iphone .sg-phone--container .sg-phone--overlay {
-      background-color: rgba(0, 0, 0, 0.8);
-      height: 568px;
-      width: 320px;
+    .sg-iphone .sg-phone--container .sg-phone--mdp {
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 0; }
-    .sg-iphone .sg-phone--container .sg-phone--mdp {
-      position: absolute;
-      top: 46px;
-      left: 0;
+      width: 100%;
       height: 526px;
       z-index: 1; }
     .sg-iphone .sg-phone--container .sg-phone--content {
@@ -6510,6 +6799,7 @@ body {
         width: 960px; }
       .sg-iphone .sg-phone--container .sg-phone--content .sg-carouselof2, .sg-iphone .sg-phone--container .sg-phone--content .sg-carouselof3 {
         position: relative;
+        -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease; }
         .sg-iphone .sg-phone--container .sg-phone--content .sg-carouselof2.sg-show-page-1, .sg-iphone .sg-phone--container .sg-phone--content .sg-carouselof3.sg-show-page-1 {
           left: 0; }
@@ -6525,20 +6815,20 @@ body {
       .sg-iphone .sg-phone--container .sg-phone--pushed-right .sg-phone--content, .sg-iphone .sg-phone--container .sg-phone--pushed-left .sg-phone--content {
         overflow: hidden; }
     .sg-iphone .sg-phone--container .sg-phone--pushed-right {
-      left: 274px;
+      left: 320px;
+      -webkit-box-shadow: -4px 0 3px rgba(0, 0, 0, 0.2);
       box-shadow: -4px 0 3px rgba(0, 0, 0, 0.2);
       border-top-left-radius: 8px; }
     .sg-iphone .sg-phone--container .sg-phone--pushed-left {
-      right: 274px;
+      right: 320px;
+      -webkit-box-shadow: 4px 0 3px rgba(0, 0, 0, 0.2);
       box-shadow: 4px 0 3px rgba(0, 0, 0, 0.2);
       border-top-right-radius: 8px; }
     .sg-iphone .sg-phone--container .sg-phone--stage-left, .sg-iphone .sg-phone--container .sg-phone--stage-right {
       position: relative;
-      width: 274px; }
+      width: 320px; }
       .sg-iphone .sg-phone--container .sg-phone--stage-left .sg-phone--content, .sg-iphone .sg-phone--container .sg-phone--stage-right .sg-phone--content {
         height: 576px; }
-    .sg-iphone .sg-phone--container .sg-phone--stage-right {
-      left: 46px; }
 
 .sg-iphone:after {
   content: '';
@@ -6551,6 +6841,7 @@ body {
   height: 60px;
   border-radius: 50%;
   background: white;
+  -webkit-box-shadow: #2c363f 0 -699px 0 -27px, #222222 0 -699px 0 -23px, black -50px -670px 0 -25px, #222222 -27px -670px 0 -26px, #222222 -24px -670px 0 -26px, #222222 -21px -670px 0 -26px, #222222 -18px -670px 0 -26px, #222222 -15px -670px 0 -26px, #222222 -12px -670px 0 -26px, #222222 -9px -670px 0 -26px, #222222 -6px -670px 0 -26px, #222222 -3px -670px 0 -26px, #222222 0 -670px 0 -26px, #222222 3px -670px 0 -26px, #222222 6px -670px 0 -26px, #222222 9px -670px 0 -26px, #222222 12px -670px 0 -26px, #222222 15px -670px 0 -26px, #222222 18px -670px 0 -26px, #222222 21px -670px 0 -26px, #222222 24px -670px 0 -26px, #222222 27px -670px 0 -26px, #beccd9 67px -739px 0 -26px, #beccd9 70px -739px 0 -26px, #beccd9 73px -739px 0 -26px, #beccd9 76px -739px 0 -26px, #beccd9 79px -739px 0 -26px, #beccd9 82px -739px 0 -26px, #beccd9 85px -739px 0 -26px, #beccd9 88px -739px 0 -26px, #beccd9 91px -739px 0 -26px, #beccd9 94px -739px 0 -26px, #beccd9 97px -739px 0 -26px, #beccd9 100px -739px 0 -26px, #beccd9 103px -739px 0 -26px, #beccd9 106px -739px 0 -26px, #beccd9 109px -739px 0 -26px, #beccd9 112px -739px 0 -26px, #beccd9 115px -739px 0 -26px, #beccd9 118px -739px 0 -26px, #beccd9 121px -739px 0 -26px, #beccd9 -191px -626px 0 -26px, #beccd9 -191px -623px 0 -26px, #beccd9 -191px -620px 0 -26px, #beccd9 -191px -617px 0 -26px, #beccd9 -191px -614px 0 -26px, #beccd9 -191px -611px 0 -26px, #beccd9 -191px -608px 0 -26px, #beccd9 -191px -605px 0 -26px, #beccd9 -191px -602px 0 -26px, #beccd9 -191px -599px 0 -26px, #beccd9 -191px -596px 0 -26px, #beccd9 -191px -550px 0 -26px, #beccd9 -191px -547px 0 -26px, #beccd9 -191px -544px 0 -26px, #beccd9 -191px -541px 0 -26px, #beccd9 -191px -538px 0 -26px, #beccd9 -191px -535px 0 -26px, #beccd9 -191px -532px 0 -26px, #beccd9 -191px -529px 0 -26px, #beccd9 -191px -483px 0 -26px, #beccd9 -191px -480px 0 -26px, #beccd9 -191px -477px 0 -26px, #beccd9 -191px -474px 0 -26px, #beccd9 -191px -471px 0 -26px, #beccd9 -191px -468px 0 -26px, #beccd9 -191px -465px 0 -26px, #beccd9 -191px -462px 0 -26px, #beccd9 0 0 0 4px;
   box-shadow: #2c363f 0 -699px 0 -27px, #222222 0 -699px 0 -23px, black -50px -670px 0 -25px, #222222 -27px -670px 0 -26px, #222222 -24px -670px 0 -26px, #222222 -21px -670px 0 -26px, #222222 -18px -670px 0 -26px, #222222 -15px -670px 0 -26px, #222222 -12px -670px 0 -26px, #222222 -9px -670px 0 -26px, #222222 -6px -670px 0 -26px, #222222 -3px -670px 0 -26px, #222222 0 -670px 0 -26px, #222222 3px -670px 0 -26px, #222222 6px -670px 0 -26px, #222222 9px -670px 0 -26px, #222222 12px -670px 0 -26px, #222222 15px -670px 0 -26px, #222222 18px -670px 0 -26px, #222222 21px -670px 0 -26px, #222222 24px -670px 0 -26px, #222222 27px -670px 0 -26px, #beccd9 67px -739px 0 -26px, #beccd9 70px -739px 0 -26px, #beccd9 73px -739px 0 -26px, #beccd9 76px -739px 0 -26px, #beccd9 79px -739px 0 -26px, #beccd9 82px -739px 0 -26px, #beccd9 85px -739px 0 -26px, #beccd9 88px -739px 0 -26px, #beccd9 91px -739px 0 -26px, #beccd9 94px -739px 0 -26px, #beccd9 97px -739px 0 -26px, #beccd9 100px -739px 0 -26px, #beccd9 103px -739px 0 -26px, #beccd9 106px -739px 0 -26px, #beccd9 109px -739px 0 -26px, #beccd9 112px -739px 0 -26px, #beccd9 115px -739px 0 -26px, #beccd9 118px -739px 0 -26px, #beccd9 121px -739px 0 -26px, #beccd9 -191px -626px 0 -26px, #beccd9 -191px -623px 0 -26px, #beccd9 -191px -620px 0 -26px, #beccd9 -191px -617px 0 -26px, #beccd9 -191px -614px 0 -26px, #beccd9 -191px -611px 0 -26px, #beccd9 -191px -608px 0 -26px, #beccd9 -191px -605px 0 -26px, #beccd9 -191px -602px 0 -26px, #beccd9 -191px -599px 0 -26px, #beccd9 -191px -596px 0 -26px, #beccd9 -191px -550px 0 -26px, #beccd9 -191px -547px 0 -26px, #beccd9 -191px -544px 0 -26px, #beccd9 -191px -541px 0 -26px, #beccd9 -191px -538px 0 -26px, #beccd9 -191px -535px 0 -26px, #beccd9 -191px -532px 0 -26px, #beccd9 -191px -529px 0 -26px, #beccd9 -191px -483px 0 -26px, #beccd9 -191px -480px 0 -26px, #beccd9 -191px -477px 0 -26px, #beccd9 -191px -474px 0 -26px, #beccd9 -191px -471px 0 -26px, #beccd9 -191px -468px 0 -26px, #beccd9 -191px -465px 0 -26px, #beccd9 -191px -462px 0 -26px, #beccd9 0 0 0 4px; }
 
 /* htc one */
@@ -6582,6 +6873,7 @@ body {
       height: 3px;
       border-radius: 50%;
       background: white;
+      -webkit-box-shadow: white 0 3px 0, white 0 6px 0, white 0 9px 0, white 0 12px 0, white 0 15px 0, white 3px 6px 0, white 6px 6px 0, white 9px 6px 0, white 12px 6px 0, white 12px 9px 0, white 12px 12px 0, white 12px 15px 0, white 18px 6px 0, white 21px 6px 0, white 24px 6px 0, white 27px 6px 0, white 30px 6px 0, white 24px 9px 0, white 24px 12px 0, white 24px 15px 0, white 36px 6px 0, white 39px 6px 0, white 42px 6px 0, white 45px 6px 0, white 48px 6px 0, white 36px 9px 0, white 36px 12px 0, white 36px 15px 0, white 39px 15px 0, white 42px 15px 0, white 45px 15px 0, white 48px 15px 0, white -84px 4px 0 -1px, white -86px 6px 0 -1px, white -88px 8px 0 -1px, white -90px 10px 0 -1px, white -88px 12px 0 -1px, white -86px 14px 0 -1px, white -84px 16px 0 -1px, white 130px 4px 0 -1px, white 132px 6px 0 -1px, white 134px 8px 0 -1px, white 136px 10px 0 -1px, white 136px 12px 0 -1px, white 136px 14px 0 -1px, white 136px 16px 0 -1px, white 134px 16px 0 -1px, white 132px 16px 0 -1px, white 130px 16px 0 -1px, white 128px 16px 0 -1px, white 126px 16px 0 -1px, white 124px 16px 0 -1px, white 124px 14px 0 -1px, white 124px 12px 0 -1px, white 124px 10px 0 -1px, white 126px 8px 0 -1px, white 128px 6px 0 -1px;
       box-shadow: white 0 3px 0, white 0 6px 0, white 0 9px 0, white 0 12px 0, white 0 15px 0, white 3px 6px 0, white 6px 6px 0, white 9px 6px 0, white 12px 6px 0, white 12px 9px 0, white 12px 12px 0, white 12px 15px 0, white 18px 6px 0, white 21px 6px 0, white 24px 6px 0, white 27px 6px 0, white 30px 6px 0, white 24px 9px 0, white 24px 12px 0, white 24px 15px 0, white 36px 6px 0, white 39px 6px 0, white 42px 6px 0, white 45px 6px 0, white 48px 6px 0, white 36px 9px 0, white 36px 12px 0, white 36px 15px 0, white 39px 15px 0, white 42px 15px 0, white 45px 15px 0, white 48px 15px 0, white -84px 4px 0 -1px, white -86px 6px 0 -1px, white -88px 8px 0 -1px, white -90px 10px 0 -1px, white -88px 12px 0 -1px, white -86px 14px 0 -1px, white -84px 16px 0 -1px, white 130px 4px 0 -1px, white 132px 6px 0 -1px, white 134px 8px 0 -1px, white 136px 10px 0 -1px, white 136px 12px 0 -1px, white 136px 14px 0 -1px, white 136px 16px 0 -1px, white 134px 16px 0 -1px, white 132px 16px 0 -1px, white 130px 16px 0 -1px, white 128px 16px 0 -1px, white 126px 16px 0 -1px, white 124px 16px 0 -1px, white 124px 14px 0 -1px, white 124px 12px 0 -1px, white 124px 10px 0 -1px, white 126px 8px 0 -1px, white 128px 6px 0 -1px; }
     .sg-htc .sg-phone--container .sg-phone--page {
       position: absolute;
@@ -6594,19 +6886,12 @@ body {
     .sg-htc .sg-phone--container .sg-phone--header {
       position: relative;
       z-index: 2; }
-    .sg-htc .sg-phone--container .sg-phone--overlay {
-      background-color: rgba(0, 0, 0, 0.8);
-      height: 652px;
-      width: 370px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0; }
     .sg-htc .sg-phone--container .sg-phone--mdp {
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 582px;
+      width: 100%;
+      height: 100%;
       z-index: 1; }
       .sg-htc .sg-phone--container .sg-phone--mdp .mdp-launcher {
         height: 510px; }
@@ -6633,6 +6918,7 @@ body {
         width: 1110px; }
       .sg-htc .sg-phone--container .sg-phone--content .sg-carouselof2, .sg-htc .sg-phone--container .sg-phone--content .sg-carouselof3 {
         position: relative;
+        -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease; }
         .sg-htc .sg-phone--container .sg-phone--content .sg-carouselof2.sg-show-page-1, .sg-htc .sg-phone--container .sg-phone--content .sg-carouselof3.sg-show-page-1 {
           left: 0; }
@@ -6649,17 +6935,16 @@ body {
         overflow: hidden; }
     .sg-htc .sg-phone--container .sg-phone--pushed-right {
       left: 326px;
+      -webkit-box-shadow: -4px 0 3px rgba(0, 0, 0, 0.2);
       box-shadow: -4px 0 3px rgba(0, 0, 0, 0.2); }
     .sg-htc .sg-phone--container .sg-phone--pushed-left {
       right: 326px;
+      -webkit-box-shadow: 4px 0 3px rgba(0, 0, 0, 0.2);
       box-shadow: 4px 0 3px rgba(0, 0, 0, 0.2); }
     .sg-htc .sg-phone--container .sg-phone--stage-left, .sg-htc .sg-phone--container .sg-phone--stage-right {
-      position: relative;
-      width: 326px; }
+      position: relative; }
       .sg-htc .sg-phone--container .sg-phone--stage-left .sg-phone--content, .sg-htc .sg-phone--container .sg-phone--stage-right .sg-phone--content {
         height: 652px; }
-    .sg-htc .sg-phone--container .sg-phone--stage-right {
-      left: 44px; }
 
 .sg-htc:after {
   content: '';
@@ -6672,10 +6957,11 @@ body {
   height: 13px;
   border-radius: 50%;
   background: #2c363f;
+  -webkit-box-shadow: #222222 0 0 0 8px, #222222 -311px 4px 0 -1px, #222222 -294px 4px 0 -1px, #222222 -265px 9px 0 -6px, #222222 -265px 4px 0 -6px, #222222 -265px -1px 0 -6px, #222222 -265px -6px 0 -6px, #222222 -260px 9px 0 -6px, #222222 -260px 4px 0 -6px, #222222 -260px -1px 0 -6px, #222222 -260px -6px 0 -6px, #222222 -255px 9px 0 -6px, #222222 -255px 4px 0 -6px, #222222 -255px -1px 0 -6px, #222222 -255px -6px 0 -6px, #222222 -250px 9px 0 -6px, #222222 -250px 4px 0 -6px, #222222 -250px -1px 0 -6px, #222222 -250px -6px 0 -6px, #222222 -245px 9px 0 -6px, #222222 -245px 4px 0 -6px, #222222 -245px -1px 0 -6px, #222222 -245px -6px 0 -6px, #222222 -240px 9px 0 -6px, #222222 -240px 4px 0 -6px, #222222 -240px -1px 0 -6px, #222222 -240px -6px 0 -6px, #222222 -235px 9px 0 -6px, #222222 -235px 4px 0 -6px, #222222 -235px -1px 0 -6px, #222222 -235px -6px 0 -6px, #222222 -230px 9px 0 -6px, #222222 -230px 4px 0 -6px, #222222 -230px -1px 0 -6px, #222222 -230px -6px 0 -6px, #222222 -225px 9px 0 -6px, #222222 -225px 4px 0 -6px, #222222 -225px -1px 0 -6px, #222222 -225px -6px 0 -6px, #222222 -220px 9px 0 -6px, #222222 -220px 4px 0 -6px, #222222 -220px -1px 0 -6px, #222222 -220px -6px 0 -6px, #222222 -215px 9px 0 -6px, #222222 -215px 4px 0 -6px, #222222 -215px -1px 0 -6px, #222222 -215px -6px 0 -6px, #222222 -210px 9px 0 -6px, #222222 -210px 4px 0 -6px, #222222 -210px -1px 0 -6px, #222222 -210px -6px 0 -6px, #222222 -205px 9px 0 -6px, #222222 -205px 4px 0 -6px, #222222 -205px -1px 0 -6px, #222222 -205px -6px 0 -6px, #222222 -200px 9px 0 -6px, #222222 -200px 4px 0 -6px, #222222 -200px -1px 0 -6px, #222222 -200px -6px 0 -6px, #222222 -195px 9px 0 -6px, #222222 -195px 4px 0 -6px, #222222 -195px -1px 0 -6px, #222222 -195px -6px 0 -6px, #222222 -190px 9px 0 -6px, #222222 -190px 4px 0 -6px, #222222 -190px -1px 0 -6px, #222222 -190px -6px 0 -6px, #222222 -185px 9px 0 -6px, #222222 -185px 4px 0 -6px, #222222 -185px -1px 0 -6px, #222222 -185px -6px 0 -6px, #222222 -180px 9px 0 -6px, #222222 -180px 4px 0 -6px, #222222 -180px -1px 0 -6px, #222222 -180px -6px 0 -6px, #222222 -175px 9px 0 -6px, #222222 -175px 4px 0 -6px, #222222 -175px -1px 0 -6px, #222222 -175px -6px 0 -6px, #222222 -170px 9px 0 -6px, #222222 -170px 4px 0 -6px, #222222 -170px -1px 0 -6px, #222222 -170px -6px 0 -6px, #222222 -165px 9px 0 -6px, #222222 -165px 4px 0 -6px, #222222 -165px -1px 0 -6px, #222222 -165px -6px 0 -6px, #222222 -160px 9px 0 -6px, #222222 -160px 4px 0 -6px, #222222 -160px -1px 0 -6px, #222222 -160px -6px 0 -6px, #222222 -155px 9px 0 -6px, #222222 -155px 4px 0 -6px, #222222 -155px -1px 0 -6px, #222222 -155px -6px 0 -6px, #222222 -150px 9px 0 -6px, #222222 -150px 4px 0 -6px, #222222 -150px -1px 0 -6px, #222222 -150px -6px 0 -6px, #222222 -145px 9px 0 -6px, #222222 -145px 4px 0 -6px, #222222 -145px -1px 0 -6px, #222222 -145px -6px 0 -6px, #222222 -140px 9px 0 -6px, #222222 -140px 4px 0 -6px, #222222 -140px -1px 0 -6px, #222222 -140px -6px 0 -6px, #222222 -135px 9px 0 -6px, #222222 -135px 4px 0 -6px, #222222 -135px -1px 0 -6px, #222222 -135px -6px 0 -6px, #222222 -130px 9px 0 -6px, #222222 -130px 4px 0 -6px, #222222 -130px -1px 0 -6px, #222222 -130px -6px 0 -6px, #222222 -125px 9px 0 -6px, #222222 -125px 4px 0 -6px, #222222 -125px -1px 0 -6px, #222222 -125px -6px 0 -6px, #222222 -120px 9px 0 -6px, #222222 -120px 4px 0 -6px, #222222 -120px -1px 0 -6px, #222222 -120px -6px 0 -6px, #222222 -115px 9px 0 -6px, #222222 -115px 4px 0 -6px, #222222 -115px -1px 0 -6px, #222222 -115px -6px 0 -6px, #222222 -110px 9px 0 -6px, #222222 -110px 4px 0 -6px, #222222 -110px -1px 0 -6px, #222222 -110px -6px 0 -6px, #222222 -105px 9px 0 -6px, #222222 -105px 4px 0 -6px, #222222 -105px -1px 0 -6px, #222222 -105px -6px 0 -6px, #222222 -100px 9px 0 -6px, #222222 -100px 4px 0 -6px, #222222 -100px -1px 0 -6px, #222222 -100px -6px 0 -6px, #222222 -95px 9px 0 -6px, #222222 -95px 4px 0 -6px, #222222 -95px -1px 0 -6px, #222222 -95px -6px 0 -6px, #222222 -90px 9px 0 -6px, #222222 -90px 4px 0 -6px, #222222 -90px -1px 0 -6px, #222222 -90px -6px 0 -6px, #222222 -85px 9px 0 -6px, #222222 -85px 4px 0 -6px, #222222 -85px -1px 0 -6px, #222222 -85px -6px 0 -6px, #222222 -80px 9px 0 -6px, #222222 -80px 4px 0 -6px, #222222 -80px -1px 0 -6px, #222222 -80px -6px 0 -6px, #222222 -75px 9px 0 -6px, #222222 -75px 4px 0 -6px, #222222 -75px -1px 0 -6px, #222222 -75px -6px 0 -6px, #222222 -70px 9px 0 -6px, #222222 -70px 4px 0 -6px, #222222 -70px -1px 0 -6px, #222222 -70px -6px 0 -6px, #222222 -65px 9px 0 -6px, #222222 -65px 4px 0 -6px, #222222 -65px -1px 0 -6px, #222222 -65px -6px 0 -6px, #222222 -60px 9px 0 -6px, #222222 -60px 4px 0 -6px, #222222 -60px -1px 0 -6px, #222222 -60px -6px 0 -6px, #222222 -55px 9px 0 -6px, #222222 -55px 4px 0 -6px, #222222 -55px -1px 0 -6px, #222222 -55px -6px 0 -6px, #222222 -50px 9px 0 -6px, #222222 -50px 4px 0 -6px, #222222 -50px -1px 0 -6px, #222222 -50px -6px 0 -6px, #222222 -45px 9px 0 -6px, #222222 -45px 4px 0 -6px, #222222 -45px -1px 0 -6px, #222222 -45px -6px 0 -6px, #222222 -40px 9px 0 -6px, #222222 -40px 4px 0 -6px, #222222 -40px -1px 0 -6px, #222222 -40px -6px 0 -6px, #222222 -35px 9px 0 -6px, #222222 -35px 4px 0 -6px, #222222 -35px -1px 0 -6px, #222222 -35px -6px 0 -6px, #222222 -270px 775px 0 -6px, #222222 -270px 770px 0 -6px, #222222 -270px 765px 0 -6px, #222222 -270px 760px 0 -6px, #222222 -265px 775px 0 -6px, #222222 -265px 770px 0 -6px, #222222 -265px 765px 0 -6px, #222222 -265px 760px 0 -6px, #222222 -260px 775px 0 -6px, #222222 -260px 770px 0 -6px, #222222 -260px 765px 0 -6px, #222222 -260px 760px 0 -6px, #222222 -255px 775px 0 -6px, #222222 -255px 770px 0 -6px, #222222 -255px 765px 0 -6px, #222222 -255px 760px 0 -6px, #222222 -250px 775px 0 -6px, #222222 -250px 770px 0 -6px, #222222 -250px 765px 0 -6px, #222222 -250px 760px 0 -6px, #222222 -245px 775px 0 -6px, #222222 -245px 770px 0 -6px, #222222 -245px 765px 0 -6px, #222222 -245px 760px 0 -6px, #222222 -240px 775px 0 -6px, #222222 -240px 770px 0 -6px, #222222 -240px 765px 0 -6px, #222222 -240px 760px 0 -6px, #222222 -235px 775px 0 -6px, #222222 -235px 770px 0 -6px, #222222 -235px 765px 0 -6px, #222222 -235px 760px 0 -6px, #222222 -230px 775px 0 -6px, #222222 -230px 770px 0 -6px, #222222 -230px 765px 0 -6px, #222222 -230px 760px 0 -6px, #222222 -225px 775px 0 -6px, #222222 -225px 770px 0 -6px, #222222 -225px 765px 0 -6px, #222222 -225px 760px 0 -6px, #222222 -220px 775px 0 -6px, #222222 -220px 770px 0 -6px, #222222 -220px 765px 0 -6px, #222222 -220px 760px 0 -6px, #222222 -215px 775px 0 -6px, #222222 -215px 770px 0 -6px, #222222 -215px 765px 0 -6px, #222222 -215px 760px 0 -6px, #222222 -210px 775px 0 -6px, #222222 -210px 770px 0 -6px, #222222 -210px 765px 0 -6px, #222222 -210px 760px 0 -6px, #222222 -205px 775px 0 -6px, #222222 -205px 770px 0 -6px, #222222 -205px 765px 0 -6px, #222222 -205px 760px 0 -6px, #222222 -200px 775px 0 -6px, #222222 -200px 770px 0 -6px, #222222 -200px 765px 0 -6px, #222222 -200px 760px 0 -6px, #222222 -195px 775px 0 -6px, #222222 -195px 770px 0 -6px, #222222 -195px 765px 0 -6px, #222222 -195px 760px 0 -6px, #222222 -190px 775px 0 -6px, #222222 -190px 770px 0 -6px, #222222 -190px 765px 0 -6px, #222222 -190px 760px 0 -6px, #222222 -185px 775px 0 -6px, #222222 -185px 770px 0 -6px, #222222 -185px 765px 0 -6px, #222222 -185px 760px 0 -6px, #222222 -180px 775px 0 -6px, #222222 -180px 770px 0 -6px, #222222 -180px 765px 0 -6px, #222222 -180px 760px 0 -6px, #222222 -175px 775px 0 -6px, #222222 -175px 770px 0 -6px, #222222 -175px 765px 0 -6px, #222222 -175px 760px 0 -6px, #222222 -170px 775px 0 -6px, #222222 -170px 770px 0 -6px, #222222 -170px 765px 0 -6px, #222222 -170px 760px 0 -6px, #222222 -165px 775px 0 -6px, #222222 -165px 770px 0 -6px, #222222 -165px 765px 0 -6px, #222222 -165px 760px 0 -6px, #222222 -160px 775px 0 -6px, #222222 -160px 770px 0 -6px, #222222 -160px 765px 0 -6px, #222222 -160px 760px 0 -6px, #222222 -155px 775px 0 -6px, #222222 -155px 770px 0 -6px, #222222 -155px 765px 0 -6px, #222222 -155px 760px 0 -6px, #222222 -150px 775px 0 -6px, #222222 -150px 770px 0 -6px, #222222 -150px 765px 0 -6px, #222222 -150px 760px 0 -6px, #222222 -145px 775px 0 -6px, #222222 -145px 770px 0 -6px, #222222 -145px 765px 0 -6px, #222222 -145px 760px 0 -6px, #222222 -140px 775px 0 -6px, #222222 -140px 770px 0 -6px, #222222 -140px 765px 0 -6px, #222222 -140px 760px 0 -6px, #222222 -135px 775px 0 -6px, #222222 -135px 770px 0 -6px, #222222 -135px 765px 0 -6px, #222222 -135px 760px 0 -6px, #222222 -130px 775px 0 -6px, #222222 -130px 770px 0 -6px, #222222 -130px 765px 0 -6px, #222222 -130px 760px 0 -6px, #222222 -125px 775px 0 -6px, #222222 -125px 770px 0 -6px, #222222 -125px 765px 0 -6px, #222222 -125px 760px 0 -6px, #222222 -120px 775px 0 -6px, #222222 -120px 770px 0 -6px, #222222 -120px 765px 0 -6px, #222222 -120px 760px 0 -6px, #222222 -115px 775px 0 -6px, #222222 -115px 770px 0 -6px, #222222 -115px 765px 0 -6px, #222222 -115px 760px 0 -6px, #222222 -110px 775px 0 -6px, #222222 -110px 770px 0 -6px, #222222 -110px 765px 0 -6px, #222222 -110px 760px 0 -6px, #222222 -105px 775px 0 -6px, #222222 -105px 770px 0 -6px, #222222 -105px 765px 0 -6px, #222222 -105px 760px 0 -6px, #222222 -100px 775px 0 -6px, #222222 -100px 770px 0 -6px, #222222 -100px 765px 0 -6px, #222222 -100px 760px 0 -6px, #222222 -95px 775px 0 -6px, #222222 -95px 770px 0 -6px, #222222 -95px 765px 0 -6px, #222222 -95px 760px 0 -6px, #222222 -90px 775px 0 -6px, #222222 -90px 770px 0 -6px, #222222 -90px 765px 0 -6px, #222222 -90px 760px 0 -6px, #222222 -85px 775px 0 -6px, #222222 -85px 770px 0 -6px, #222222 -85px 765px 0 -6px, #222222 -85px 760px 0 -6px, #222222 -80px 775px 0 -6px, #222222 -80px 770px 0 -6px, #222222 -80px 765px 0 -6px, #222222 -80px 760px 0 -6px, #222222 -75px 775px 0 -6px, #222222 -75px 770px 0 -6px, #222222 -75px 765px 0 -6px, #222222 -75px 760px 0 -6px, #222222 -70px 775px 0 -6px, #222222 -70px 770px 0 -6px, #222222 -70px 765px 0 -6px, #222222 -70px 760px 0 -6px, #222222 -65px 775px 0 -6px, #222222 -65px 770px 0 -6px, #222222 -65px 765px 0 -6px, #222222 -65px 760px 0 -6px, #222222 -60px 775px 0 -6px, #222222 -60px 770px 0 -6px, #222222 -60px 765px 0 -6px, #222222 -60px 760px 0 -6px, #222222 -55px 775px 0 -6px, #222222 -55px 770px 0 -6px, #222222 -55px 765px 0 -6px, #222222 -55px 760px 0 -6px, #222222 -50px 775px 0 -6px, #222222 -50px 770px 0 -6px, #222222 -50px 765px 0 -6px, #222222 -50px 760px 0 -6px, #222222 -45px 775px 0 -6px, #222222 -45px 770px 0 -6px, #222222 -45px 765px 0 -6px, #222222 -45px 760px 0 -6px, #222222 -40px 775px 0 -6px, #222222 -40px 770px 0 -6px, #222222 -40px 765px 0 -6px, #222222 -40px 760px 0 -6px;
   box-shadow: #222222 0 0 0 8px, #222222 -311px 4px 0 -1px, #222222 -294px 4px 0 -1px, #222222 -265px 9px 0 -6px, #222222 -265px 4px 0 -6px, #222222 -265px -1px 0 -6px, #222222 -265px -6px 0 -6px, #222222 -260px 9px 0 -6px, #222222 -260px 4px 0 -6px, #222222 -260px -1px 0 -6px, #222222 -260px -6px 0 -6px, #222222 -255px 9px 0 -6px, #222222 -255px 4px 0 -6px, #222222 -255px -1px 0 -6px, #222222 -255px -6px 0 -6px, #222222 -250px 9px 0 -6px, #222222 -250px 4px 0 -6px, #222222 -250px -1px 0 -6px, #222222 -250px -6px 0 -6px, #222222 -245px 9px 0 -6px, #222222 -245px 4px 0 -6px, #222222 -245px -1px 0 -6px, #222222 -245px -6px 0 -6px, #222222 -240px 9px 0 -6px, #222222 -240px 4px 0 -6px, #222222 -240px -1px 0 -6px, #222222 -240px -6px 0 -6px, #222222 -235px 9px 0 -6px, #222222 -235px 4px 0 -6px, #222222 -235px -1px 0 -6px, #222222 -235px -6px 0 -6px, #222222 -230px 9px 0 -6px, #222222 -230px 4px 0 -6px, #222222 -230px -1px 0 -6px, #222222 -230px -6px 0 -6px, #222222 -225px 9px 0 -6px, #222222 -225px 4px 0 -6px, #222222 -225px -1px 0 -6px, #222222 -225px -6px 0 -6px, #222222 -220px 9px 0 -6px, #222222 -220px 4px 0 -6px, #222222 -220px -1px 0 -6px, #222222 -220px -6px 0 -6px, #222222 -215px 9px 0 -6px, #222222 -215px 4px 0 -6px, #222222 -215px -1px 0 -6px, #222222 -215px -6px 0 -6px, #222222 -210px 9px 0 -6px, #222222 -210px 4px 0 -6px, #222222 -210px -1px 0 -6px, #222222 -210px -6px 0 -6px, #222222 -205px 9px 0 -6px, #222222 -205px 4px 0 -6px, #222222 -205px -1px 0 -6px, #222222 -205px -6px 0 -6px, #222222 -200px 9px 0 -6px, #222222 -200px 4px 0 -6px, #222222 -200px -1px 0 -6px, #222222 -200px -6px 0 -6px, #222222 -195px 9px 0 -6px, #222222 -195px 4px 0 -6px, #222222 -195px -1px 0 -6px, #222222 -195px -6px 0 -6px, #222222 -190px 9px 0 -6px, #222222 -190px 4px 0 -6px, #222222 -190px -1px 0 -6px, #222222 -190px -6px 0 -6px, #222222 -185px 9px 0 -6px, #222222 -185px 4px 0 -6px, #222222 -185px -1px 0 -6px, #222222 -185px -6px 0 -6px, #222222 -180px 9px 0 -6px, #222222 -180px 4px 0 -6px, #222222 -180px -1px 0 -6px, #222222 -180px -6px 0 -6px, #222222 -175px 9px 0 -6px, #222222 -175px 4px 0 -6px, #222222 -175px -1px 0 -6px, #222222 -175px -6px 0 -6px, #222222 -170px 9px 0 -6px, #222222 -170px 4px 0 -6px, #222222 -170px -1px 0 -6px, #222222 -170px -6px 0 -6px, #222222 -165px 9px 0 -6px, #222222 -165px 4px 0 -6px, #222222 -165px -1px 0 -6px, #222222 -165px -6px 0 -6px, #222222 -160px 9px 0 -6px, #222222 -160px 4px 0 -6px, #222222 -160px -1px 0 -6px, #222222 -160px -6px 0 -6px, #222222 -155px 9px 0 -6px, #222222 -155px 4px 0 -6px, #222222 -155px -1px 0 -6px, #222222 -155px -6px 0 -6px, #222222 -150px 9px 0 -6px, #222222 -150px 4px 0 -6px, #222222 -150px -1px 0 -6px, #222222 -150px -6px 0 -6px, #222222 -145px 9px 0 -6px, #222222 -145px 4px 0 -6px, #222222 -145px -1px 0 -6px, #222222 -145px -6px 0 -6px, #222222 -140px 9px 0 -6px, #222222 -140px 4px 0 -6px, #222222 -140px -1px 0 -6px, #222222 -140px -6px 0 -6px, #222222 -135px 9px 0 -6px, #222222 -135px 4px 0 -6px, #222222 -135px -1px 0 -6px, #222222 -135px -6px 0 -6px, #222222 -130px 9px 0 -6px, #222222 -130px 4px 0 -6px, #222222 -130px -1px 0 -6px, #222222 -130px -6px 0 -6px, #222222 -125px 9px 0 -6px, #222222 -125px 4px 0 -6px, #222222 -125px -1px 0 -6px, #222222 -125px -6px 0 -6px, #222222 -120px 9px 0 -6px, #222222 -120px 4px 0 -6px, #222222 -120px -1px 0 -6px, #222222 -120px -6px 0 -6px, #222222 -115px 9px 0 -6px, #222222 -115px 4px 0 -6px, #222222 -115px -1px 0 -6px, #222222 -115px -6px 0 -6px, #222222 -110px 9px 0 -6px, #222222 -110px 4px 0 -6px, #222222 -110px -1px 0 -6px, #222222 -110px -6px 0 -6px, #222222 -105px 9px 0 -6px, #222222 -105px 4px 0 -6px, #222222 -105px -1px 0 -6px, #222222 -105px -6px 0 -6px, #222222 -100px 9px 0 -6px, #222222 -100px 4px 0 -6px, #222222 -100px -1px 0 -6px, #222222 -100px -6px 0 -6px, #222222 -95px 9px 0 -6px, #222222 -95px 4px 0 -6px, #222222 -95px -1px 0 -6px, #222222 -95px -6px 0 -6px, #222222 -90px 9px 0 -6px, #222222 -90px 4px 0 -6px, #222222 -90px -1px 0 -6px, #222222 -90px -6px 0 -6px, #222222 -85px 9px 0 -6px, #222222 -85px 4px 0 -6px, #222222 -85px -1px 0 -6px, #222222 -85px -6px 0 -6px, #222222 -80px 9px 0 -6px, #222222 -80px 4px 0 -6px, #222222 -80px -1px 0 -6px, #222222 -80px -6px 0 -6px, #222222 -75px 9px 0 -6px, #222222 -75px 4px 0 -6px, #222222 -75px -1px 0 -6px, #222222 -75px -6px 0 -6px, #222222 -70px 9px 0 -6px, #222222 -70px 4px 0 -6px, #222222 -70px -1px 0 -6px, #222222 -70px -6px 0 -6px, #222222 -65px 9px 0 -6px, #222222 -65px 4px 0 -6px, #222222 -65px -1px 0 -6px, #222222 -65px -6px 0 -6px, #222222 -60px 9px 0 -6px, #222222 -60px 4px 0 -6px, #222222 -60px -1px 0 -6px, #222222 -60px -6px 0 -6px, #222222 -55px 9px 0 -6px, #222222 -55px 4px 0 -6px, #222222 -55px -1px 0 -6px, #222222 -55px -6px 0 -6px, #222222 -50px 9px 0 -6px, #222222 -50px 4px 0 -6px, #222222 -50px -1px 0 -6px, #222222 -50px -6px 0 -6px, #222222 -45px 9px 0 -6px, #222222 -45px 4px 0 -6px, #222222 -45px -1px 0 -6px, #222222 -45px -6px 0 -6px, #222222 -40px 9px 0 -6px, #222222 -40px 4px 0 -6px, #222222 -40px -1px 0 -6px, #222222 -40px -6px 0 -6px, #222222 -35px 9px 0 -6px, #222222 -35px 4px 0 -6px, #222222 -35px -1px 0 -6px, #222222 -35px -6px 0 -6px, #222222 -270px 775px 0 -6px, #222222 -270px 770px 0 -6px, #222222 -270px 765px 0 -6px, #222222 -270px 760px 0 -6px, #222222 -265px 775px 0 -6px, #222222 -265px 770px 0 -6px, #222222 -265px 765px 0 -6px, #222222 -265px 760px 0 -6px, #222222 -260px 775px 0 -6px, #222222 -260px 770px 0 -6px, #222222 -260px 765px 0 -6px, #222222 -260px 760px 0 -6px, #222222 -255px 775px 0 -6px, #222222 -255px 770px 0 -6px, #222222 -255px 765px 0 -6px, #222222 -255px 760px 0 -6px, #222222 -250px 775px 0 -6px, #222222 -250px 770px 0 -6px, #222222 -250px 765px 0 -6px, #222222 -250px 760px 0 -6px, #222222 -245px 775px 0 -6px, #222222 -245px 770px 0 -6px, #222222 -245px 765px 0 -6px, #222222 -245px 760px 0 -6px, #222222 -240px 775px 0 -6px, #222222 -240px 770px 0 -6px, #222222 -240px 765px 0 -6px, #222222 -240px 760px 0 -6px, #222222 -235px 775px 0 -6px, #222222 -235px 770px 0 -6px, #222222 -235px 765px 0 -6px, #222222 -235px 760px 0 -6px, #222222 -230px 775px 0 -6px, #222222 -230px 770px 0 -6px, #222222 -230px 765px 0 -6px, #222222 -230px 760px 0 -6px, #222222 -225px 775px 0 -6px, #222222 -225px 770px 0 -6px, #222222 -225px 765px 0 -6px, #222222 -225px 760px 0 -6px, #222222 -220px 775px 0 -6px, #222222 -220px 770px 0 -6px, #222222 -220px 765px 0 -6px, #222222 -220px 760px 0 -6px, #222222 -215px 775px 0 -6px, #222222 -215px 770px 0 -6px, #222222 -215px 765px 0 -6px, #222222 -215px 760px 0 -6px, #222222 -210px 775px 0 -6px, #222222 -210px 770px 0 -6px, #222222 -210px 765px 0 -6px, #222222 -210px 760px 0 -6px, #222222 -205px 775px 0 -6px, #222222 -205px 770px 0 -6px, #222222 -205px 765px 0 -6px, #222222 -205px 760px 0 -6px, #222222 -200px 775px 0 -6px, #222222 -200px 770px 0 -6px, #222222 -200px 765px 0 -6px, #222222 -200px 760px 0 -6px, #222222 -195px 775px 0 -6px, #222222 -195px 770px 0 -6px, #222222 -195px 765px 0 -6px, #222222 -195px 760px 0 -6px, #222222 -190px 775px 0 -6px, #222222 -190px 770px 0 -6px, #222222 -190px 765px 0 -6px, #222222 -190px 760px 0 -6px, #222222 -185px 775px 0 -6px, #222222 -185px 770px 0 -6px, #222222 -185px 765px 0 -6px, #222222 -185px 760px 0 -6px, #222222 -180px 775px 0 -6px, #222222 -180px 770px 0 -6px, #222222 -180px 765px 0 -6px, #222222 -180px 760px 0 -6px, #222222 -175px 775px 0 -6px, #222222 -175px 770px 0 -6px, #222222 -175px 765px 0 -6px, #222222 -175px 760px 0 -6px, #222222 -170px 775px 0 -6px, #222222 -170px 770px 0 -6px, #222222 -170px 765px 0 -6px, #222222 -170px 760px 0 -6px, #222222 -165px 775px 0 -6px, #222222 -165px 770px 0 -6px, #222222 -165px 765px 0 -6px, #222222 -165px 760px 0 -6px, #222222 -160px 775px 0 -6px, #222222 -160px 770px 0 -6px, #222222 -160px 765px 0 -6px, #222222 -160px 760px 0 -6px, #222222 -155px 775px 0 -6px, #222222 -155px 770px 0 -6px, #222222 -155px 765px 0 -6px, #222222 -155px 760px 0 -6px, #222222 -150px 775px 0 -6px, #222222 -150px 770px 0 -6px, #222222 -150px 765px 0 -6px, #222222 -150px 760px 0 -6px, #222222 -145px 775px 0 -6px, #222222 -145px 770px 0 -6px, #222222 -145px 765px 0 -6px, #222222 -145px 760px 0 -6px, #222222 -140px 775px 0 -6px, #222222 -140px 770px 0 -6px, #222222 -140px 765px 0 -6px, #222222 -140px 760px 0 -6px, #222222 -135px 775px 0 -6px, #222222 -135px 770px 0 -6px, #222222 -135px 765px 0 -6px, #222222 -135px 760px 0 -6px, #222222 -130px 775px 0 -6px, #222222 -130px 770px 0 -6px, #222222 -130px 765px 0 -6px, #222222 -130px 760px 0 -6px, #222222 -125px 775px 0 -6px, #222222 -125px 770px 0 -6px, #222222 -125px 765px 0 -6px, #222222 -125px 760px 0 -6px, #222222 -120px 775px 0 -6px, #222222 -120px 770px 0 -6px, #222222 -120px 765px 0 -6px, #222222 -120px 760px 0 -6px, #222222 -115px 775px 0 -6px, #222222 -115px 770px 0 -6px, #222222 -115px 765px 0 -6px, #222222 -115px 760px 0 -6px, #222222 -110px 775px 0 -6px, #222222 -110px 770px 0 -6px, #222222 -110px 765px 0 -6px, #222222 -110px 760px 0 -6px, #222222 -105px 775px 0 -6px, #222222 -105px 770px 0 -6px, #222222 -105px 765px 0 -6px, #222222 -105px 760px 0 -6px, #222222 -100px 775px 0 -6px, #222222 -100px 770px 0 -6px, #222222 -100px 765px 0 -6px, #222222 -100px 760px 0 -6px, #222222 -95px 775px 0 -6px, #222222 -95px 770px 0 -6px, #222222 -95px 765px 0 -6px, #222222 -95px 760px 0 -6px, #222222 -90px 775px 0 -6px, #222222 -90px 770px 0 -6px, #222222 -90px 765px 0 -6px, #222222 -90px 760px 0 -6px, #222222 -85px 775px 0 -6px, #222222 -85px 770px 0 -6px, #222222 -85px 765px 0 -6px, #222222 -85px 760px 0 -6px, #222222 -80px 775px 0 -6px, #222222 -80px 770px 0 -6px, #222222 -80px 765px 0 -6px, #222222 -80px 760px 0 -6px, #222222 -75px 775px 0 -6px, #222222 -75px 770px 0 -6px, #222222 -75px 765px 0 -6px, #222222 -75px 760px 0 -6px, #222222 -70px 775px 0 -6px, #222222 -70px 770px 0 -6px, #222222 -70px 765px 0 -6px, #222222 -70px 760px 0 -6px, #222222 -65px 775px 0 -6px, #222222 -65px 770px 0 -6px, #222222 -65px 765px 0 -6px, #222222 -65px 760px 0 -6px, #222222 -60px 775px 0 -6px, #222222 -60px 770px 0 -6px, #222222 -60px 765px 0 -6px, #222222 -60px 760px 0 -6px, #222222 -55px 775px 0 -6px, #222222 -55px 770px 0 -6px, #222222 -55px 765px 0 -6px, #222222 -55px 760px 0 -6px, #222222 -50px 775px 0 -6px, #222222 -50px 770px 0 -6px, #222222 -50px 765px 0 -6px, #222222 -50px 760px 0 -6px, #222222 -45px 775px 0 -6px, #222222 -45px 770px 0 -6px, #222222 -45px 765px 0 -6px, #222222 -45px 760px 0 -6px, #222222 -40px 775px 0 -6px, #222222 -40px 770px 0 -6px, #222222 -40px 765px 0 -6px, #222222 -40px 760px 0 -6px; }
 
 .sg-phone--pushed-back {
-  -webkit-transform: scale(0.9);
+  -webkit-transform: scale(1);
   margin: 0 auto;
   z-index: -1; }
 
@@ -6683,63 +6969,57 @@ body {
 ========================================================================== */
 .sg-fadeInAni {
   -webkit-animation: sg-fadeInAni 0.3s 0.15s 1 forwards;
-  -moz-animation: sg-fadeInAni 0.3s 0.15s 1 forwards;
+  -ms-animation: sg-fadeInAni 0.3s 0.15s 1 forwards;
   animation: sg-fadeInAni 0.3s 0.15s 1 forwards; }
 
 .sg-modalIntroAni {
   -webkit-animation: sg-modalIntroAni 0.3s 0.15s forwards;
-  -moz-animation: sg-modalIntroAni 0.3s 0.15s forwards;
+  -ms-animation: sg-modalIntroAni 0.3s 0.15s forwards;
   animation: sg-modalIntroAni 0.3s 0.15s forwards; }
 
 .sg-overlayIntroAni {
   -webkit-animation: sg-overlayIntroAni 0.15s forwards;
-  -moz-animation: sg-overlayIntroAni 0.15s forwards;
+  -ms-animation: sg-overlayIntroAni 0.15s forwards;
   animation: sg-overlayIntroAni 0.15s forwards; }
 
-/* Modal intro */
-@keyframes sg-modalIntroAni {
+@-webkit-keyframes sg-modalIntroAni {
   from {
     opacity: 0;
     -webkit-transform: translate(0, 50px);
+    -ms-transform: translate(0, 50px);
     transform: translate(0, 50px); }
 
   to {
     opacity: 1;
     -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
     transform: translate(0, 0); } }
 
-@-moz-keyframes sg-modalIntroAni {
+@-ms-keyframes sg-modalIntroAni {
   from {
     opacity: 0;
-    -moz-transform: translate(0, 50px); }
+    -webkit-transform: translate(0, 50px);
+    -ms-transform: translate(0, 50px);
+    transform: translate(0, 50px); }
 
   to {
     opacity: 1;
-    -moz-transform: translate(0, 0); } }
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0); } }
 
-@-webkit-keyframes sg-modalIntroAni {
+@keyframes sg-modalIntroAni {
   from {
     opacity: 0;
-    -webkit-transform: translate(0, 50px); }
+    -webkit-transform: translate(0, 50px);
+    -ms-transform: translate(0, 50px);
+    transform: translate(0, 50px); }
 
   to {
     opacity: 1;
-    -webkit-transform: translate(0, 0); } }
-
-/* Overlay, Intro */
-@keyframes sg-overlayIntroAni {
-  from {
-    opacity: 0; }
-
-  to {
-    opacity: 0.8; } }
-
-@-moz-keyframes sg-overlayIntroAni {
-  from {
-    opacity: 0; }
-
-  to {
-    opacity: 0.8; } }
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0); } }
 
 @-webkit-keyframes sg-overlayIntroAni {
   from {
@@ -6748,22 +7028,35 @@ body {
   to {
     opacity: 0.8; } }
 
-/* FadeIn */
-@keyframes sg-fadeInAni {
+@-ms-keyframes sg-overlayIntroAni {
   from {
     opacity: 0; }
 
   to {
-    opacity: 1; } }
+    opacity: 0.8; } }
 
-@-moz-keyframes sg-fadeInAni {
+@keyframes sg-overlayIntroAni {
   from {
     opacity: 0; }
 
   to {
-    opacity: 1; } }
+    opacity: 0.8; } }
 
 @-webkit-keyframes sg-fadeInAni {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+@-ms-keyframes sg-fadeInAni {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+@keyframes sg-fadeInAni {
   from {
     opacity: 0; }
 
@@ -6879,6 +7172,8 @@ body {
       .sg-iphone .sg-phone--content .sg-carousel-page {
         position: absolute; }
   .sg-col-nav {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
     column-count: 3;
     -moz-column-count: 3;
     -webkit-column-count: 3; } }
@@ -7011,3 +7306,4 @@ body {
  * ./src/sass/salesforce1.scss
  *
 */
+/*# sourceMappingURL=styles.css.map */
