@@ -60,7 +60,7 @@ public with sharing class OppsInForecastCategoryController {
         }
         
         public String getAmount() {
-            return '$' + opp.Amount.format();
+            return CurrencyUtil.getCurrencySymbol(opp) + opp.Amount.format();
         }
         
     }

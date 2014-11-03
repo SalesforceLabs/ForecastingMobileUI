@@ -73,6 +73,8 @@ public with sharing class QuotaAttainmentController {
             if (a == null)
                 continue;
             
+            a.unitsPrefix = item.IsAmount ? CurrencyUtil.getCurrencySymbol(item) : '';
+
             Integer categoryPosition = forecastCategoryList.get(item.ForecastCategoryName);
             if (categoryPosition == null)
             continue;
@@ -114,7 +116,6 @@ public with sharing class QuotaAttainmentController {
             a.forecastTypeStr += ' - Uncategorized';
              
         a.timeRemainingInPeriod = timeBetweenTwoDates(today, period.EndDate);
-        a.unitsPrefix = t.IsAmount ? '$' : '';
 
         for (String catName : forecastCategoryList.keySet()) {
             Integer catNumber = forecastCategoryList.get(catName);
@@ -222,7 +223,7 @@ public with sharing class QuotaAttainmentController {
         
       return ret;
     }
-    
+        
     public class PeriodFtypeKey {
         String code;
         
