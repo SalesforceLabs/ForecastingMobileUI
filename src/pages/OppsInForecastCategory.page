@@ -68,7 +68,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                              on-select="selectHandler(event)" style="margin-top:14px;">
                         <ul class="clear list-plain man pan">
                             <li class="f3 text-color-1 fw-semibold ng-binding" style="margin-left: 21px;">{!opp.Name}</li>
-                            <li class="mbs f5 text-color-2 ng-binding">{!opp.StageName} • {!opp.Account.Name}</li>
+                            <li class="mbs f5 text-color-2 ng-binding">{!opp.StageName} • {!opp.AccountName}</li>
                             <li class="fl f3 text-color-1 ng-binding">{!opp.amount}</li>
                         </ul>
                     </article>

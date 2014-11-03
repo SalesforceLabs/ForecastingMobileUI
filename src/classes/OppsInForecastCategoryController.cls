@@ -20,15 +20,49 @@ public with sharing class OppsInForecastCategoryController {
     String category = ApexPages.currentPage().getParameters().get('forecastCategory');
     
     
-    List<Opportunity> ret = [SELECT Id, Name, Amount, StageName, CloseDate, Account.Name FROM Opportunity WHERE Id IN 
+    List<Opportunity> opps = [SELECT Id, Name, Amount, StageName, CloseDate, Account.Name FROM Opportunity WHERE Id IN 
                                  (select OpportunityId from ForecastingFact WHERE ForecastingItemId=:forecastingItemId)
                                  ORDER BY Amount DESC LIMIT 50];
+    List<DisplayOpp> displayOpps = new List<DisplayOpp>();
 
-    public List<Opportunity> getOppsInForecastingItem() {
-        return ret;
+    public List<DisplayOpp> getOppsInForecastingItem() {
+        for(Opportunity o : opps) {
+            displayOpps.add(new DisplayOpp(o));
+        }
+        return displayOpps;
     }
     
     public String getNumOppsString() {
-        return ret.size() + (ret.size()>=50 ? '+' : '') + (ret.size() == 1 ? ' Opportunity ' : ' Opportunities ') + ' in ' + category;
+        return opps.size() + (opps.size()>=50 ? '+' : '') + (opps.size() == 1 ? ' Opportunity ' : ' Opportunities ') + ' in ' + category;
     }
+    
+    public class DisplayOpp {
+        
+        private Opportunity opp;
+        public DisplayOpp(Opportunity o) {
+            this.opp = o;
+        }
+        
+        public Id getId() {
+            return opp.Id;
+        }
+        
+        public String getName() {
+            return opp.Name;
+        }
+        
+        public String getStageName() {
+            return opp.StageName;
+        }
+        
+        public String getAccountName() {
+            return opp.Account.Name;
+        }
+        
+        public String getAmount() {
+            return '$' + opp.Amount.format();
+        }
+        
+    }
+    
 }
