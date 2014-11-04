@@ -43,4 +43,26 @@ public class QuotaAttainmentTests{
         c.getNumOppsString();
         c.getOppsInForecastingItem();
     }
+    
+    static testMethod void testCurrency() {
+        Opportunity o = new Opportunity();
+        o.Name = 'ABC';
+        o.Amount = 1234;
+        o.CloseDate = Date.today();
+        o.StageName = 'Pipeline';
+        insert o;
+        
+        CurrencyUtil.getCurrencySymbol(o);
+        OppsInForecastCategoryController.DisplayOpp d = new OppsInForecastCategoryController.DisplayOpp(o);
+        d.getId();
+        d.getName();
+        d.getStageName();
+        d.getAmount();
+        d.getAccountName();
+        
+    }
+    
+    static testMethod void testDisplayOpp() {
+        
+    }
 }

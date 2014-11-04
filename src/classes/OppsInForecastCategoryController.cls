@@ -56,7 +56,7 @@ public with sharing class OppsInForecastCategoryController {
         }
         
         public String getAccountName() {
-            return opp.Account.Name;
+            return opp.Account == null ? '' : opp.Account.Name;
         }
         
         public String getAmount() {
