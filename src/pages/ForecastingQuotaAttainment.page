@@ -149,7 +149,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                 <div class="label">of quota achieved</div>
                             </div>
                             
-                            <div class="bar-chart-bar">
+                            <div class="bar-chart-bar border border--3">
                                 <div class="bar barClosed" style="width: {!c.closedPercent}%"></div>
                                 <div class="bar barCommit" style="width: {!c.commitPercent}%"></div>
                                 <div class="bar barBestcase" style="width: {!c.bestcasePercent}%"></div>
@@ -166,22 +166,22 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                         </div><!--center-->
                         
                     </div>
-                    <ul class="list-plain fw-normal bg-2 man pa" style="margin-top:28px">
-                        <a href="javascript:sforce.one.navigateToURL('/apex/forecasting_s1__OppsInForecastCategory?forecastCategory={!c.closedCategoryStr}&itemId={!c.closedForecastingItemId}');">
+                    <ul class="list-plain fw-normal bg-2 man pa" style="margin-top:28px; padding-left:0px">
+                        <a href="javascript:sforce.one.navigateToURL('/apex/forecasting_s1__OppsInForecastCategory?forecastCategory={!JSINHTMLENCODE(c.closedCategoryStr)}&itemId={!c.closedForecastingItemId}');">
                             <li class="active--list-1 pam text-color-1 f4 border-bottom border--3">
                                 <span class="bar barClosed barKey"></span>
                                 <span style="margin-left:5px">{!c.closedCategoryStr}</span>
                                 <span style="position:relative; float:right">{!c.closedAmountStr}</span>
                             </li>
                         </a>                                
-                        <a href="javascript:sforce.one.navigateToURL('/apex/forecasting_s1__OppsInForecastCategory?forecastCategory={!c.commitCategoryStr}&itemId={!c.commitForecastingItemId}');">
+                        <a href="javascript:sforce.one.navigateToURL('/apex/forecasting_s1__OppsInForecastCategory?forecastCategory={!JSINHTMLENCODE(c.commitCategoryStr)}&itemId={!c.commitForecastingItemId}');">
                             <li class="active--list-1 pam text-color-1 f4 border-bottom border--3">
                                 <span class="bar barCommit barKey"></span>
                                 <span style="margin-left:5px">{!c.commitCategoryStr}</span>
                                 <span style="position:relative; float:right">{!c.commitAmountStr}</span>
                             </li>
                         </a>
-                        <a href="javascript:sforce.one.navigateToURL('/apex/forecasting_s1__OppsInForecastCategory?forecastCategory={!c.bestcaseCategoryStr}&itemId={!c.bestcaseForecastingItemId}');">
+                        <a href="javascript:sforce.one.navigateToURL('/apex/forecasting_s1__OppsInForecastCategory?forecastCategory={!JSINHTMLENCODE(c.bestcaseCategoryStr)}&itemId={!c.bestcaseForecastingItemId}');">
                             <li class="active--list-1 pam text-color-1 f4 border--3">
                                 <span class="bar barBestcase barKey"></span>
                                 <span style="margin-left:5px">{!c.bestcaseCategoryStr}</span>

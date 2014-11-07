@@ -34,10 +34,6 @@ public with sharing class QuotaAttainmentController {
         List<ForecastAttainmentModel> attainments = new List<ForecastAttainmentModel>();
         Map<PeriodFtypeKey, ForecastAttainmentModel> attainsmentsByKey = new Map<PeriodFtypeKey, ForecastAttainmentModel>();
 
-        System.debug(periods);
-        System.debug(forecastingTypes);
-        System.debug(forecastingQuotas);
-        System.debug(forecastingItems);
         // Make an ordered set of Attainment records: by period, then by forecasting type 
         for (Period period : periods) {
             for (ForecastingType t : forecastingTypes) {
@@ -80,7 +76,6 @@ public with sharing class QuotaAttainmentController {
             continue;
             
             Decimal amount = item.IsAmount ? item.ForecastAmount : item.ForecastQuantity;
-            System.debug('Item=' + item + '\nCorresponding attainment=' + a);
             
             if (categoryPosition == 0) {
                 a.closedAmount = amount;
